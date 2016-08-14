@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+
+# make folders
+mkdir -p \
+	/config/.hts/tvheadend/dvr/config \
+	/config/comskip
+
+# copy config
+[[ ! -e /config/.hts/tvheadend/dvr/config/7a5edfbe189851e5b1d1df19c93962f0 ]] && \
+	cp /defaults/7a5edfbe189851e5b1d1df19c93962f0 /config/.hts/tvheadend/dvr/config/7a5edfbe189851e5b1d1df19c93962f0
+[[ ! -e /config/comskip/comskip.ini ]]
+	cp /defaults/comskip.ini.org /config/comskip/comskip.ini
+
+# permissions
+chown -R abc:abc \
+	/config \
+	/config/.hts
