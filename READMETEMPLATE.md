@@ -48,10 +48,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-The first thing to do is to create your admin user as by default everyone is allowed to access tvheadend. Go to Configuration --> Users --> Access Entries and click Add and fill in all the required fields.
-Then go to the password tab and click Add and fill in the user name you created in the previous step and enter your password.
-Click the (login) button in the top of the webgui and check that your user is configured properly. After you have logged in, delete or disable the * user.
-Then you can start configuring tvheadend with the wizard foun in Configuration --> General --> Base and click Start Wizard.
+The first thing to do is to run the setup wizard. If it doesn't pop up at first login, you can find it in Configuration --> General --> Base and click Start Wizard. This will guide you to set up the basic parts of tvheadend.
 
 **Configuring XMLTV grabber**
 
