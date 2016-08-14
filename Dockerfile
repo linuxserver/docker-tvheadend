@@ -97,7 +97,6 @@ RUN \
  cpanm PerlIO::gzip && \
  cpanm SOAP::Lite && \
  cpanm Term::ProgressBar && \
- cpanm Term::ProgressBar && \
  cpanm Unicode::UTF8simple && \
  cpanm version && \
  cpanm WWW::Mechanize && \
