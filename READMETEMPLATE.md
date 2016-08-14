@@ -1,6 +1,6 @@
 ![https://linuxserver.io](https://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
 
-The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring auto-update on startup, easy user mapping and community support. Find us for support at:
+The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring easy user mapping and community support. Find us for support at:
 * [forum.linuxserver.io](https://forum.linuxserver.io)
 * [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`
 * [Podcast](https://www.linuxserver.io/index.php/category/podcast/) covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
@@ -48,10 +48,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-The first thing to do is to create your admin user as by default everyone is allowed to access tvheadend. Go to Configuration --> Users --> Access Entries and click Add and fill in all the required fields.
-Then go to the password tab and click Add and fill in the user name you created in the previous step and enter your password.
-Click the (login) button in the top of the webgui and check that your user is configured properly. After you have logged in, deleteor disable the * user.
-Then you can start configuring tvheadend with the wizard foun in Configuration --> General --> Base and click Start Wizard.
+The first thing to do is to run the setup wizard. If it doesn't pop up at first login, you can find it in Configuration --> General --> Base and click Start Wizard. This will guide you to set up the basic parts of tvheadend.
 
 **Configuring XMLTV grabber**
 
@@ -68,7 +65,7 @@ If you allready have a configuration file, you can add it in the .xmltv folder w
 
 **Comskip**
 This container comes with Comskip for commercial flagging of recordings. This you have to add in the recording config of tvheadend.
-Go to Configuration --> Recording and add the below in the Post-processor command field.
+Go to Configuration --> Recording. Change the view level to advanced in the top right corner, and add the below in the Post-processor command field.
 
 ```
 comskip "%f"
