@@ -184,7 +184,7 @@ RUN \
  ./autogen.sh && \
  ./configure \
 	--bindir=/usr/bin \
-	--sysconfdir=/config && \
+	--sysconfdir=/config/comskip && \
  make && \
  make install && \
 
