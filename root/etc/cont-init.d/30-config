@@ -1,5 +1,11 @@
 #!/usr/bin/with-contenv bash
 
+# move tobbenb/tvheadend config path to linuxserver config path
+[[ ! -e /config/.hts/tvheadend ]] && \
+	mkdir -p /config/.hts/tvheadend && \
+	mv /config/* /config/.hts/tvheadend/  && \
+	mv /config/.lock /config/.hts/tvheadend
+
 # make folders
 mkdir -p \
 	/config/.hts/tvheadend/dvr/config \
