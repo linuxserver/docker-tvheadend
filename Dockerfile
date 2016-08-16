@@ -21,6 +21,7 @@ RUN \
 	cmake \
 	coreutils \
 	ffmpeg-dev \
+	file \
 	findutils \
 	g++ \
 	gcc \
@@ -84,6 +85,23 @@ RUN \
 	uriparser \
 	wget \
 	zlib && \
+
+# build libiconv
+ mkdir -p \
+ /tmp/iconv-src && \
+ curl -o \
+ /tmp/iconv.tar.gz -L \
+	http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz && \
+ tar xf /tmp/iconv.tar.gz -C \
+	/tmp/iconv-src --strip-components=1 && \
+ cd /tmp/iconv-src && \
+ ./configure \
+	--prefix=/usr/local && \
+ patch -p1 -i \
+	/tmp/patches/libiconv-1-fixes.patch && \
+ make && \
+ make install && \
+ libtool --finish /usr/local/lib && \
 
 # install perl modules
  curl -L http://cpanmin.us | perl - App::cpanminus && \
