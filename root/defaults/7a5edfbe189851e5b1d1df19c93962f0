@@ -34,5 +34,5 @@
 	"omit-title": false,
 	"clean-title": false,
 	"whitespace-in-title": false,
-	"windows-compatible-filenames": false
+	"windows-compatible-filenames": true
 }
