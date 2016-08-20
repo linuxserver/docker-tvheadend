@@ -2,12 +2,11 @@
 
 # make folders
 mkdir -p \
-	/config/dvr/config \
 	/config/comskip
 
 # copy config
-[[ ! -e /config/dvr/config/ ]] && \
-	cp /defaults/7a5edfbe189851e5b1d1df19c93962f0 /config/dvr/config/7a5edfbe189851e5b1d1df19c93962f0
+[[ ! -e /config/dvr/config ]] && \
+	(mkdir -p /config/dvr/config && cp /defaults/7a5edfbe189851e5b1d1df19c93962f0 /config/dvr/config/7a5edfbe189851e5b1d1df19c93962f0)
 [[ ! -e /config/comskip/comskip.ini ]]
 	cp /defaults/comskip.ini.org /config/comskip/comskip.ini
 
