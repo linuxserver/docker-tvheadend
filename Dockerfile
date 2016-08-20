@@ -3,7 +3,7 @@ MAINTAINER saarg
 
 # package version
 ARG ARGTABLE_VER="2.13"
-ARG TVH_VER="e3e8a797"
+ARG TVH_VER="release/4.0"
 ARG UNICODE_VER="2.09"
 ARG XMLTV_VER="0.5.67"
 
