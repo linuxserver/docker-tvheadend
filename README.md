@@ -36,13 +36,13 @@ docker create \
 The --device=/dev/dvb is only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out.
 
 
-You can choose between ,using tags, stable or master version of tvheadend.
+You can choose between ,using tags, latest (default, and no tag required or a specific stable version of tvheadend.
 
-Add one of the tags,  if required,  to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:master
+Add one of the tags,  if required,  to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.0.9
 
 #### Tags
-+ **master** : latest development from tvheadend git, with updates once a week.
-+ **stable** : latest stable version.
+
++ **stable-4.0.9** : latest stable version.
 
 
 **Parameters**
@@ -68,7 +68,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-The setup depends if you run the master or stable tag. Running the master is the easiest as it has a setup wizard.
+The setup depends if you run the stable tag or use latest. Running latest is the easiest as it has a setup wizard.
 
 **Stable**
 
@@ -77,7 +77,7 @@ Go back to the TV adapters tab and add the newly created network under universal
 
 After the scan is done, head to the Services tab and find the services you want as channels, mark them, and press map services. They should now appear under Configuration --> Channel/EPG.
 
-**Master**
+**Latest**
 
 The first thing to do is to run the setup wizard. If it doesn't pop up at first login, you can find it in Configuration --> General --> Base and click Start Wizard. This will guide you to set up the basic parts of tvheadend.
 
