@@ -38,7 +38,7 @@ The --device=/dev/dvb is only needed if you want to pass through a DVB card to t
 
 You can choose between ,using tags, latest (default, and no tag required or a specific stable version of tvheadend.
 
-Add one of the tags,  if required,  to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.0.9
+Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.0.9
 
 #### Tags
 
@@ -68,7 +68,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-The setup depends if you run the stable tag or use latest. Running latest is the easiest as it has a setup wizard.
+The setup depends if you run the one of the stable tags or use latest. Running latest is the easiest as it has a setup wizard.
 
 **Stable**
 
