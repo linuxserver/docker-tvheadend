@@ -18,7 +18,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
 Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 
-[![tvheadend](https://tvheadend.org/attachments/download/962/tvheadendlogo.png)][tvheadendurl]
+[![tvheadend](https://s31.postimg.io/8urk8vdu3/logobig.png)][tvheadendurl]
 [tvheadendurl]: https://www.tvheadend.org/
 
 ## Usage
@@ -53,7 +53,7 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 * `-e PUID` for UserID - see below for explanation
 * `-e TZ` - for timezone information *eg Europe/London, etc*
 
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tvheadend-unstable /bin/bash`.
+It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tvheadend /bin/bash`.
 
 ### User / Group Identifiers
 
