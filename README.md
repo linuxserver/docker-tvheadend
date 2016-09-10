@@ -46,7 +46,7 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 
 #### Host vs. Bridge
 
-If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host. This is because of a limitation in docker and multicast.
+If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because of a limitation in docker and multicast.
 
 **Parameters**
 
