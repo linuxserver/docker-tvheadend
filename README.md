@@ -117,7 +117,7 @@ FFmpeg is installed in /usr/bin/ in case you need to use it with pipe.
 If you have EPG data in XML format from a supplier, you can drop it in the data folder of your your /config volume mapping. Then choose the XML file grabber in Configuration --> Channel/EPG --> EPG Grabber Modules.
 If you use WebGrab+Plus, choose the WebGrab+Plus XML file grabber. The XML file goes in the same path as above.
 
-For advanced setup of tvheadend, go to [tvheadend.org] (https://www.tvheadend.org)
+For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
 
 ## Info
 
