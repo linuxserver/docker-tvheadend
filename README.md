@@ -11,7 +11,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/tvheadend
-[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tvheadend)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tvheadend/)
+[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](http://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tvheadend)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tvheadend/)
 [hub]: https://hub.docker.com/r/linuxserver/tvheadend/
 
 [Tvheadend](https://www.tvheadend.org/) is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
@@ -44,6 +44,9 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 
 + **stable-4.0.9** : latest stable version.
 
+#### Host vs. Bridge
+
+If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host. This is because of a limitation in docker and multicast.
 
 **Parameters**
 
@@ -123,4 +126,5 @@ For advanced setup of tvheadend, go to [tvheadend.org] (https://www.tvheadend.or
 
 ## Versions
 
++ **10.09.2016:** Add layer badges to README.
 + **05.09.2016:** Initial release.
