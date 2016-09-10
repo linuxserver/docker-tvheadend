@@ -44,6 +44,10 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 
 + **stable-4.0.9** : latest stable version.
 
+#### Host vs. Bridge
+
+If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host. This is because of a limitation in docker and multicast.
+
 
 **Parameters**
 
@@ -51,6 +55,8 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 * `-v /config` - explain what lives here
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `--device=/dev/dvb` - for passing through DVB-cards
+* `--net=host` - for IPTV, SAT>IP and HDHomeRun
 * `-e TZ` - for timezone information *eg Europe/London, etc*
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tvheadend /bin/bash`.
