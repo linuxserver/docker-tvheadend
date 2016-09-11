@@ -87,7 +87,7 @@ The first thing to do is to run the setup wizard. If it doesn't pop up at first 
 **Configuring XMLTV grabber**
 
 To configure the XMLTV grabber, first check if your grabber is listed in Configuration --> Channel/EPG --> EPG Grabber Modules. If it's listed, you will have to configure the grabber before enabling.
-Find the path in the path field of your grabber. We will use the last part. It starts with tv_grab_. Add it after /usr/bin/ in the below command. There should be no space between Usr/bin/ and the part you added. 
+Find the path in the path field of your grabber. We will use the last part. It starts with tv_grab_. Add it after /usr/bin/ in the below command. There should be no space between Usr/bin/ and the part you added.
 
 ```
 docker exec -it -u abc tvheadend /usr/bin/for_you_to_fill_out --configure
@@ -105,7 +105,7 @@ Go to Configuration --> Recording. Change the view level to advanced in the top 
 comskip --ini=/config/comskip/comskip.ini "%f"
 ```
 
-Now comskip will run after each recording is finished. You will find comskip.ini in the comskip folder of your /config volume mapping. See the [Comskip] (http://www.kaashoek.com/comskip/) homepage for tuning of the ini file.
+Now comskip will run after each recording is finished. You will find comskip.ini in the comskip folder of your /config volume mapping. See the [Comskip](http://www.kaashoek.com/comskip/) homepage for tuning of the ini file.
 
 
 **FFmpeg**
