@@ -105,7 +105,7 @@ Go to Configuration --> Recording. Change the view level to advanced in the top 
 comskip --ini=/config/comskip/comskip.ini "%f"
 ```
 
-Now comskip will run after each recording is finished. You will find comskip.ini in the comskip folder of your /config volume mapping. See the [Comskip] (http://www.kaashoek.com/comskip/) homepage for tuning of the ini file.
+Now comskip will run after each recording is finished. You will find comskip.ini in the comskip folder of your /config volume mapping. See the [Comskip](http://www.kaashoek.com/comskip/) homepage for tuning of the ini file.
 
 
 **FFmpeg**
