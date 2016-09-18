@@ -26,6 +26,7 @@ Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV D
 ```
 docker create \
   --name=tvheadend \
+  --net=bridge \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
   -p 9981:9981 \
@@ -54,6 +55,8 @@ If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --ne
 * `-v /config` - explain what lives here
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `--device=/dev/dvb` - for passing through DVB-cards
+* `--net=host` - for IPTV, SAT>IP and HDHomeRun
 * `-e TZ` - for timezone information *eg Europe/London, etc*
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tvheadend /bin/bash`.
@@ -126,5 +129,6 @@ For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
 
 ## Versions
 
++ **18.09.2016:** Update XMLTV to 0.5.68 and update README.
 + **10.09.2016:** Add layer badges to README.
 + **05.09.2016:** Initial release.
