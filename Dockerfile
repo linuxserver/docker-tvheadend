@@ -5,7 +5,7 @@ MAINTAINER saarg
 ARG ARGTABLE_VER="2.13"
 ARG TVH_VER="v4.0.9"
 ARG UNICODE_VER="2.09"
-ARG XMLTV_VER="0.5.67"
+ARG XMLTV_VER="0.5.68"
 
 # Environment settings
 ENV HOME="/config"
@@ -28,8 +28,10 @@ RUN \
 	gettext-dev \
 	git \
 	libhdhomerun-dev \
+	libgcrypt-dev \
 	libtool \
 	libxml2-dev \
+	libxslt-dev \
 	make \
 	mercurial \
 	openssl-dev \
@@ -60,7 +62,10 @@ RUN \
 	perl-compress-raw-zlib \
 	perl-date-manip \
 	perl-datetime \
+	perl-digest-sha1 \
 	perl-file-slurp \
+	perl-file-temp \
+	perl-getopt-long \
 	perl-html-parser \
 	perl-html-tree \
 	perl-http-cookies \
@@ -78,6 +83,7 @@ RUN \
 	perl-term-readkey \
 	perl-test-exception \
 	perl-test-requires \
+	perl-try-tiny \
 	perl-xml-parser \
 	perl-xml-sax \
 	python \
@@ -105,20 +111,32 @@ RUN \
 
 # install perl modules
  curl -L http://cpanmin.us | perl - App::cpanminus && \
+ cpanm Date::Language && \
+ cpanm DateTime::Format::ISO8601 && \
+ cpanm DateTime::Format::Strptime && \
+ cpanm HTML::Entities && \
  cpanm HTML::TableExtract && \
+ cpanm HTML::TreeBuilder && \
  cpanm HTTP::Cache::Transparent && \
  cpanm inc && \
  cpanm IO::Scalar && \
  cpanm IO::Socket::SSL && \
+ cpanm JSON::PP && \
  cpanm Lingua::EN::Numbers::Ordinate && \
  cpanm Lingua::Preferred && \
+ cpanm List::MoreUtils && \
+ cpanm LWP::Simple && \
+ cpanm LWP::UserAgent && \
  cpanm PerlIO::gzip && \
  cpanm SOAP::Lite && \
+ cpanm Storable && \
  cpanm Term::ProgressBar && \
  cpanm Unicode::UTF8simple && \
  cpanm version && \
  cpanm WWW::Mechanize && \
+ cpanm XML::DOM && \
  cpanm XML::LibXML && \
+ cpanm XML::LibXSLT && \
  cpanm XML::TreePP && \
  cpanm XML::Twig && \
  cpanm XML::Writer && \
