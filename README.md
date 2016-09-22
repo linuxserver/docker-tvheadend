@@ -117,8 +117,9 @@ FFmpeg is installed in /usr/bin/ in case you need to use it with pipe.
 
 **EPG XML file**
 
-If you have EPG data in XML format from a supplier, you can drop it in the data folder of your your /config volume mapping. Then choose the XML file grabber in Configuration --> Channel/EPG --> EPG Grabber Modules.
+If you have EPG data in XML format from a supplier, you can drop it in the data folder of your /config volume mapping. If it doesn't exist, create it. Then choose the XML file grabber in Configuration --> Channel/EPG --> EPG Grabber Modules.
 If you use WebGrab+Plus, choose the WebGrab+Plus XML file grabber. The XML file goes in the same path as above.
+The xml file has to be named guide.xml.
 
 For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
 
@@ -129,6 +130,7 @@ For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
 
 ## Versions
 
++ **22.09.2016:** Fix broken tv_grab_wg and update README.
 + **18.09.2016:** Update XMLTV to 0.5.68 and update README.
 + **10.09.2016:** Add layer badges to README.
 + **05.09.2016:** Initial release.
