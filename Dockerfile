@@ -228,7 +228,9 @@ RUN \
  apk add --no-cache \
 	ffmpeg2.8 \
 	ffmpeg2.8-libs \
-	libhdhomerun-libs && \
+	libhdhomerun-libs \
+	libxml2 \
+	libxslt && \
 
 # cleanup
  apk del --purge \
