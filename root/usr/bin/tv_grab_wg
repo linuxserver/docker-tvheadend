@@ -1,12 +1,11 @@
 #!/bin/bash
-xmltv_file_location=/config/data/*.xml
 dflag=
 vflag=
 cflag=
 qflag=
 if (( $# < 1 ))
 then
-  cat "$xmltv_file_location"
+  cat /config/data/*.xml
   exit 0
 fi
 
