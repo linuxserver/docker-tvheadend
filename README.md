@@ -130,7 +130,7 @@ For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
 
 ## Versions
 
-+ **22.09.2016:** Fix broken tv_grab_wg and update README.
++ **22.09.2016:** Fix broken tv_grab_wg, libs for xmltv and update README.
 + **18.09.2016:** Update XMLTV to 0.5.68 and update README.
 + **10.09.2016:** Add layer badges to README.
 + **05.09.2016:** Initial release.
