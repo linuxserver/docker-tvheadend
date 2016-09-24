@@ -96,7 +96,7 @@ RUN \
  /tmp/iconv-src && \
  curl -o \
  /tmp/iconv.tar.gz -L \
-	http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz && \
+	ftp://www.mirrorservice.org/sites/ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz && \
  tar xf /tmp/iconv.tar.gz -C \
 	/tmp/iconv-src --strip-components=1 && \
  cd /tmp/iconv-src && \
