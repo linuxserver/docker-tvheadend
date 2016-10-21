@@ -7,6 +7,11 @@ ARG TVH_VER="v4.0.9"
 ARG UNICODE_VER="2.09"
 ARG XMLTV_VER="0.5.68"
 
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Build-date:- ${BUILD_DATE}"
+
 # Environment settings
 ENV HOME="/config"
 
