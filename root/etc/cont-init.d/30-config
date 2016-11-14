@@ -12,4 +12,5 @@ mkdir -p \
 
 # permissions
 chown -R abc:abc \
-	/config
+	/config \
+	/picons
