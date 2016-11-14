@@ -245,6 +245,9 @@ RUN \
 # copy local files
 COPY root/ /
 
+# add picons
+ADD picons.tar.bz2 /picons
+
 # ports and volumes
 EXPOSE 9981 9982
 VOLUME /config /recordings
