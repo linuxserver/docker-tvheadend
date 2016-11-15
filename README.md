@@ -123,13 +123,18 @@ The xml file has to be named guide.xml.
 
 For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
 
+**Picons**
+
+We have added all the picons from [picons.xyz](https://picons.xyz/) in the folder /picons. To enable the use of these picons, add the path to the Channel icon path in Configuration --> General --> Base.
+You need to enable minimum advanced view level to see the picons options.
+
 ## Info
 
 * Shell access whilst the container is running: `docker exec -it tvheadend /bin/bash`
 * To monitor the logs of the container in realtime: `docker logs -f tvheadend`
 
 ## Versions
-
++ **15.11.2016:** Add picons from picons.xyz to /picons folder and add info to README.
 + **22.09.2016:** Fix broken tv_grab_wg, libs for xmltv and update README.
 + **18.09.2016:** Update XMLTV to 0.05.68 and update README.
 + **10.09.2016:** Add layer badges to README.
