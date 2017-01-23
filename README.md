@@ -59,7 +59,8 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 
 
 * `-p 1234` - the port(s)
-* `-v /config` - explain what lives here
+* `-v /config` - Where TVHeadend show store it's config files
+* `-v /recordings - Where you want the PVR to store recordings
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 * `--device=/dev/dvb` - for passing through DVB-cards
