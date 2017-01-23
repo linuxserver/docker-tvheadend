@@ -28,6 +28,7 @@ docker create \
   --name=tvheadend \
   --net=bridge \
   -v <path to data>:/config \
+  -v <path to recordings>:/recordings \
   -e PGID=<gid> -e PUID=<uid>  \
   -p 9981:9981 \
   -p 9982:9982 \
