@@ -135,7 +135,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
-+ **05.02.2017:** Update to Alpine 3.5, compile only dvb-apps libs and add indentation patch for tvheadend from alpine git.
++ **05.02.2017:** Update to Alpine 3.5, compile only dvb-apps libs and add indentation patch for tvheadend from alpine git. Removed ls -la left over from testing.
 + **15.11.2016:** Add picons from picons.xyz to /picons folder and add info to README.
 + **22.09.2016:** Fix broken tv_grab_wg, libs for xmltv and update README.
 + **18.09.2016:** Update XMLTV to 0.05.68 and update README.
