@@ -172,7 +172,6 @@ RUN \
  git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
  git checkout "${TVH_VER}" && \
- ls -la && \
  patch -p1 -i /tmp/patches/fix-indentation.patch && \
  ./configure \
 	--disable-ffmpeg_static \
