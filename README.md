@@ -29,6 +29,7 @@ docker create \
   --net=bridge \
   -v <path to data>:/config \
   -e PGID=<gid> -e PUID=<uid>  \
+  -e RUN_OPTS=<parameter> \
   -p 9981:9981 \
   -p 9982:9982 \
   --device=/dev/dvb
@@ -55,6 +56,7 @@ If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --ne
 * `-v /config` - explain what lives here
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e RUN_OPTS` additional runtime parameters - see below for explanation
 * `--device=/dev/dvb` - for passing through DVB-cards
 * `--net=host` - for IPTV, SAT>IP and HDHomeRun
 * `-e TZ` - for timezone information *eg Europe/London, etc*
@@ -71,6 +73,10 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
   $ id <dockeruser>
     uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
 ```
+
+## Additional runtime parameters
+
+In some cases it might be necessary to start tvheadend with additional parameters, for example to enable debugging or specify webroot for reverse proxy. Be sure to have the right parameters set, as adding the wrong once might lead to the container not starting correctly.
 
 ## Setting up the application
 
@@ -135,6 +141,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **07.02.2017:** Add variable to add additional runtime paramters.
 + **05.02.2017:** Update to Alpine 3.5, compile only dvb-apps libs and add indentation patch for tvheadend from alpine git. Removed ls -la left over from testing.
 + **15.11.2016:** Add picons from picons.xyz to /picons folder and add info to README.
 + **22.09.2016:** Fix broken tv_grab_wg, libs for xmltv and update README.
