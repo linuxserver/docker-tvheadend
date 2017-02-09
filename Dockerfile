@@ -3,7 +3,6 @@ MAINTAINER saarg
 
 # package version
 ARG ARGTABLE_VER="2.13"
-ARG UNICODE_VER="2.09"
 ARG XMLTV_VER="0.5.68"
 
 # set version label
@@ -66,6 +65,7 @@ RUN \
 	perl-compress-raw-zlib \
 	perl-date-manip \
 	perl-datetime \
+	perl-datetime-format-strptime \
 	perl-digest-sha1 \
 	perl-file-slurp \
 	perl-file-temp \
@@ -76,25 +76,55 @@ RUN \
 	perl-io \
 	perl-io-compress \
 	perl-io-html \
+	perl-io-socket-ssl \
 	perl-io-stringy \
 	perl-json \
 	perl-libwww \
+	perl-lingua-en-numbers-ordinate \
+	perl-lingua-preferred \
+	perl-list-moreutils \
 	perl-module-build \
 	perl-module-pluggable \
 	perl-net-ssleay \
 	perl-parse-recdescent \
 	perl-path-class \
+	perl-term-progressbar \
 	perl-term-readkey \
 	perl-test-exception \
 	perl-test-requires \
+	perl-timedate \
 	perl-try-tiny \
+	perl-unicode-string \
+	perl-xml-libxml \
+	perl-xml-libxslt \
 	perl-xml-parser \
 	perl-xml-sax \
+	perl-xml-treepp \
+	perl-xml-twig \
+	perl-xml-writer \
 	python \
 	tar \
 	uriparser \
 	wget \
 	zlib && \
+
+# install perl modules for xmltv
+ curl -L http://cpanmin.us | perl - App::cpanminus && \
+ cpanm DateTime::Format::ISO8601 && \
+ cpanm HTML::Entities && \
+ cpanm HTML::TableExtract && \
+ cpanm HTTP::Cache::Transparent && \
+ cpanm inc && \
+ cpanm JSON::PP && \
+ cpanm LWP::Simple && \
+ cpanm LWP::UserAgent && \
+ cpanm PerlIO::gzip && \
+ cpanm SOAP::Lite && \
+ cpanm Storable && \
+ cpanm Unicode::UTF8simple && \
+ cpanm version && \
+ cpanm WWW::Mechanize && \
+ cpanm XML::DOM && \
 
 # build libiconv
  mkdir -p \
@@ -112,54 +142,6 @@ RUN \
  make && \
  make install && \
  libtool --finish /usr/local/lib && \
-
-# install perl modules
- curl -L http://cpanmin.us | perl - App::cpanminus && \
- cpanm Date::Language && \
- cpanm DateTime::Format::ISO8601 && \
- cpanm DateTime::Format::Strptime && \
- cpanm HTML::Entities && \
- cpanm HTML::TableExtract && \
- cpanm HTML::TreeBuilder && \
- cpanm HTTP::Cache::Transparent && \
- cpanm inc && \
- cpanm IO::Scalar && \
- cpanm IO::Socket::SSL && \
- cpanm JSON::PP && \
- cpanm Lingua::EN::Numbers::Ordinate && \
- cpanm Lingua::Preferred && \
- cpanm List::MoreUtils && \
- cpanm LWP::Simple && \
- cpanm LWP::UserAgent && \
- cpanm PerlIO::gzip && \
- cpanm SOAP::Lite && \
- cpanm Storable && \
- cpanm Term::ProgressBar && \
- cpanm Unicode::UTF8simple && \
- cpanm version && \
- cpanm WWW::Mechanize && \
- cpanm XML::DOM && \
- cpanm XML::LibXML && \
- cpanm XML::LibXSLT && \
- cpanm XML::TreePP && \
- cpanm XML::Twig && \
- cpanm XML::Writer && \
-
-# patch and build perl-unicode-string
- mkdir -p \
-	/tmp/unicode && \
- curl -o \
- /tmp/unicode-src.tar.gz -L \
-	"http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/Unicode-String-${UNICODE_VER}.tar.gz" && \
- tar xzf /tmp/unicode-src.tar.gz -C \
-	/tmp/unicode --strip-components=1 && \
- cd /tmp/unicode/lib/Unicode && \
- patch -i /tmp/patches/perl-unicode.patch && \
- cd /tmp/unicode && \
- perl Makefile.PL && \
- make && \
- make test && \
- make install && \
 
 # build dvb-apps
  hg clone http://linuxtv.org/hg/dvb-apps /tmp/dvb-apps && \
@@ -188,7 +170,7 @@ RUN \
 	--prefix=/usr \
 	--sysconfdir=/config && \
  make && \
- make install && \
+ make install && \	
 
 # build XMLTV
  curl -o /tmp/xmtltv-src.tar.bz2 -L \
