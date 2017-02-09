@@ -63,12 +63,17 @@ RUN \
 	perl-capture-tiny \
 	perl-cgi \
 	perl-compress-raw-zlib \
+	perl-data-dumper \
 	perl-date-manip \
 	perl-datetime \
 	perl-datetime-format-strptime \
+	perl-datetime-timezone \
+	perl-dbd-sqlite \
+	perl-dbi \
 	perl-digest-sha1 \
 	perl-file-slurp \
 	perl-file-temp \
+	perl-file-which \
 	perl-getopt-long \
 	perl-html-parser \
 	perl-html-tree \
@@ -88,6 +93,7 @@ RUN \
 	perl-net-ssleay \
 	perl-parse-recdescent \
 	perl-path-class \
+	perl-scalar-list-utils \
 	perl-term-progressbar \
 	perl-term-readkey \
 	perl-test-exception \
@@ -111,6 +117,10 @@ RUN \
 # install perl modules for xmltv
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm DateTime::Format::ISO8601 && \
+ cpanm DateTime::Format::SQLite && \
+ cpanm Encode && \
+ cpanm File::HomeDir && \
+ cpanm File::Path && \
  cpanm HTML::Entities && \
  cpanm HTML::TableExtract && \
  cpanm HTTP::Cache::Transparent && \
