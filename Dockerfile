@@ -38,7 +38,7 @@ RUN \
 	libxslt-dev \
 	make \
 	mercurial \
-	openssl-dev \
+	libressl-dev \
 	patch \
 	perl-dev \
 	pkgconf \
@@ -57,7 +57,7 @@ RUN \
 	libcurl	\
 	libssl1.0 \
 	linux-headers \
-	openssl \
+	libressl \
 	perl \
 	perl-archive-zip \
 	perl-boolean \
