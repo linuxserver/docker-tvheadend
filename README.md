@@ -2,6 +2,8 @@
 [forumurl]: https://forum.linuxserver.io
 [ircurl]: https://www.linuxserver.io/irc/
 [podcasturl]: https://www.linuxserver.io/podcast/
+[appurl]: https://www.tvheadend.org/
+[hub]: https://hub.docker.com/r/linuxserver/tvheadend/
 
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
@@ -12,15 +14,13 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 
 # linuxserver/tvheadend
 [![](https://images.microbadger.com/badges/version/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](http://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tvheadend)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tvheadend/)
-[hub]: https://hub.docker.com/r/linuxserver/tvheadend/
 
 
 [Tvheadend](https://www.tvheadend.org/) is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
 Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 
-[![tvheadend](https://s31.postimg.io/8urk8vdu3/logobig.png)][tvheadendurl]
-[tvheadendurl]: https://www.tvheadend.org/
+[![tvheadend](https://s31.postimg.io/8urk8vdu3/logobig.png)][appurl]
 
 ## Usage
 
@@ -137,7 +137,7 @@ If you have EPG data in XML format from a supplier, you can drop it in the data 
 If you use WebGrab+Plus, choose the WebGrab+Plus XML file grabber. The XML file goes in the same path as above.
 The xml file has to be named guide.xml.
 
-For advanced setup of tvheadend, go to [Tvheadend][tvheadendurl]
+For advanced setup of tvheadend, go to [Tvheadend][appurl]
 
 **Picons**
 
