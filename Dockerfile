@@ -141,7 +141,6 @@ RUN \
  cpanm File::Path && \
  cpanm HTML::Entities && \
  cpanm HTML::TableExtract && \
- cpanm HTTP::Cache::Transparent && \
  cpanm inc && \
  cpanm JSON::PP && \
  cpanm LWP::Simple && \
@@ -153,6 +152,7 @@ RUN \
  cpanm version && \
  cpanm WWW::Mechanize && \
  cpanm XML::DOM && \
+ cpanm HTTP::Cache::Transparent && \
 
 # build dvb-apps
  hg clone http://linuxtv.org/hg/dvb-apps /tmp/dvb-apps && \
