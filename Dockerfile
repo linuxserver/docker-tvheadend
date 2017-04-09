@@ -129,26 +129,7 @@ RUN \
 
 # install perl modules for xmltv
  curl -L http://cpanmin.us | perl - App::cpanminus && \
- cpanm --installdeps \
-	DateTime::Format::ISO8601 \
-	DateTime::Format::SQLite \
-	Encode \
-	File::HomeDir \
-	File::Path \
-	HTML::Entities \
-	HTML::TableExtract \
-	HTTP::Cache::Transparent \
-	inc \
-	JSON::PP \
-	LWP::Simple \
-	LWP::UserAgent \
-	PerlIO::gzip \
-	SOAP::Lite \
-	Storable \
-	Unicode::UTF8simple \
-	version \
-	WWW::Mechanize \
-	XML::DOM && \
+ cpanm --installdeps /tmp/patches && \
 
 # build libiconv
  mkdir -p \
