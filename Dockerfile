@@ -3,7 +3,9 @@ MAINTAINER saarg
 
 # package version
 ARG ARGTABLE_VER="2.13"
+ARG FFMPEG_VER="ffmpeg2.8"
 ARG TVH_VER="v4.0.9"
+ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
 
 # set version label
@@ -17,6 +19,17 @@ ENV HOME="/config"
 # copy patches
 COPY patches/ /tmp/patches/
 
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Build-date:- ${BUILD_DATE}"
+
+# Environment settings
+ENV HOME="/config"
+
+# copy patches
+COPY patches/ /tmp/patches/
+
 # install build packages
 RUN \
  apk add --no-cache --virtual=build-dependencies \
@@ -24,7 +37,7 @@ RUN \
 	automake \
 	cmake \
 	coreutils \
-	ffmpeg2.8-dev \
+	${FFMPEG_VER}-dev \
 	file \
 	findutils \
 	g++ \
@@ -115,12 +128,16 @@ RUN \
 	wget \
 	zlib && \
 
-# build libiconv
+# install perl modules for xmltv
+ curl -L http://cpanmin.us | perl - App::cpanminus && \
+ cpanm --installdeps /tmp/patches && \
+
+# build libiconv
  mkdir -p \
  /tmp/iconv-src && \
  curl -o \
  /tmp/iconv.tar.gz -L \
-	http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz && \
+	ftp://www.mirrorservice.org/sites/ftp.gnu.org/gnu/libiconv/libiconv-1.14.tar.gz && \
  tar xf /tmp/iconv.tar.gz -C \
 	/tmp/iconv-src --strip-components=1 && \
  cd /tmp/iconv-src && \
@@ -131,28 +148,6 @@ RUN \
  make && \
  make install && \
  libtool --finish /usr/local/lib && \
-
-# install perl modules
- curl -L http://cpanmin.us | perl - App::cpanminus && \
- cpanm DateTime::Format::ISO8601 && \
- cpanm DateTime::Format::SQLite && \
- cpanm Encode && \
- cpanm File::HomeDir && \
- cpanm File::Path && \
- cpanm HTML::Entities && \
- cpanm HTML::TableExtract && \
- cpanm inc && \
- cpanm JSON::PP && \
- cpanm LWP::Simple && \
- cpanm LWP::UserAgent && \
- cpanm PerlIO::gzip && \
- cpanm SOAP::Lite && \
- cpanm Storable && \
- cpanm Unicode::UTF8simple && \
- cpanm version && \
- cpanm WWW::Mechanize && \
- cpanm XML::DOM && \
- cpanm HTTP::Cache::Transparent && \
 
 # build dvb-apps
  hg clone http://linuxtv.org/hg/dvb-apps /tmp/dvb-apps && \
@@ -196,7 +191,7 @@ RUN \
  make test && \
  make install && \
 
-# build argtable2
+# build argtable2
  ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
  mkdir -p \
 	/tmp/argtable && \
@@ -212,7 +207,7 @@ RUN \
  make check && \
  make install && \
 
-# build comskip
+# build comskip
  git clone git://github.com/erikkaashoek/Comskip /tmp/comskip && \
  cd /tmp/comskip && \
  ./autogen.sh && \
@@ -224,8 +219,8 @@ RUN \
 
 # install runtime packages
  apk add --no-cache \
-	ffmpeg2.8 \
-	ffmpeg2.8-libs \
+	${FFMPEG_VER} \
+	${FFMPEG_VER}-libs \
 	libhdhomerun-libs \
 	libxml2 \
 	libxslt && \
