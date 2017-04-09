@@ -1,8 +1,10 @@
 FROM lsiobase/alpine:3.5
 MAINTAINER saarg
 
-# package version
+# package version
 ARG ARGTABLE_VER="2.13"
+ARG FFMPEG_VER="ffmpeg"
+ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
 
 # set version label
@@ -13,7 +15,18 @@ LABEL build_version="Build-date:- ${BUILD_DATE}"
 # Environment settings
 ENV HOME="/config"
 
-# copy patches
+# copy patches
+COPY patches/ /tmp/patches/
+
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Build-date:- ${BUILD_DATE}"
+
+# Environment settings
+ENV HOME="/config"
+
+# copy patches
 COPY patches/ /tmp/patches/
 
 # install build packages
@@ -23,7 +36,7 @@ RUN \
 	automake \
 	cmake \
 	coreutils \
-	ffmpeg-dev \
+	${FFMPEG_VER}-dev \
 	file \
 	findutils \
 	g++ \
@@ -137,7 +150,7 @@ RUN \
 	WWW::Mechanize \
 	XML::DOM && \
 
-# build libiconv
+# build libiconv
  mkdir -p \
  /tmp/iconv-src && \
  curl -o \
@@ -194,7 +207,7 @@ RUN \
  make test && \
  make install && \
 
-# build argtable2
+# build argtable2
  ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
  mkdir -p \
 	/tmp/argtable && \
@@ -210,7 +223,7 @@ RUN \
  make check && \
  make install && \
 
-# build comskip
+# build comskip
  git clone git://github.com/erikkaashoek/Comskip /tmp/comskip && \
  cd /tmp/comskip && \
  ./autogen.sh && \
@@ -222,8 +235,8 @@ RUN \
 
 # install runtime packages
  apk add --no-cache \
-	ffmpeg \
-	ffmpeg-libs \
+	${FFMPEG_VER} \
+	${FFMPEG_VER}-libs \
 	libhdhomerun-libs \
 	libxml2 \
 	libxslt && \
