@@ -132,27 +132,28 @@ RUN \
  make install && \
  libtool --finish /usr/local/lib && \
 
-# install perl modules
+# install perl modules for xmltv
  curl -L http://cpanmin.us | perl - App::cpanminus && \
- cpanm DateTime::Format::ISO8601 && \
- cpanm DateTime::Format::SQLite && \
- cpanm Encode && \
- cpanm File::HomeDir && \
- cpanm File::Path && \
- cpanm HTML::Entities && \
- cpanm HTML::TableExtract && \
- cpanm inc && \
- cpanm JSON::PP && \
- cpanm LWP::Simple && \
- cpanm LWP::UserAgent && \
- cpanm PerlIO::gzip && \
- cpanm SOAP::Lite && \
- cpanm Storable && \
- cpanm Unicode::UTF8simple && \
- cpanm version && \
- cpanm WWW::Mechanize && \
- cpanm XML::DOM && \
- cpanm HTTP::Cache::Transparent && \
+ cpanm --installdeps \
+	DateTime::Format::ISO8601 \
+	DateTime::Format::SQLite \
+	Encode \
+	File::HomeDir \
+	File::Path \
+	HTML::Entities \
+	HTML::TableExtract \
+	HTTP::Cache::Transparent \
+	inc \
+	JSON::PP \
+	LWP::Simple \
+	LWP::UserAgent \
+	PerlIO::gzip \
+	SOAP::Lite \
+	Storable \
+	Unicode::UTF8simple \
+	version \
+	WWW::Mechanize \
+	XML::DOM && \
 
 # build dvb-apps
  hg clone http://linuxtv.org/hg/dvb-apps /tmp/dvb-apps && \
