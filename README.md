@@ -151,6 +151,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **18.04.2017:** Use repo version of gnu-libiconv rather than compiling.
 + **09.04.2017:** Chain cpanm installs in one block and use --installdeps.
 + **09.02.2017:** Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
 + **07.02.2017:** Add variable to add additional runtime paramters.
