@@ -1,11 +1,11 @@
 [linuxserverurl]: https://linuxserver.io
 [forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/index.php/irc/
-[podcasturl]: https://www.linuxserver.io/index.php/category/podcast/
+[ircurl]: https://www.linuxserver.io/irc/
+[podcasturl]: https://www.linuxserver.io/podcast/
 [appurl]: https://www.tvheadend.org/
 [hub]: https://hub.docker.com/r/linuxserver/tvheadend/
 
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png))][linuxserverurl]
+[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
 The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
 * [forum.linuxserver.io][forumurl]
@@ -13,7 +13,8 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/tvheadend
-[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](http://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tvheadend)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tvheadend/)
+[![](https://images.microbadger.com/badges/version/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](http://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tvheadend)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tvheadend/)
+
 
 [Tvheadend](https://www.tvheadend.org/) is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
@@ -28,6 +29,7 @@ docker create \
   --name=tvheadend \
   --net=bridge \
   -v <path to data>:/config \
+  -v <path to recordings>:/recordings \
   -e PGID=<gid> -e PUID=<uid>  \
   -e RUN_OPTS=<parameter> \
   -p 9981:9981 \
@@ -50,10 +52,17 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 
 If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because of a limitation in docker and multicast.
 
-**Parameters**
+## Parameters
+
+`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
+So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
+http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
+
 
 * `-p 1234` - the port(s)
-* `-v /config` - explain what lives here
+* `-v /config` - Where TVHeadend show store it's config files
+* `-v /recordings` - Where you want the PVR to store recordings
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 * `-e RUN_OPTS` additional runtime parameters - see below for explanation
@@ -78,6 +87,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 In some cases it might be necessary to start tvheadend with additional parameters, for example to enable debugging or specify webroot for reverse proxy. Be sure to have the right parameters set, as adding the wrong once might lead to the container not starting correctly.
 
+
 ## Setting up the application
 
 The setup depends if you run the one of the stable tags or use latest. Running latest is the easiest as it has a setup wizard.
@@ -96,7 +106,7 @@ The first thing to do is to run the setup wizard. If it doesn't pop up at first 
 **Configuring XMLTV grabber**
 
 To configure the XMLTV grabber, first check if your grabber is listed in Configuration --> Channel/EPG --> EPG Grabber Modules. If it's listed, you will have to configure the grabber before enabling.
-Find the path in the path field of your grabber. We will use the last part. It starts with tv_grab_. Add it after /usr/bin/ in the below command. There should be no space between Usr/bin/ and the part you added.
+Find the path in the path field of your grabber. We will use the last part. It starts with tv_grab_. Add it after /usr/bin/ in the below command. There should be no space between Usr/bin/ and the part you added. 
 
 ```
 docker exec -it -u abc tvheadend /usr/bin/for_you_to_fill_out --configure
@@ -141,12 +151,13 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **18.04.2017:** Use repo version of gnu-libiconv rather than compiling.
 + **09.04.2017:** Chain cpanm installs in one block and use --installdeps.
 + **09.02.2017:** Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
 + **07.02.2017:** Add variable to add additional runtime paramters.
-+ **05.02.2017:** Update to Alpine 3.5, compile only dvb-apps libs and add indentation patch for tvheadend from alpine git. Removed ls -la left over from testing.
-+ **15.11.2016:** Add picons from picons.xyz to /picons folder and add info to README.
++ **05.02.2017:** Update to alpine 3.5 and change dvb-apps to only compile needed libs.
++ **14.11.2016:** Add picons from picons.xyz to /picons folder and add info to README.
 + **22.09.2016:** Fix broken tv_grab_wg, libs for xmltv and update README.
-+ **18.09.2016:** Update XMLTV to 0.05.68 and update README.
++ **18.09.2016:** Update XMLTV to 0.5.68 and update README.
 + **10.09.2016:** Add layer badges to README.
 + **05.09.2016:** Initial release.
