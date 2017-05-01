@@ -4,6 +4,7 @@ MAINTAINER saarg
 # package version
 ARG ARGTABLE_VER="2.13"
 ARG FFMPEG_VER="ffmpeg"
+ARG TVH_VER="v4.2.1"
 ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
 
@@ -144,6 +145,7 @@ RUN \
 # build tvheadend
  git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
+ git checkout "${TVH_VER}" && \
  ./configure \
 	--disable-ffmpeg_static \
 	--disable-hdhomerun_static \
