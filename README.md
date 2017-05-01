@@ -42,7 +42,7 @@ The --device=/dev/dvb is only needed if you want to pass through a DVB card to t
 
 You can choose between ,using tags, latest (default, and no tag required or a specific stable version of tvheadend.
 
-Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.0.9
+Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.2.1
 
 #### Tags
 
