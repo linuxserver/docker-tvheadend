@@ -12,18 +12,7 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Build-date:- ${BUILD_DATE}"
 
-# Environment settings
-ENV HOME="/config"
-
-# copy patches
-COPY patches/ /tmp/patches/
-
-# set version label
-ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="Build-date:- ${BUILD_DATE}"
-
-# Environment settings
+# environment settings
 ENV HOME="/config"
 
 # copy patches
@@ -61,7 +50,6 @@ RUN \
  apk add --no-cache --virtual=build-dependencies \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	gnu-libiconv-dev && \
-
 
 # add runtime dependencies required in build stage
  apk add --no-cache \
