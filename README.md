@@ -20,7 +20,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
 Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 
-[![tvheadend](https://s31.postimg.io/8urk8vdu3/logobig.png)][appurl]
+[![tvheadend](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tvheadend-big.png)][appurl]
 
 ## Usage
 
@@ -149,6 +149,14 @@ You need to enable minimum advanced view level to see the picons options.
 
 * Shell access whilst the container is running: `docker exec -it tvheadend /bin/bash`
 * To monitor the logs of the container in realtime: `docker logs -f tvheadend`
+
+* container version number 
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' tvheadend`
+
+* image version number
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/tvheadend`
 
 ## Versions
 
