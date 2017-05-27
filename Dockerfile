@@ -41,6 +41,7 @@ RUN \
 	mercurial \
 	libressl-dev \
 	patch \
+	pcre2-dev \
 	perl-dev \
 	pkgconf \
 	sdl-dev \
@@ -62,6 +63,7 @@ RUN \
 	libressl \
 	libssl1.0 \
 	linux-headers \
+	pcre2 \
 	perl \
 	perl-archive-zip \
 	perl-boolean \
