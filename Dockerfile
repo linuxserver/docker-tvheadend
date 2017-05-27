@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.5
+FROM lsiobase/alpine:3.6
 MAINTAINER saarg
 
 # package version
@@ -59,9 +59,9 @@ RUN \
 	gzip \
 	libcrypto1.0 \
 	libcurl	\
+	libressl \
 	libssl1.0 \
 	linux-headers \
-	libressl \
 	perl \
 	perl-archive-zip \
 	perl-boolean \
@@ -76,6 +76,7 @@ RUN \
 	perl-dbd-sqlite \
 	perl-dbi \
 	perl-digest-sha1 \
+	perl-doc \
 	perl-file-slurp \
 	perl-file-temp \
 	perl-file-which \
