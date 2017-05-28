@@ -3,7 +3,6 @@ MAINTAINER saarg
 
 # package version
 ARG ARGTABLE_VER="2.13"
-ARG FFMPEG_VER="ffmpeg"
 ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
 
@@ -25,7 +24,7 @@ RUN \
 	automake \
 	cmake \
 	coreutils \
-	${FFMPEG_VER}-dev \
+	ffmpeg-dev \
 	file \
 	findutils \
 	g++ \
@@ -194,8 +193,8 @@ RUN \
 
 # install runtime packages
  apk add --no-cache \
-	${FFMPEG_VER} \
-	${FFMPEG_VER}-libs \
+	ffmpeg \
+	ffmpeg-libs \
 	libhdhomerun-libs \
 	libxml2 \
 	libxslt && \
