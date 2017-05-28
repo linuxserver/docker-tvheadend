@@ -1,9 +1,8 @@
-FROM lsiobase/alpine:3.5
+FROM lsiobase/alpine:3.6
 MAINTAINER saarg
 
 # package version
 ARG ARGTABLE_VER="2.13"
-ARG FFMPEG_VER="ffmpeg"
 ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
 
@@ -25,7 +24,7 @@ RUN \
 	automake \
 	cmake \
 	coreutils \
-	${FFMPEG_VER}-dev \
+	ffmpeg-dev \
 	file \
 	findutils \
 	g++ \
@@ -41,6 +40,7 @@ RUN \
 	mercurial \
 	libressl-dev \
 	patch \
+	pcre2-dev \
 	perl-dev \
 	pkgconf \
 	sdl-dev \
@@ -59,9 +59,10 @@ RUN \
 	gzip \
 	libcrypto1.0 \
 	libcurl	\
+	libressl \
 	libssl1.0 \
 	linux-headers \
-	libressl \
+	pcre2 \
 	perl \
 	perl-archive-zip \
 	perl-boolean \
@@ -76,6 +77,7 @@ RUN \
 	perl-dbd-sqlite \
 	perl-dbi \
 	perl-digest-sha1 \
+	perl-doc \
 	perl-file-slurp \
 	perl-file-temp \
 	perl-file-which \
@@ -191,8 +193,8 @@ RUN \
 
 # install runtime packages
  apk add --no-cache \
-	${FFMPEG_VER} \
-	${FFMPEG_VER}-libs \
+	ffmpeg \
+	ffmpeg-libs \
 	libhdhomerun-libs \
 	libxml2 \
 	libxslt && \
