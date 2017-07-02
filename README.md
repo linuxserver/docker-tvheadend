@@ -46,7 +46,7 @@ Add one of the tags, if required, to the linuxserver/tvheadend line of the run/c
 
 #### Tags
 
-+ **stable-4.2** : latest stable version from 4.2 branch. Freshly built every friday night CET.
++ **release-4.2** : latest release from 4.2 branch. Freshly built every friday night uk time.
 + **stable-4.2.1** : old stable version. Will not be updated anymore!
 + **stable-4.0.9** : old stable version. Will not be updated anymore!
 
