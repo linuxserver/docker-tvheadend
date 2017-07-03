@@ -24,7 +24,6 @@ RUN \
 	autoconf \
 	automake \
 	cmake \
-	coreutils \
 	ffmpeg-dev \
 	file \
 	findutils \
@@ -52,16 +51,21 @@ RUN \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	gnu-libiconv-dev && \
 
-# add runtime dependencies required in build stage
+# install runtime packages
  apk add --no-cache \
 	bsd-compat-headers \
 	bzip2 \
 	curl \
+	ffmpeg \
+	ffmpeg-libs \
 	gzip \
 	libcrypto1.0 \
 	libcurl	\
+	libhdhomerun-libs \
 	libressl \
 	libssl1.0 \
+	libxml2 \
+	libxslt \
 	linux-headers \
 	pcre2 \
 	perl \
@@ -121,6 +125,9 @@ RUN \
 	uriparser \
 	wget \
 	zlib && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/testing \
+	gnu-libiconv && \
 
 # install perl modules for xmltv
  curl -L http://cpanmin.us | perl - App::cpanminus && \
@@ -156,12 +163,14 @@ RUN \
  make install && \
 
 # build XMLTV
- curl -o /tmp/xmtltv-src.tar.bz2 -L \
+ curl -o \
+ /tmp/xmtltv-src.tar.bz2 -L \
 	"http://kent.dl.sourceforge.net/project/xmltv/xmltv/${XMLTV_VER}/xmltv-${XMLTV_VER}.tar.bz2" && \
- tar xf /tmp/xmtltv-src.tar.bz2 -C \
+ tar xf \
+ /tmp/xmtltv-src.tar.bz2 -C \
 	/tmp --strip-components=1 && \
  cd "/tmp/xmltv-${XMLTV_VER}" && \
- /bin/echo -e "yes" | perl Makefile.PL PREFIX=/usr/ INSTALLDIRS=vendor && \
+ echo -e "yes" | perl Makefile.PL PREFIX=/usr/ INSTALLDIRS=vendor && \
  make && \
  make test && \
  make install && \
@@ -173,7 +182,8 @@ RUN \
  curl -o \
  /tmp/argtable-src.tar.gz -L \
 	"https://sourceforge.net/projects/argtable/files/argtable/argtable-${ARGTABLE_VER}/argtable${ARGTABLE_VER1}.tar.gz" && \
- tar xf /tmp/argtable-src.tar.gz -C \
+ tar xf \
+ /tmp/argtable-src.tar.gz -C \
 	/tmp/argtable --strip-components=1 && \
  cd /tmp/argtable && \
  ./configure \
@@ -191,17 +201,6 @@ RUN \
 	--sysconfdir=/config/comskip && \
  make && \
  make install && \
-
-# install runtime packages
- apk add --no-cache \
-	ffmpeg \
-	ffmpeg-libs \
-	libhdhomerun-libs \
-	libxml2 \
-	libxslt && \
- apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/testing \
-	gnu-libiconv && \
 
 # cleanup
  apk del --purge \
