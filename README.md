@@ -40,7 +40,7 @@ docker create \
 The --device=/dev/dvb is only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out.
 
 
-You can choose between ,using tags, latest (default, and no tag required or a specific stable version of tvheadend.
+You can choose between ,using tags, latest (default, and no tag required or a specific release branch of tvheadend.
 
 Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.2
 
