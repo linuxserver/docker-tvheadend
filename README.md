@@ -123,7 +123,7 @@ This container comes with Comskip for commercial flagging of recordings. This yo
 Go to Configuration --> Recording. Change the view level to advanced in the top right corner, and add the below in the Post-processor command field.
 
 ```
-comskip --ini=/config/comskip/comskip.ini "%f"
+/usr/bin/comskip --ini=/config/comskip/comskip.ini "%f"
 ```
 
 Now comskip will run after each recording is finished. You will find comskip.ini in the comskip folder of your /config volume mapping. See the [Comskip](http://www.kaashoek.com/comskip/) homepage for tuning of the ini file.
@@ -161,6 +161,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **08.07.2017:** Update README with full path for comskip.
 + **02.07.2017:** Move to one branch for all 4.2 releases.
 + **27.05.2017:** Rebase to alpine 3.6.
 + **01.05.2017:** Update to tvheadend 4.2.1 stable.
