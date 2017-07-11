@@ -13,14 +13,13 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/tvheadend
-[![](https://images.microbadger.com/badges/version/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](http://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-tvheadend)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-tvheadend/)
-
+[![](https://images.microbadger.com/badges/version/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Builders/x86-64/x86-64-tvheadend)](https://ci.linuxserver.io/job/Docker-Builders/job/x86-64/job/x86-64-tvheadend/)
 
 [Tvheadend](https://www.tvheadend.org/) is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
 Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 
-[![tvheadend](https://s31.postimg.io/8urk8vdu3/logobig.png)][appurl]
+[![tvheadend](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tvheadend-big.png)][appurl]
 
 ## Usage
 
@@ -40,13 +39,13 @@ docker create \
 The --device=/dev/dvb is only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out.
 
 
-You can choose between ,using tags, latest (default, and no tag required or a specific stable version of tvheadend.
+You can choose between ,using tags, latest (default, and no tag required or a specific release branch of tvheadend.
 
-Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:stable-4.2
+Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:release-4.2
 
 #### Tags
 
-+ **stable-4.2** : latest stable version from 4.2 branch. Freshly built every friday night CET.
++ **release-4.2** : latest release from 4.2 branch. Freshly built every friday night uk time.
 + **stable-4.2.1** : old stable version. Will not be updated anymore!
 + **stable-4.0.9** : old stable version. Will not be updated anymore!
 
@@ -150,6 +149,14 @@ You need to enable minimum advanced view level to see the picons options.
 
 * Shell access whilst the container is running: `docker exec -it tvheadend /bin/bash`
 * To monitor the logs of the container in realtime: `docker logs -f tvheadend`
+
+* container version number 
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' tvheadend`
+
+* image version number
+
+`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/tvheadend`
 
 ## Versions
 
