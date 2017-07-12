@@ -1,15 +1,15 @@
 FROM lsiobase/alpine:3.6
 MAINTAINER saarg
 
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+
 # package version
 ARG ARGTABLE_VER="2.13"
 ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
-
-# set version label
-ARG BUILD_DATE
-ARG VERSION
-LABEL build_version="Build-date:- ${BUILD_DATE}"
 
 # Environment settings
 ENV HOME="/config"
