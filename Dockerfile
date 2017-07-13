@@ -184,6 +184,7 @@ RUN \
  tar xf \
  /tmp/argtable-src.tar.gz -C \
 	/tmp/argtable --strip-components=1 && \
+ cp /tmp/patches/config.* /tmp/argtable && \
  cd /tmp/argtable && \
  ./configure \
 	--prefix=/usr && \
