@@ -34,10 +34,12 @@ RUN \
 	libhdhomerun-dev \
 	libressl-dev \
 	libtool \
+	libvpx-dev \
 	libxml2-dev \
 	libxslt-dev \
 	make \
 	mercurial \
+	opus-dev \
 	patch \
 	pcre2-dev \
 	perl-dev \
@@ -45,6 +47,8 @@ RUN \
 	sdl-dev \
 	uriparser-dev \
 	wget \
+	x264-dev \
+	x265-dev \
 	zlib-dev && \
  apk add --no-cache --virtual=build-dependencies \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
@@ -63,9 +67,11 @@ RUN \
 	libhdhomerun-libs \
 	libressl \
 	libssl1.0 \
+	libvpx \
 	libxml2 \
 	libxslt \
 	linux-headers \
+	opus \
 	pcre2 \
 	perl \
 	perl-archive-zip \
@@ -123,6 +129,8 @@ RUN \
 	tar \
 	uriparser \
 	wget \
+	x264 \
+	x265 \
 	zlib && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
