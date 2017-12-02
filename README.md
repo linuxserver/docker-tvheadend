@@ -143,7 +143,7 @@ For advanced setup of tvheadend, go to [Tvheadend][appurl]
 **Picons**
 
 We have added all the picons from [picons.xyz](https://picons.xyz/) in the folder /picons. To enable the use of these picons, add the path to the Channel icon path in Configuration --> General --> Base.
-You need to enable minimum advanced view level to see the picons options.
+You need to enable minimum advanced view level to see the picons options..
 
 ## Info
 
