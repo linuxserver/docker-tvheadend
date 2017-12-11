@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 
-RUN_ARRAY=(${RUN_OPTS})
+IFS=" " read -r -a RUN_ARRAY <<< "$RUN_OPTS"
 
 exec \
         s6-setuidgid abc /usr/bin/tvheadend -C -c /config "${RUN_ARRAY[@]}"

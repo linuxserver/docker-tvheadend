@@ -1,24 +1,24 @@
-FROM lsiobase/alpine:3.6
-MAINTAINER saarg
+FROM lsiobase/alpine:3.7
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="saarg"
 
-# package version
+# package versions
 ARG ARGTABLE_VER="2.13"
 ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
 
-# Environment settings
+# environment settings
 ENV HOME="/config"
 
 # copy patches
 COPY patches/ /tmp/patches/
 
-# install build packages
 RUN \
+ echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
 	autoconf \
 	automake \
@@ -53,8 +53,7 @@ RUN \
  apk add --no-cache --virtual=build-dependencies \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	gnu-libiconv-dev && \
-
-# install runtime packages
+ echo "**** install runtime packages ****" && \
  apk add --no-cache \
 	bsd-compat-headers \
 	bzip2 \
@@ -135,18 +134,15 @@ RUN \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/testing \
 	gnu-libiconv && \
-
-# install perl modules for xmltv
+ echo "**** install perl modules for xmltv ****" && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm --installdeps /tmp/patches && \
-
-# build dvb-apps
+ echo "**** build dvb-apps ****" && \
  hg clone http://linuxtv.org/hg/dvb-apps /tmp/dvb-apps && \
  cd /tmp/dvb-apps && \
  make -C lib && \
  make -C lib install && \
-
-# build tvheadend
+ echo "**** build tvheadend ****" && \
  git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
  ./configure \
@@ -166,10 +162,21 @@ RUN \
 	--mandir=/usr/share/man \
 	--prefix=/usr \
 	--sysconfdir=/config && \
- make && \
+  echo "**** attempt to set number of cores available for make to use ****" && \
+ set -ex && \
+ CPU_CORES=$( < /proc/cpuinfo grep -c processor ) || echo "failed cpu look up" && \
+ if echo $CPU_CORES | grep -E  -q '^[0-9]+$'; then \
+	: ;\
+ if [ "$CPU_CORES" -gt 7 ]; then \
+	CPU_CORES=$(( CPU_CORES  - 3 )); \
+ elif [ "$CPU_CORES" -gt 5 ]; then \
+	CPU_CORES=$(( CPU_CORES  - 2 )); \
+ elif [ "$CPU_CORES" -gt 3 ]; then \
+	CPU_CORES=$(( CPU_CORES  - 1 )); fi \
+ else CPU_CORES="1"; fi && \
+ make -j $CPU_CORES && \
  make install && \
-
-# build XMLTV
+ echo "**** build XMLTV ****" && \
  curl -o \
  /tmp/xmtltv-src.tar.bz2 -L \
 	"http://kent.dl.sourceforge.net/project/xmltv/xmltv/${XMLTV_VER}/xmltv-${XMLTV_VER}.tar.bz2" && \
@@ -177,12 +184,19 @@ RUN \
  /tmp/xmtltv-src.tar.bz2 -C \
 	/tmp --strip-components=1 && \
  cd "/tmp/xmltv-${XMLTV_VER}" && \
+ echo "**** Perl 5.26 fixes for XMTLV ****" && \
+ sed "s/use POSIX 'tmpnam';//" -i filter/tv_to_latex && \
+ sed "s/use POSIX 'tmpnam';//" -i filter/tv_to_text && \
+ sed "s/\(lib\/set_share_dir.pl';\)/.\/\1/" -i grab/it/tv_grab_it.PL && \
+ sed "s/\(filter\/Grep.pm';\)/.\/\1/" -i filter/tv_grep.PL && \
+ sed "s/\(lib\/XMLTV.pm.in';\)/.\/\1/" -i lib/XMLTV.pm.PL && \
+ sed "s/\(lib\/Ask\/Term.pm';\)/.\/\1/" -i Makefile.PL && \
+ PERL5LIB=`pwd` && \
  echo -e "yes" | perl Makefile.PL PREFIX=/usr/ INSTALLDIRS=vendor && \
- make && \
+ make -j $CPU_CORES && \
  make test && \
  make install && \
-
-# build argtable2
+ echo "**** build argtable2 ****" && \
  ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
  mkdir -p \
 	/tmp/argtable && \
@@ -196,21 +210,20 @@ RUN \
  cd /tmp/argtable && \
  ./configure \
 	--prefix=/usr && \
- make && \
+ make -j $CPU_CORES && \
  make check && \
  make install && \
-
-# build comskip
+ echo "***** build comskip ****" && \
  git clone git://github.com/erikkaashoek/Comskip /tmp/comskip && \
  cd /tmp/comskip && \
  ./autogen.sh && \
  ./configure \
 	--bindir=/usr/bin \
 	--sysconfdir=/config/comskip && \
- make && \
+ make -j $CPU_CORES && \
+ set +ex && \
  make install && \
-
-# cleanup
+ echo "***** cleanup ****" && \
  apk del --purge \
 	build-dependencies && \
  rm -rf \
