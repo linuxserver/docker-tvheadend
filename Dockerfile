@@ -6,7 +6,7 @@ ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="saarg"
 
-# package version
+# package versions
 ARG ARGTABLE_VER="2.13"
 ARG TZ="Europe/Oslo"
 ARG XMLTV_VER="0.5.69"
