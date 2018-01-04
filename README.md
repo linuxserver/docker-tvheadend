@@ -160,20 +160,21 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
-+ **11.12.2017:** Rebase to alpine 3.7, linting fixes.
-+ **02.09.2017:** Add codec dependencies.
-+ **13.07.2017:** Increase uniformity across all archs.
-+ **08.07.2017:** Update README with full path for comskip.
-+ **02.07.2017:** Move to one branch for all 4.2 releases.
-+ **27.05.2017:** Rebase to alpine 3.6.
-+ **01.05.2017:** Update to tvheadend 4.2.1 stable.
-+ **18.04.2017:** Use repo version of gnu-libiconv rather than compiling.
-+ **09.04.2017:** Chain cpanm installs in one block and use --installdeps.
-+ **09.02.2017:** Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
-+ **07.02.2017:** Add variable to add additional runtime paramters.
-+ **05.02.2017:** Update to alpine 3.5 and change dvb-apps to only compile needed libs.
-+ **14.11.2016:** Add picons from picons.xyz to /picons folder and add info to README.
-+ **22.09.2016:** Fix broken tv_grab_wg, libs for xmltv and update README.
-+ **18.09.2016:** Update XMLTV to 0.5.68 and update README.
-+ **10.09.2016:** Add layer badges to README.
-+ **05.09.2016:** Initial release.
++ **04.01.18:** Deprecate cpu_core routine lack of scaling.
++ **11.12.17:** Rebase to alpine 3.7, linting fixes.
++ **02.09.17:** Add codec dependencies.
++ **13.07.17:** Increase uniformity across all archs.
++ **08.07.17:** Update README with full path for comskip.
++ **02.07.17:** Move to one branch for all 4.2 releases.
++ **27.05.17:** Rebase to alpine 3.6.
++ **01.05.17:** Update to tvheadend 4.2.1 stable.
++ **18.04.17:** Use repo version of gnu-libiconv rather than compiling.
++ **09.04.17:** Chain cpanm installs in one block and use --installdeps.
++ **09.02.17:** Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
++ **07.02.17:** Add variable to add additional runtime paramters.
++ **05.02.17:** Update to alpine 3.5 and change dvb-apps to only compile needed libs.
++ **14.11.16:** Add picons from picons.xyz to /picons folder and add info to README.
++ **22.09.16:** Fix broken tv_grab_wg, libs for xmltv and update README.
++ **18.09.16:** Update XMLTV to 0.5.68 and update README.
++ **10.09.16:** Add layer badges to README.
++ **05.09.16:** Initial release.
