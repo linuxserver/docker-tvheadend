@@ -163,19 +163,7 @@ RUN \
 	--mandir=/usr/share/man \
 	--prefix=/usr \
 	--sysconfdir=/config && \
-  echo "**** attempt to set number of cores available for make to use ****" && \
- set -ex && \
- CPU_CORES=$( < /proc/cpuinfo grep -c processor ) || echo "failed cpu look up" && \
- if echo $CPU_CORES | grep -E  -q '^[0-9]+$'; then \
-	: ;\
- if [ "$CPU_CORES" -gt 7 ]; then \
-	CPU_CORES=$(( CPU_CORES  - 3 )); \
- elif [ "$CPU_CORES" -gt 5 ]; then \
-	CPU_CORES=$(( CPU_CORES  - 2 )); \
- elif [ "$CPU_CORES" -gt 3 ]; then \
-	CPU_CORES=$(( CPU_CORES  - 1 )); fi \
- else CPU_CORES="1"; fi && \
- make -j $CPU_CORES && \
+ make && \
  make install && \
  echo "**** build XMLTV ****" && \
  curl -o \
@@ -194,7 +182,7 @@ RUN \
  sed "s/\(lib\/Ask\/Term.pm';\)/.\/\1/" -i Makefile.PL && \
  PERL5LIB=`pwd` && \
  echo -e "yes" | perl Makefile.PL PREFIX=/usr/ INSTALLDIRS=vendor && \
- make -j $CPU_CORES && \
+ make && \
  make test && \
  make install && \
  echo "**** build argtable2 ****" && \
@@ -211,7 +199,7 @@ RUN \
  cd /tmp/argtable && \
  ./configure \
 	--prefix=/usr && \
- make -j $CPU_CORES && \
+ make && \
  make check && \
  make install && \
  echo "***** build comskip ****" && \
@@ -221,8 +209,7 @@ RUN \
  ./configure \
 	--bindir=/usr/bin \
 	--sysconfdir=/config/comskip && \
- make -j $CPU_CORES && \
- set +ex && \
+ make && \
  make install && \
  echo "***** cleanup ****" && \
  apk del --purge \
