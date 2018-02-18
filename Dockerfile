@@ -166,10 +166,14 @@ RUN \
 	--enable-libx265 \
 	\
 	`#Options` \
+	--disable-avahi \
+	--disable-dbus_1 \
+	--disable-bintray_cache \
 	--disable-hdhomerun_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
 	--enable-pngquant \
+	--enable-trace \
 	--enable-vaapi \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
