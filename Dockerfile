@@ -44,6 +44,7 @@ RUN \
 	patch \
 	pcre2-dev \
 	perl-dev \
+	pngquant \
 	pkgconf \
 	sdl-dev \
 	uriparser-dev \
@@ -168,6 +169,7 @@ RUN \
 	--disable-hdhomerun_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
+	--enable-pngquant \
 	--enable-vaapi \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
