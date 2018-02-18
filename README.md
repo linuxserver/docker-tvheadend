@@ -162,6 +162,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **18.02.18:** Add vaapi support, some cleanup and dropping of deprecated options.
 + **04.01.18:** Deprecate cpu_core routine lack of scaling.
 + **11.12.17:** Rebase to alpine 3.7, linting fixes.
 + **02.09.17:** Add codec dependencies.
