@@ -32,17 +32,18 @@ RUN \
 	git \
 	libgcrypt-dev \
 	libhdhomerun-dev \
-	libressl-dev \
 	libtool \
+	libva-dev \
 	libvpx-dev \
 	libxml2-dev \
 	libxslt-dev \
 	make \
-	mercurial \
+	openssl-dev \
 	opus-dev \
 	patch \
 	pcre2-dev \
 	perl-dev \
+	pngquant \
 	pkgconf \
 	sdl-dev \
 	uriparser-dev \
@@ -64,12 +65,13 @@ RUN \
 	libcrypto1.0 \
 	libcurl	\
 	libhdhomerun-libs \
-	libressl \
 	libssl1.0 \
+	libva \
 	libvpx \
 	libxml2 \
 	libxslt \
 	linux-headers \
+	openssl \
 	opus \
 	pcre2 \
 	perl \
@@ -137,26 +139,36 @@ RUN \
  echo "**** install perl modules for xmltv ****" && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm --installdeps /tmp/patches && \
- echo "**** build dvb-apps ****" && \
- hg clone http://linuxtv.org/hg/dvb-apps /tmp/dvb-apps && \
- cd /tmp/dvb-apps && \
- make -C lib && \
- make -C lib install && \
  echo "**** build tvheadend ****" && \
  git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
  ./configure \
+	`#Encoding` \
 	--disable-ffmpeg_static \
-	--disable-hdhomerun_static \
 	--disable-libfdkaac_static \
-	--disable-libmfx_static \
 	--disable-libtheora_static \
+	--disable-libopus_static \
 	--disable-libvorbis_static \
 	--disable-libvpx_static \
 	--disable-libx264_static \
 	--disable-libx265_static \
+	--disable-libfdkaac \
+	--enable-libopus \
+	--enable-libvorbis \
+	--enable-libvpx \
+	--enable-libx264 \
+	--enable-libx265 \
+	\
+	`#Options` \
+	--disable-avahi \
+	--disable-dbus_1 \
+	--disable-bintray_cache \
+	--disable-hdhomerun_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
+	--enable-pngquant \
+	--enable-trace \
+	--enable-vaapi \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
 	--mandir=/usr/share/man \
