@@ -139,10 +139,14 @@ RUN \
  echo "**** install perl modules for xmltv ****" && \
  curl -L http://cpanmin.us | perl - App::cpanminus && \
  cpanm --installdeps /tmp/patches && \
+ echo "**** remove musl iconv.h and replace with gnu-iconv.h ****" && \
+ rm -rf /usr/include/iconv.h && \
+ cp /usr/include/gnu-libiconv/iconv.h /usr/include/iconv.h && \
  echo "**** build tvheadend ****" && \
  git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
  ./configure \
+	--cflags="-I/usr/include/gnu-libiconv" \
 	`#Encoding` \
 	--disable-ffmpeg_static \
 	--disable-libfdkaac_static \
