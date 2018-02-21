@@ -150,6 +150,9 @@ RUN \
  git clone -b ${TVH_VER} --single-branch https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
  ./configure \
+	--disable-avahi \
+	--disable-bintray_cache \
+	--disable-dbus_1 \
 	--disable-ffmpeg_static \
 	--disable-hdhomerun_static \
 	--disable-libfdkaac_static \
@@ -162,9 +165,6 @@ RUN \
 	--enable-hdhomerun_client \
 	--enable-libav \
 	--enable-pngquant \
-	--disable-avahi \
-	--disable-dbus_1 \
-	--disable-bintray_cache \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
 	--mandir=/usr/share/man \
