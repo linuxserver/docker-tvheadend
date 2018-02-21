@@ -161,6 +161,10 @@ RUN \
 	--disable-libx265_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
+	--enable-pngquant \
+	--disable-avahi \
+	--disable-dbus_1 \
+	--disable-bintray_cache \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
 	--mandir=/usr/share/man \
