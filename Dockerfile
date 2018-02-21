@@ -143,6 +143,9 @@ RUN \
  cd /tmp/dvb-apps && \
  make -C lib && \
  make -C lib install && \
+ echo "**** remove musl iconv.h and replace with gnu-iconv.h ****" && \
+ rm -rf /usr/include/iconv.h && \
+ cp /usr/include/gnu-libiconv/iconv.h /usr/include/iconv.h && \
  echo "**** build tvheadend ****" && \
  git clone -b ${TVH_VER} --single-branch https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
