@@ -146,7 +146,6 @@ RUN \
  git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
  ./configure \
-	--cflags="-I/usr/include/gnu-libiconv" \
 	`#Encoding` \
 	--disable-ffmpeg_static \
 	--disable-libfdkaac_static \
