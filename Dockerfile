@@ -67,6 +67,7 @@ RUN \
 	libhdhomerun-libs \
 	libssl1.0 \
 	libva \
+	libva-intel-driver \
 	libvpx \
 	libxml2 \
 	libxslt \
