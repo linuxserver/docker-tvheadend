@@ -45,6 +45,7 @@ RUN \
 	pcre2-dev \
 	perl-dev \
 	pkgconf \
+	pngquant \
 	sdl-dev \
 	uriparser-dev \
 	wget \
