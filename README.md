@@ -162,6 +162,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **22.02.18:** Add lost libva-intel-driver.
 + **21.02.18:** Fix wrong version of iconv used.
 + **18.02.18:** Add vaapi support, some cleanup and dropping of deprecated options.
 + **04.01.18:** Deprecate cpu_core routine lack of scaling.
