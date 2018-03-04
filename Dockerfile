@@ -176,7 +176,7 @@ RUN \
  echo "**** build XMLTV ****" && \
  curl -o \
  /tmp/xmtltv-src.tar.bz2 -L \
-	"http://kent.dl.sourceforge.net/project/xmltv/xmltv/${XMLTV_VER}/xmltv-${XMLTV_VER}.tar.bz2" && \
+	"https://sourceforge.net/projects/xmltv/files/xmltv/${XMLTV_VER}/xmltv-${XMLTV_VER}.tar.bz2" && \
  tar xf \
  /tmp/xmtltv-src.tar.bz2 -C \
 	/tmp --strip-components=1 && \
