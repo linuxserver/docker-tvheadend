@@ -162,6 +162,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **24.03.18:** Add dvbcsa package.
 + **04.03.18:** Use sourceforge master rather than mirror for xmltv.
 + **22.02.18:** Add lost libva-intel-driver.
 + **21.02.18:** Fix wrong version of iconv used.
