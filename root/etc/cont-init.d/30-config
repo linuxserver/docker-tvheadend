@@ -14,3 +14,5 @@ mkdir -p \
 chown -R abc:abc \
 	/config \
 	/picons
+[[ -d /dev/dvb ]] && \
+	chown -R root:abc /dev/dvb
