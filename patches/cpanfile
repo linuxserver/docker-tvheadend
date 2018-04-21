@@ -11,6 +11,7 @@ requires 'HTML::TableExtract' ;
 requires 'HTTP::Cache::Transparent' => ">= 1.3, != 1.4" ;
 requires 'inc' ;
 requires 'JSON::PP' ;
+requires 'JSON::XS' ;
 requires 'LWP::Simple' ;
 requires 'LWP::UserAgent' ;
 requires 'PerlIO::gzip' ;
