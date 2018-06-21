@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+if [[ -e /dev/dri ]]; then
+  for dev_dri in /dev/dri/*; do
+    video_gid=$(stat -c %g ${dev_dri})
+    if ! getent group ${video_gid}  > /dev/null; then
+      groupadd -f -g ${video_gid} video
+    fi
+    if [ ! $(getent group video | cut -d: -f3) == ${video_gid} ]; then
+      groupmod -g ${video_gid} video
+    fi
+    usermod -aG video abc
+  done
+fi
