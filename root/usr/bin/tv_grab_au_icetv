@@ -1,0 +1,542 @@
+#!/usr/bin/perl -w
+# Script to grab XMLTV data from IceTV server
+# Version 1, 10 Apr 2005, Joshua King, jking_ok@yahoo.com.au
+#   (initial creation)
+# Version 2, 06 May 2005, IceTV, support@icetv.com.au
+#   (initial release by IceTV)
+# Version 3, 29 Jan 2007, IceTV, support@icetv.com.au
+#   (added --quiet, --description, and --capabilities)
+# Version 4, 14 Sep 2007, Patrick Nichols, (go look it up using google).au
+#   (added the preferredmethod capability to let MythTV grab all guide data at once)
+# Version 5, 22 Nov 2009, David Peterson, support@icetv.com.au
+#   Converted to XMLTV libraries for use with Myth's graphical screen configuration
+# Version 5.01, 8 Dec 2009, David Peterson, support@icetv.com.au
+#   Re-added channel list at the end of the config phase
+# Version 6, 22 Apr 2017, Daniel Hall, support@icetv.com.au
+#   Updated to use IceTV's new API with new XMLTV feed
+#
+# Requires an active IceTV subscription.  See http://www.icetv.com.au for information.
+# Interface-compatible with other grabbers (ie, tv_grab_au*)
+
+# Define version of the grabber
+use vars qw($VERSION);
+$VERSION = 6;
+
+use strict;
+use Getopt::Long;
+
+use XML::LibXML;
+
+# Requires LWP/libwww-perl to be installed
+use LWP::UserAgent;
+
+use XMLTV::Version '$Id: tv_grab_au_icetv 6 2017/11/16 danielh Exp $';
+use XMLTV::Capabilities qw/baseline manualconfig cache preferredmethod/;
+use XMLTV::Description 'Australia (IceTV)';
+use XMLTV::PreferredMethod qw/allatonce/;
+
+use Memoize;
+use XMLTV;
+use XMLTV::Memoize;
+use XMLTV::Ask;
+use XMLTV::Config_file;
+use XMLTV::ProgressBar;
+use XMLTV::DST;
+use XMLTV::Get_nice;
+use XMLTV::Mode;
+
+use XMLTV::Usage <<END
+$0: get Australian television listings from IceTV in XMLTV format
+To configure: $0 --configure [--config-file FILE]
+To grab listings: $0 [--config-file FILE] [--output FILE] [--quiet] [--fast]
+To list available channels: $0 [--output FILE] [--quiet] --list-channels
+To show capabilities: $0 --capabilities
+To show version: $0 --version
+END
+;
+
+# Documentation of tool below
+
+=pod
+
+=head1 NAME
+
+tv_grab_au_ice - Download EPG information from IceTV in XMLTV format
+
+=head1 SYNOPSIS
+
+tv_grab_au_ice --version
+
+tv_grab_au_ice --description
+
+tv_grab_au_ice --capabilities
+
+tv_grab_au_ice --preferredmethod
+
+tv_grab_au_ice --configure [--config-file <config file>]
+
+tv_grab_au_ice [--config-file <config file>] [--output <guide file>] [--fast] [--days <# days>] [--offset <# days>]  [--quiet]
+
+=head1 DESCRIPTION
+
+tv_grab_au_ice is an XMLTV downloader for registered users of the IceTV service.
+B<IceTV requires a paid subscription.>
+
+The IceTV server provides data in a format that extends the XMLTV DTD. It should
+be compatible with most programs that support XMLTV guide data.
+
+=head1 COMMAND LINE PARAMETERS
+
+=over
+
+=item --version
+
+Lists the version information.
+
+=item --description
+
+Displays the program description.
+
+=item --capabilities
+
+Displays the program capabilities, one per line.
+
+=item --preferredmethod
+
+Display the preferred grabbing method (for mythfilldatabase)
+
+=item --configure
+
+Tells tv_grab_au_ice that you want to configure it (change your options) rather than collect guide data.
+This will cause tv_grab_au to ask you for the following information:
+
+=over
+
+=item Email address
+
+Your IceTV guide subscription Email address.
+
+=item Password
+
+Your IceTV guide subscription Password.
+
+=item Region
+
+If signing up for a new free trial account it will also ask for your region.
+
+=back
+
+The information will then be sent to the IceTV server to check that the Email address and Password
+are correct.
+
+=item --config-file <config file>
+
+The file in which to store your configuration (when used with --configure) or to read your configuration from (in normal mode).
+If this is not given, a file called F<tv_grab_au_icetv.conf> (or similar) is created or expected to be in the current directory.
+
+=item --output <guide file>
+
+The file in which to store the downloaded guide data.
+If this is not given, the guide data will be printed to the terminal. This is then intended to be captured by your PVR's guide collection program.
+
+=item --fast
+
+This asks tv_grab_au_icetv to download as little information as possible.
+The last_update_time from the previous request (saved in the config file) will be used to only get changed guide data.
+
+=item --days <# days>
+
+This asks tv_grab_au_icetv to download at most # days of data from the server.
+This is dependent upon the data being available on the server.
+Without this option all available data will be downloaded.
+
+=item --offset <# days>
+
+This asks tv_grab_au_icetv to shift the start and end dates to download by the number of days.
+This is useful to only get the newest day of the week, but with the support of IceTV's servers, the --fast option is probably more appropriate.
+
+=item --quiet
+
+This asks tv_grab_au_ice to suppress all progress information and only print error messages to stderr.
+
+=head1 REQUIREMENTS
+
+This tool requires Perl. The latest version of Perl is highly recommended, since testing has only been carried out on recent versions.
+
+Some additional modules must also be installed. Some will come with your Perl distribution, others can be acquired using CPAN. L<http://search.cpan.org>
+
+=over
+
+=item *
+
+libwww-perl package
+
+=item *
+
+Getopt::Long module
+
+=back
+
+=head1 SEE ALSO
+
+=over
+
+=item IceTV web site
+
+L<https://www.icetv.com.au>
+
+=item IceTV online discussion forum
+
+L<http://forum.icetv.com.au/iceforum/>
+
+=item XMLTV web site
+
+L<http://www.membled.com/work/apps/xmltv>
+
+=item Perl CPAN search engine
+
+L<http://search.cpan.org>
+
+=back
+
+=head1 AUTHOR/CONTACT INFORMATION
+
+Original script by Joshua King.  Updates by IceTV.
+
+Please refer all questions to IceTV support (L<mailto:support@icetv.com.au>) or the IceTV discussion forums (L<http://forum.icetv.com.au/iceforum/>).
+
+=cut
+
+# Some constants
+use vars qw($BASE_URL $API_KEY $ua);
+$BASE_URL = 'https://api.icetv.com.au/';
+$API_KEY = 'b536a5ee-a607-482d-ac46-dafc99fad2d5';
+
+# Utility functions
+sub echo_on {
+ 	system "stty", "echo"
+}
+
+sub echo_off {
+	system "stty", "-echo"
+}
+
+sub start_ua {
+	# Create a user agent object
+	$ua = LWP::UserAgent->new;
+
+	# Set user agent
+	$ua->agent("$0/$VERSION");
+
+	# Allow proxies to be defined by the user
+	$ua->env_proxy;
+
+	return $ua;
+}
+
+my ($configure, $output, $days, $offset, $fast, $quiet, $capabilities, $help, $config_file_option, $gui, $list_channels);
+my ($email, $token, $region_id, $last_update_time);
+
+# Get command line parameters
+$configure = 0; # Whether to configure
+$output = ''; # Where to put guide data
+$days = 0; # Number of days to download
+$offset = 0; # Numbers of days to offset by
+$fast = 0; # Whether to speed up (download changes only)
+$quiet = 0; # Whether to only print error-messages to stderr
+$capabilities = 0; # Whether to display the capabilities
+$help = 0;
+GetOptions('configure' => \$configure,
+	   'config-file=s' => \$config_file_option,
+	   'output=s' => \$output,
+	   'days=i' => \$days,
+	   'offset=i' => \$offset,
+	   'fast' => \$fast,
+	   'quiet' => \$quiet,
+	   'help' => \$help,
+	   'gui:s'            => \$gui,
+	   'list-channels'    => \$list_channels
+    ) or usage(0);
+
+my $mode = XMLTV::Mode::mode('grab',
+                             $list_channels => 'list-channels',
+                             $configure => 'configure');
+
+XMLTV::Ask::init($gui);
+
+my $config_file;
+$config_file = XMLTV::Config_file::filename($config_file_option, 'tv_grab_au_ice', $quiet);
+
+if ($mode eq 'configure') {
+    # Configuring the grabber
+    if ($output ne '' || $days != 0 || $offset != 0 || $fast != 0) {
+		say "Invalid options with --configure";
+		exit 1;
+    }
+
+    XMLTV::Config_file::check_no_overwrite($config_file);
+
+    open(CONF, ">$config_file") or die "cannot write to $config_file: $!";
+
+    $email = ask("IceTV Email address:");
+    my $password = ask("IceTV Password:");
+
+    # Create a test request
+    my $url = $BASE_URL . 'login.xmltv?api_key=' . $API_KEY . "&application_version=" . $VERSION;
+	my $doc = XML::LibXML::Document->new('1.0', 'utf-8');
+	my $root_node = $doc->createElement("login");
+	my $member_node = $doc->createElement("member");
+	$member_node->setAttribute('email_address' => $email);
+	$member_node->setAttribute('password' => $password);
+	$root_node->appendChild($member_node);
+	$doc->setDocumentElement($root_node);
+	my $post_data = $doc->toString();
+	my $headers = HTTP::Headers->new();
+    my $req = HTTP::Request->new(POST => $url => $headers => $post_data);
+
+    say "Connecting to IceTV to test login information...\n";
+
+    # Set up user agent
+    my $ua = start_ua();
+
+    # Get a response
+    my $res = $ua->request($req);
+	my $account_required = 0;
+	
+    unless ($res->is_success) {
+		if($res->code == 401) {
+			say "Request failed. Invalid Email address or Password.\n";
+			exit 1;
+		} elsif ($res->code == 406) {
+			say "Must create an account, need to select region.\n";
+			$account_required = 1;
+		} else {
+			say "Request failed. Error " . $res->code . " " . $res->message . "\n";
+			exit 1;
+		}
+    }
+	
+	my $parser = XML::LibXML->new(load_ext_dtd=>0);
+	if ($account_required){
+		# Must ask for region and create an account
+		my $regions_url = $BASE_URL . 'regions.xmltv?api_key=' . $API_KEY . "&application_version=" . $VERSION;
+		my $regions_req = HTTP::Request->new(GET => $regions_url);
+		# Set up user agent
+		my $regions_ua = start_ua();
+		# Get a response
+		my $regions_res = $ua->request($regions_req);
+		
+		unless ($regions_res->is_success) {
+			say "Request failed. Error " . $regions_res->code . " " . $regions_res->message . "\n"; 
+			exit 1;
+		}
+		
+		if($regions_res->content =~ /^\s*$/) {
+			say "An empty response was received, please try again later or contact IceTV for support.";
+			exit 1;
+		}
+	
+		# Process response and display regions
+		say("Below is the IceTV region list.");
+		my $region_doc = $parser->load_xml(string => $regions_res->content);
+		for my $region_node ($region_doc->findnodes('/regions/region')){
+			say $region_node->getAttribute('id') . " : " . $region_node->getAttribute('name');
+		}
+		$region_id = ask("Select the Region ID from the list above:");
+		
+		#Now with the region persform the login
+		$doc = XML::LibXML::Document->new('1.0', 'utf-8');
+		$root_node = $doc->createElement("login");
+		$member_node = $doc->createElement("member");
+		$member_node->setAttribute('email_address' => $email);
+		$member_node->setAttribute('password' => $password);
+		$member_node->setAttribute('region_id' => $region_id);
+		$root_node->appendChild($member_node);
+		$doc->setDocumentElement($root_node);
+		$post_data = $doc->toString();
+		$headers = HTTP::Headers->new();
+		$req = HTTP::Request->new(POST => $url => $headers => $post_data);
+
+		# Get a response
+		$res = $ua->request($req);
+		unless ($res->is_success) {
+			say "Request failed. Error " . $res->code . " " . $res->message . "\n";
+			exit 1;
+		}
+	}
+
+    if($res->content =~ /^\s*$/) {
+		say "An empty response was received, please try again later or contact IceTV for support.";
+		exit 1;
+    }
+	
+	# Process login response
+	my $member_doc = $parser->load_xml(string => $res->content);
+	for my $m_node ($member_doc->findnodes('/login/member')){
+		$token = $m_node->getAttribute('token');
+		$region_id = $m_node->getAttribute('region_id');
+	}
+	
+	print CONF "email: $email\n";
+    print CONF "token: $token\n";
+	print CONF "region_id: $region_id\n";
+	print CONF "last_update_time: 0\n";
+
+    # Get channel list
+	my $chan_url = $BASE_URL . 'regions/' . $region_id . '/channels.xmltv?api_key=' . $API_KEY . "&application_version=" . $VERSION . '&email_address=' . $email . '&token=' . $token;
+	my $chan_req = HTTP::Request->new(GET => $chan_url);
+	# Set up user agent
+    my $chan_ua = start_ua();
+    # Get a response
+    my $chan_res = $ua->request($chan_req);
+	
+	unless ($chan_res->is_success) {
+		if($chan_res->code == 401) {
+			say "Request failed. Invalid Email address or Token.\n";
+		} else {
+			say "Request failed. Error " . $chan_res->code . " " . $chan_res->message . "\n"; 
+		}
+		exit 1;
+    }
+	
+	if($chan_res->content =~ /^\s*$/) {
+		say "An empty response was received, please try again later or contact IceTV for support.";
+		exit 1;
+    }
+	
+	# Process response and display channels
+	say("Below is your channel list. Please write these down. The ID is your Myth xmltvid.");
+	my $chan_doc = $parser->load_xml(string => $chan_res->content);
+	for my $chan_node ($chan_doc->findnodes('/tv/channel')){
+		say $chan_node->findvalue('display-name') . " (ID " . $chan_node->getAttribute('id') . ")";
+	}
+    ask("Press Enter once you have copied down your channel list:");
+
+    close CONF or warn "cannot close $config_file: $!";
+    say("Finished configuration.");
+
+    exit();
+}
+
+# Get configuration from file
+my $line_num = 0;
+foreach (XMLTV::Config_file::read_lines($config_file)) {
+    ++ $line_num;
+    next if not defined;
+    if (/^email:?\s+(\S+)/){
+		$email = $1;
+    } elsif (/^token:?\s+(\S+)/){
+		$token = $1;
+	} elsif (/^region_id:?\s+(\S+)/){
+		$region_id = $1;
+	} elsif (/^last_update_time:?\s+(\S+)/) {
+		$last_update_time = $1;
+    } else {
+        warn ("$config_file:$line_num: bad line\n");
+    }
+}
+
+if ($mode eq 'list-channels') {
+    # Perform the channels request
+	# Check that the grabber has been configured
+	if ((defined($email) && $email eq '') || (defined($token) && $token eq '') || (defined($region_id) && $region_id eq '')){
+		say "Grabber has not been configured, please run with the --configure option first.\n";
+		exit 1;
+	}
+	
+    # Create a request
+	# Get channel list
+	my $chan_url = $BASE_URL . 'regions/' . $region_id . '/channels.xmltv?api_key=' . $API_KEY . "&application_version=" . $VERSION . '&email_address=' . $email . '&token=' . $token;
+	my $chan_req = HTTP::Request->new(GET => $chan_url);
+	# Set up user agent
+    my $chan_ua = start_ua();
+    # Get a response
+    my $chan_res = $ua->request($chan_req);
+	
+	unless ($chan_res->is_success) {
+		if($chan_res->code == 401) {
+			say "Request failed. Invalid Email address or Token.\n";
+		} else {
+			say "Request failed. Error " . $chan_res->code . " " . $chan_res->message . "\n"; 
+		}
+		exit 1;
+    }
+	
+	if($chan_res->content =~ /^\s*$/) {
+		say "An empty response was received, please try again later or contact IceTV for support.";
+		exit 1;
+    }
+	
+	# Process response and display channels
+    say($chan_res->content);
+	exit 0;
+}
+
+# Running the grabber
+# Create a request
+my $url = $BASE_URL . '/shows.xmltv?api_key=' . $API_KEY . "&application_version=" . $VERSION . '&email_address=' . $email . '&token=' . $token;
+# Get specific amount of days
+if ($days > 0){
+	$url .= ('&days=' . $days);
+}
+# Use the specified offset
+if ($offset > 0){
+	$url .= ('&offset=' . $offset);
+}
+# Get changed/new entries only
+if ($fast == 1 && defined($last_update_time)) {
+    $url .= ('&last_update_time=' . $last_update_time);
+}
+my $req = HTTP::Request->new(GET => $url);
+
+say "Requesting programmes..." if($quiet != 1);
+
+# Set up connection
+my $ua = start_ua();
+
+# Get a response
+my $res = $ua->request($req);
+
+unless ($res->is_success) {
+    if($res->code == 401)
+    {
+	say "Request failed. Invalid Email address or Token, please configure the grabber again.\n";
+    }
+    else
+    {
+	say "Request failed. Error " . $res->code . " " . $res->message . "\n"; 
+    }
+    exit 1;
+}
+
+my $xmlout = $res->content;
+
+# Get the last_update_time and save to config file
+my $parser = XML::LibXML->new(load_ext_dtd=>0);
+my $xmltv_doc = $parser->load_xml(string => $res->content);
+for my $tv_node ($xmltv_doc->findnodes('/tv')){
+	$last_update_time = $tv_node->getAttribute('date');
+}
+if ($last_update_time > 0){
+	#Save the last_update_time to the config file
+	open(CONF, ">$config_file") or die "cannot write to $config_file: $!";
+	print CONF "email: $email\n";
+    print CONF "token: $token\n";
+	print CONF "region_id: $region_id\n";
+	print CONF "last_update_time: $last_update_time\n";
+	close CONF or warn "cannot close $config_file: $!";
+}
+
+if ($output ne '') {
+    # Print XML to file
+    open GUIDEDATA, ">$output" or die "Cannot open guide data file for writing!\n";
+    print GUIDEDATA $xmlout;
+    close GUIDEDATA;
+} else {
+    # Print XML to stdout
+    print $xmlout;
+}
+
+say "Done.\n" if($quiet != 1);
+
+exit 0;
