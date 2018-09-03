@@ -14,7 +14,7 @@ COPY patches/ /tmp/patches/
 
 RUN \
  echo "**** install build packages ****" && \
- apk add --no-cache --virtual=build-dependencies \
+ apk add --no-cache \
 	autoconf \
 	automake \
 	bsd-compat-headers \
