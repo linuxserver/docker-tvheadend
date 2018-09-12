@@ -160,6 +160,7 @@ You need to enable minimum advanced view level to see the picons options..
 
 ## Versions
 
++ **12.09.18:** Rebase to alpine 3.8 and use buildstage type build.
 + **21.04.18:** Add JSON::XS Perl package for grab_tv_huro.
 + **04.03.18:** Use sourceforge master rather than mirror for xmltv.
 + **22.02.18:** Add missing pngquant package.
