@@ -162,6 +162,7 @@ You need to enable minimum advanced view level to see the picons options.
 
 ## Versions
 
++ **12.09.18:** Rebase to alpine 3.8 and use buildstage type build.
 + **21.04.18:** Add JSON::XS Perl package for grab_tv_huro.
 + **24.03.18:** Add dvbcsa package.
 + **04.03.18:** Use sourceforge master rather than mirror for xmltv.
