@@ -147,7 +147,7 @@ RUN \
 RUN \
  echo "**** compile tvheadend ****" && \
  if [ -z ${TVHEADEND_COMMIT+x} ]; then \
-	TVHEADEND_COMMIT=$(curl -sX GET https://api.github.com/repos/tvheadend/tvheadend/commits/master \
+	TVHEADEND_COMMIT=$(curl -sX GET https://api.github.com/repos/tvheadend/tvheadend/commits/release/4.2 \
 	| jq -r '. | .sha'); \
  fi && \
  curl -o \
@@ -332,9 +332,6 @@ COPY --from=buildstage /tmp/xmltv-build/usr/ /usr/
 COPY --from=buildstage /usr/local/share/man/ /usr/local/share/man/
 COPY --from=buildstage /usr/local/share/perl5/ /usr/local/share/perl5/
 COPY root/ /
-
-# add picons
-ADD picons.tar.bz2 /picons
 
 # ports and volumes
 EXPOSE 9981 9982
