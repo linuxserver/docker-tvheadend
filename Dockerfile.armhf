@@ -36,7 +36,6 @@ RUN \
 	libgcrypt-dev \
 	libhdhomerun-dev \
 	libtool \
-	libva-dev \
 	libvpx-dev \
 	libxml2-dev \
 	libxslt-dev \
@@ -185,7 +184,6 @@ RUN \
 	--enable-libav \
 	--enable-pngquant \
 	--enable-trace \
-	--enable-vaapi \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
 	--mandir=/usr/share/man \
@@ -255,8 +253,6 @@ RUN \
 	libdvbcsa \
 	libhdhomerun-libs \
 	libssl1.0 \
-	libva \
-	libva-intel-driver \
 	libvpx \
 	libxml2 \
 	libxslt \
@@ -335,9 +331,6 @@ COPY --from=buildstage /tmp/xmltv-build/usr/ /usr/
 COPY --from=buildstage /usr/local/share/man/ /usr/local/share/man/
 COPY --from=buildstage /usr/local/share/perl5/ /usr/local/share/perl5/
 COPY root/ /
-
-# add picons
-ADD picons.tar.bz2 /picons
 
 # ports and volumes
 EXPOSE 9981 9982
