@@ -1,0 +1,29 @@
+---
+
+# jenkins variables
+project_name: docker-tvheadend
+external_type: github_commit
+release_type: prerelease
+release_tag: release-4.2
+ls_branch: release-4.2
+repo_vars:
+  - EXT_GIT_BRANCH = 'release/4.2'
+  - EXT_USER = 'tvheadend'
+  - EXT_REPO = 'tvheadend'
+  - BUILD_VERSION_ARG = 'TVHEADEND_COMMIT'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-tvheadend'
+  - CONTAINER_NAME = 'tvheadend'
+  - DOCKERHUB_IMAGE = 'linuxserver/tvheadend'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/tvheadend'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/tvheadend'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='true'
+  - CI_PORT='9981'
+  - CI_SSL='false'
+  - CI_DELAY='120'
+  - CI_DOCKERENV='TZ=US/Pacific'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH=''
