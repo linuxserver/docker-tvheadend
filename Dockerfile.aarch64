@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.8 as buildstage
+FROM lsiobase/alpine.arm64:3.8 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -36,7 +36,6 @@ RUN \
 	libgcrypt-dev \
 	libhdhomerun-dev \
 	libtool \
-	libva-dev \
 	libvpx-dev \
 	libxml2-dev \
 	libxslt-dev \
@@ -185,7 +184,6 @@ RUN \
 	--enable-libav \
 	--enable-pngquant \
 	--enable-trace \
-	--enable-vaapi \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
 	--mandir=/usr/share/man \
@@ -227,7 +225,10 @@ RUN \
  make DESTDIR=/tmp/comskip-build install
 
 ############## runtime stage ##############
-FROM lsiobase/alpine:3.8
+FROM lsiobase/alpine.arm64:3.8
+
+# Add qemu to build on x86_64 systems
+COPY qemu-aarch64-static /usr/bin
 
 # set version label
 ARG BUILD_DATE
@@ -252,8 +253,6 @@ RUN \
 	libdvbcsa \
 	libhdhomerun-libs \
 	libssl1.0 \
-	libva \
-	libva-intel-driver \
 	libvpx \
 	libxml2 \
 	libxslt \
