@@ -1,95 +1,156 @@
-[linuxserverurl]: https://linuxserver.io
-[forumurl]: https://forum.linuxserver.io
-[ircurl]: https://www.linuxserver.io/irc/
-[podcasturl]: https://www.linuxserver.io/podcast/
-[appurl]: https://www.tvheadend.org/
-[hub]: https://hub.docker.com/r/linuxserver/tvheadend/
+[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)](https://linuxserver.io)
 
-[![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
+The [LinuxServer.io](https://linuxserver.io) team brings you another container release featuring :-
 
-The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
-* [forum.linuxserver.io][forumurl]
-* [IRC][ircurl] on freenode at `#linuxserver.io`
-* [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+ * regular and timely application updates
+ * easy user mappings (PGID, PUID)
+ * custom base image with s6 overlay
+ * weekly base OS updates with common layers across the entire LinuxServer.io ecosystem to minimise space usage, down time and bandwidth
+ * regular security updates
 
-# linuxserver/tvheadend
-[![](https://images.microbadger.com/badges/version/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)][hub][![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Builders/x86-64/x86-64-tvheadend)](https://ci.linuxserver.io/job/Docker-Builders/job/x86-64/job/x86-64-tvheadend/)
+Find us at:
+* [Discord](https://discord.gg/YWrKVTn) - realtime support / chat with the community and the team.
+* [IRC](https://irc.linuxserver.io) - on freenode at `#linuxserver.io`. Our primary support channel is Discord.
+* [Blog](https://blog.linuxserver.io) - all the things you can do with our containers including How-To guides, opinions and much more!
+* [Podcast](https://anchor.fm/linuxserverio) - on hiatus. Coming back soon (late 2018).
 
-[Tvheadend](https://www.tvheadend.org/) is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
+# PSA: Changes are happening
+
+From August 2018 onwards, Linuxserver are in the midst of switching to a new CI platform which will enable us to build and release multiple architectures under a single repo. To this end, existing images for `arm64` and `armhf` builds are being deprecated. They are replaced by a manifest file in each container which automatically pulls the correct image for your architecture. You'll also be able to pull based on a specific architecture tag.
+
+TLDR: Multi-arch support is changing from multiple repos to one repo per container image.
+
+# [linuxserver/tvheadend](https://github.com/linuxserver/docker-tvheadend)
+[![](https://img.shields.io/discord/354974912613449730.svg?logo=discord&label=LSIO%20Discord&style=flat-square)](https://discord.gg/YWrKVTn)
+[![](https://images.microbadger.com/badges/version/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/linuxserver/tvheadend.svg)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")
+![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg)
+![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg)
+[![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Pipeline-Builders/docker-tvheadend/master)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-tvheadend/job/master/)
+[![](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/tvheadend/latest/badge.svg)](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/tvheadend/latest/index.html)
+
+[Tvheadend](https://www.tvheadend.org/) works as a proxy server: is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
 Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 
-[![tvheadend](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tvheadend-big.png)][appurl]
+
+[![tvheadend](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/tvheadend-big.png)](https://www.tvheadend.org/)
+
+## Supported Architectures
+
+Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. We utilise the docker manifest for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list). 
+
+Simply pulling `linuxserver/tvheadend` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+
+The architectures supported by this image are:
+
+| Architecture | Tag |
+| :----: | --- |
+| x86-64 | amd64-latest |
+| arm64 | arm64v8-latest |
+| armhf | arm32v6-latest |
+
+## Version Tags
+
+This image provides various versions that are available via tags. `latest` tag usually provides the latest stable version. Others are considered under development and caution must be exercised when using them.
+
+| Tag | Description |
+| :----: | --- |
+| latest | Current latest release. |
+| release-4.2 | Latest release from 4.2 branch. |
+| stable-4.2.1 | Old stable version. Will not be updated anymore! |
+| stable-4.0.9 | Old stable version. Will not be updated anymore! |
 
 ## Usage
+
+Here are some example snippets to help you get started creating a container.
+
+### docker
 
 ```
 docker create \
   --name=tvheadend \
-  --net=bridge \
-  -v <path to data>:/config \
-  -v <path to recordings>:/recordings \
-  -e PGID=<gid> -e PUID=<uid>  \
-  -e RUN_OPTS=<parameter> \
+  -e PUID=1001 \
+  -e PGID=1001 \
+  -e TZ=Europe/London \
+  -e RUN_OPTS=<run options here> `#optional` \
   -p 9981:9981 \
   -p 9982:9982 \
-  --device=/dev/dvb
+  -v <path to data>:/config \
+  -v <path to recordings>:/recordings \
+  --device /dev/dri:/dev/dri `#optional` \
+  --device /dev/drb:/dev/dvb `#optional` \
+  --restart unless-stopped \
   linuxserver/tvheadend
 ```
-The --device=/dev/dvb is only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out.
-
-
-You can choose between ,using tags, latest (default, and no tag required or a specific release branch of tvheadend.
-
-Add one of the tags, if required, to the linuxserver/tvheadend line of the run/create command in the following format, linuxserver/tvheadend:release-4.2
-
-#### Tags
-
-+ **release-4.2** : latest release from 4.2 branch. Freshly built every friday night uk time.
-+ **stable-4.2.1** : old stable version. Will not be updated anymore!
-+ **stable-4.0.9** : old stable version. Will not be updated anymore!
 
 #### Host vs. Bridge
 
 If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because of a limitation in docker and multicast.
 
-## Parameters
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side.
-For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
-So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
-http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
+### docker-compose
 
-
-* `-p 1234` - the port(s)
-* `-v /config` - Where TVHeadend show store it's config files
-* `-v /recordings` - Where you want the PVR to store recordings
-* `-e PGID` for GroupID - see below for explanation
-* `-e PUID` for UserID - see below for explanation
-* `-e RUN_OPTS` additional runtime parameters - see below for explanation
-* `--device=/dev/dvb` - for passing through DVB-cards
-* `--net=host` - for IPTV, SAT>IP and HDHomeRun
-* `-e TZ` - for timezone information *eg Europe/London, etc*
-
-It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it tvheadend /bin/bash`.
-
-### User / Group Identifiers
-
-Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
-
-In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as below:
+Compatible with docker-compose v2 schemas.
 
 ```
-  $ id <dockeruser>
+---
+version: "2"
+services:
+  tvheadend:
+    image: linuxserver/tvheadend
+    container_name: tvheadend
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=Europe/London
+      - RUN_OPTS=<run options here> #optional
+    volumes:
+      - <path to data>:/config
+      - <path to recordings>:/recordings
+    ports:
+      - 9981:9981
+      - 9982:9982
+    devices:
+      - /dev/dri:/dev/dri #optional
+      - /dev/drb:/dev/dvb #optional
+    mem_limit: 4096m
+    restart: unless-stopped
+```
+
+## Parameters
+
+Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively. For example, `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` outside the container.
+
+| Parameter | Function |
+| :----: | --- |
+| `-p 9981` | WebUI |
+| `-p 9982` | HTSP server port. |
+| `-e PUID=1001` | for UserID - see below for explanation |
+| `-e PGID=1001` | for GroupID - see below for explanation |
+| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
+| `-e RUN_OPTS=<run options here>` | Optionally specify additional arguments to be passed. See Additional runtime parameters. |
+| `-v /config` | Where TVHeadend show store it's config files. |
+| `-v /recordings` | Where you want the PVR to store recordings. |
+| `--device /dev/dri` | Only needed if you want to use your AMD/Intel GPU for hardware accelerated video encoding (vaapi). |
+| `--device /dev/dvb` | Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out. |
+
+## User / Group Identifiers
+
+When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
+
+Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
+
+In this instance `PUID=1001` and `PGID=1001`, to find yours use `id user` as below:
+
+```
+  $ id username
     uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
 ```
 
-## Additional runtime parameters
 
-In some cases it might be necessary to start tvheadend with additional parameters, for example to enable debugging or specify webroot for reverse proxy. Be sure to have the right parameters set, as adding the wrong once might lead to the container not starting correctly.
-
-
-## Setting up the application
+&nbsp;
+## Application Setup
 
 The setup depends if you run the one of the stable tags or use latest. Running latest is the easiest as it has a setup wizard.
 
@@ -143,42 +204,67 @@ For advanced setup of tvheadend, go to [Tvheadend][appurl]
 **Picons**
 
 We have added all the picons from [picons.xyz](https://picons.xyz/) in the folder /picons. To enable the use of these picons, add the path to the Channel icon path in Configuration --> General --> Base.
-You need to enable minimum advanced view level to see the picons options..
+You need to enable minimum advanced view level to see the picons options.
 
-## Info
+## Additional runtime parameters
+
+In some cases it might be necessary to start tvheadend with additional parameters, for example to enable debugging or specify webroot for reverse proxy. Be sure to have the right parameters set, as adding the wrong once might lead to the container not starting correctly.
+
+
+
+## Support Info
 
 * Shell access whilst the container is running: `docker exec -it tvheadend /bin/bash`
 * To monitor the logs of the container in realtime: `docker logs -f tvheadend`
-
-* container version number
-
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' tvheadend`
-
+* container version number 
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' tvheadend`
 * image version number
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/tvheadend`
 
-`docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/tvheadend`
+## Updating Info
+
+Most of our images are static, versioned, and require an image update and container recreation to update the app inside. With some exceptions (ie. nextcloud, plex), we do not recommend or support updating apps inside the container. Please consult the [Application Setup](#application-setup) section above to see if it is recommended for the image.  
+  
+Below are the instructions for updating containers:  
+  
+### Via Docker Run/Create
+* Update the image: `docker pull linuxserver/tvheadend`
+* Stop the running container: `docker stop tvheadend`
+* Delete the container: `docker rm tvheadend`
+* Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
+* Start the new container: `docker start tvheadend`
+* You can also remove the old dangling images: `docker image prune`
+
+### Via Docker Compose
+* Update the image: `docker-compose pull linuxserver/tvheadend`
+* Let compose update containers as necessary: `docker-compose up -d`
+* You can also remove the old dangling images: `docker image prune`
 
 ## Versions
 
-+ **16.01.19:** Add pipeline and multi arch logic.
-+ **12.09.18:** Rebase to alpine 3.8 and use buildstage type build.
-+ **21.04.18:** Add JSON::XS Perl package for grab_tv_huro.
-+ **04.03.18:** Use sourceforge master rather than mirror for xmltv.
-+ **22.02.18:** Add missing pngquant package.
-+ **21.02.18:** Fix wrong version of iconv used and add some build options from CvH.
-+ **11.12.17:** Rebase to alpine 3.7, linting fixes.
-+ **13.07.17:** Increase uniformity across all archs.
-+ **08.07.17:** Update README with full path for comskip.
-+ **02.07.17:** Move to one branch for all 4.2 releases.
-+ **27.05.17:** Rebase to alpine 3.6.
-+ **01.05.17:** Update to tvheadend 4.2.1 stable.
-+ **18.04.17:** Use repo version of gnu-libiconv rather than compiling.
-+ **09.04.17:** Chain cpanm installs in one block and use --installdeps.
-+ **09.02.17:** Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
-+ **07.02.17:** Add variable to add additional runtime paramters.
-+ **05.02.17:** Update to alpine 3.5 and change dvb-apps to only compile needed libs.
-+ **14.11.16:** Add picons from picons.xyz to /picons folder and add info to README.
-+ **22.09.16:** Fix broken tv_grab_wg, libs for xmltv and update README.
-+ **18.09.16:** Update XMLTV to 0.5.68 and update README.
-+ **10.09.16:** Add layer badges to README.
-+ **05.09.16:** Initial release
+* **15.01.19:** - Add pipeline logic and multi arch.
+* **12.09.18:** - Rebase to alpine 3.8 and use buildstage type build.
+* **21.04.18:** - Add JSON::XS Perl package for grab_tv_huro.
+* **24.03.18:** - Add dvbcsa package.
+* **04.03.18:** - Use sourceforge master rather than mirror for xmltv.
+* **22.02.18:** - Add lost libva-intel-driver.
+* **21.02.18:** - Fix wrong version of iconv used.
+* **18.02.18:** - Add vaapi support, some cleanup and dropping of deprecated options.
+* **04.01.18:** - Deprecate cpu_core routine lack of scaling.
+* **11.12.17:** - Rebase to alpine 3.7, linting fixes.
+* **02.09.17:** - Add codec dependencies.
+* **13.07.17:** - Increase uniformity across all archs.
+* **08.07.17:** - Update README with full path for comskip.
+* **02.07.17:** - Move to one branch for all 4.2 releases.
+* **27.05.17:** - Rebase to alpine 3.6.
+* **01.05.17:** - Update to tvheadend 4.2.1 stable.
+* **18.04.17:** - Use repo version of gnu-libiconv rather than compiling.
+* **09.04.17:** - Chain cpanm installs in one block and use --installdeps.
+* **09.02.17:** - Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
+* **07.02.17:** - Add variable to add additional runtime paramters.
+* **05.02.17:** - Update to alpine 3.5 and change dvb-apps to only compile needed libs.
+* **14.11.16:** - Add picons from picons.xyz to /picons folder and add info to README.
+* **22.09.16:** - Fix broken tv_grab_wg, libs for xmltv and update README.
+* **18.09.16:** - Update XMLTV to 0.5.68 and update README.
+* **10.09.16:** - Add layer badges to README.
+* **05.09.16:** - Initial Release.
