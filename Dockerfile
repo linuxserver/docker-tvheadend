@@ -119,6 +119,13 @@ RUN \
  cp /usr/include/gnu-libiconv/iconv.h /usr/include/iconv.h
 
 RUN \
+ echo "**** update to the latest tv_grab_zz_sdjson_sqlite ****" && \
+ rm -rf /usr/bin/tv_grab_zz_sdjson_sqlite && \
+ curl -o \
+ /usr/bin/tv_grab_zz_sdjson_sqlite -L \
+	https://raw.githubusercontent.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite/master/tv_grab_zz_sdjson_sqlite
+
+RUN \
  echo "**** install perl modules for xmltv ****" && \
  curl -L https://cpanmin.us | perl - App::cpanminus && \
  cpanm --installdeps /tmp/patches
