@@ -227,14 +227,6 @@ RUN \
  make && \
  make DESTDIR=/tmp/comskip-build install
  
-RUN \
- echo "**** update to the latest tv_grab_zz_sdjson_sqlite ****" && \
- rm -rf /usr/bin/tv_grab_zz_sdjson_sqlite && \
- curl -o \
- /usr/bin/tv_grab_zz_sdjson_sqlite -L \
-    https://raw.githubusercontent.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite/master/tv_grab_zz_sdjson_sqlite && \
- chmod +x /usr/bin/tv_grab_zz_sdjson_sqlite
-
 ############## runtime stage ##############
 FROM lsiobase/alpine:3.8
 
@@ -276,6 +268,7 @@ RUN \
 	perl-capture-tiny \
 	perl-cgi \
 	perl-compress-raw-zlib \
+	perl-cpanel-json-xs \
 	perl-data-dumper \
 	perl-date-manip \
 	perl-datetime \
@@ -337,7 +330,12 @@ RUN \
  mkdir -p /picons && \
  curl -o \
         /picons/picons.tar.bz2 -L \
-        https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2
+        https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2 && \
+ echo "**** update to the latest tv_grab_zz_sdjson_sqlite ****" && \
+ rm -rf /usr/bin/tv_grab_zz_sdjson_sqlite && \
+ curl -o \
+	/usr/bin/tv_grab_zz_sdjson_sqlite -L \
+	https://raw.githubusercontent.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite/master/tv_grab_zz_sdjson_sqlite
 
 # copy local files and buildstage artifacts
 COPY --from=buildstage /tmp/argtable-build/usr/ /usr/
