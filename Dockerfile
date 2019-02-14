@@ -298,7 +298,6 @@ RUN \
 	perl-io-socket-ssl \
 	perl-io-stringy \
 	perl-json \
-	perl-json-xs \
 	perl-libwww \
 	perl-lingua-en-numbers-ordinate \
 	perl-lingua-preferred \
