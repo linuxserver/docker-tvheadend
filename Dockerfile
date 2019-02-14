@@ -226,6 +226,14 @@ RUN \
 	--sysconfdir=/config/comskip && \
  make && \
  make DESTDIR=/tmp/comskip-build install
+ 
+RUN \
+ echo "**** update to the latest tv_grab_zz_sdjson_sqlite ****" && \
+ rm -rf /usr/bin/tv_grab_zz_sdjson_sqlite && \
+ curl -o \
+ /usr/bin/tv_grab_zz_sdjson_sqlite -L \
+    https://raw.githubusercontent.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite/master/tv_grab_zz_sdjson_sqlite && \
+ chmod +x /usr/bin/tv_grab_zz_sdjson_sqlite
 
 ############## runtime stage ##############
 FROM lsiobase/alpine:3.8
@@ -290,6 +298,7 @@ RUN \
 	perl-io-socket-ssl \
 	perl-io-stringy \
 	perl-json \
+	perl-json-xs \
 	perl-libwww \
 	perl-lingua-en-numbers-ordinate \
 	perl-lingua-preferred \
@@ -339,14 +348,6 @@ COPY --from=buildstage /tmp/xmltv-build/usr/ /usr/
 COPY --from=buildstage /usr/local/share/man/ /usr/local/share/man/
 COPY --from=buildstage /usr/local/share/perl5/ /usr/local/share/perl5/
 COPY root/ /
-
-RUN \
- echo "**** update to the latest tv_grab_zz_sdjson_sqlite ****" && \
- rm -rf /usr/bin/tv_grab_zz_sdjson_sqlite && \
- curl -o \
- /usr/bin/tv_grab_zz_sdjson_sqlite -L \
-    https://raw.githubusercontent.com/garybuhrmaster/tv_grab_zz_sdjson_sqlite/master/tv_grab_zz_sdjson_sqlite && \
- chmod +x /usr/bin/tv_grab_zz_sdjson_sqlite
 
 # ports and volumes
 EXPOSE 9981 9982
