@@ -125,6 +125,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "14.02.19:", desc: "Add picons path to config." }
   - { date: "15.01.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "12.09.18:", desc: "Rebase to alpine 3.8 and use buildstage type build." }
   - { date: "21.04.18:", desc: "Add JSON::XS Perl package for grab_tv_huro." }
