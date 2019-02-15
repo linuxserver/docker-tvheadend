@@ -1,6 +1,6 @@
 {
 	"prefer_picon": false,
-	"chiconpath": "file://picons/%C.png",
-	"piconpath": "file://picons/",
+	"chiconpath": "file:///picons/%C.png",
+	"piconpath": "file:///picons/",
 	"piconscheme": 0
 }
