@@ -326,8 +326,14 @@ RUN \
  echo "**** Add Picons ****" && \
  mkdir -p /picons && \
  curl -o \
-        /picons/picons.tar.bz2 -L \
-        https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2
+        /tmp/picons.tar.bz2 -L \
+        https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2 && \
+ tar xf \
+ /tmp/picons.tar.bz2 -C \
+        /picons && \
+ echo "**** cleanup ****" && \
+ rm -rf \
+        /tmp/*
 
 # copy local files and buildstage artifacts
 COPY --from=buildstage /tmp/argtable-build/usr/ /usr/
