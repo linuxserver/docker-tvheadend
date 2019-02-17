@@ -150,15 +150,11 @@ RUN \
 	TVHEADEND_COMMIT=$(curl -sX GET https://api.github.com/repos/tvheadend/tvheadend/commits/master \
 	| jq -r '. | .sha'); \
  fi && \
- curl -o \
-	/tmp/tvheadend.tar.gz -L \
-	"https://github.com/tvheadend/tvheadend/archive/${TVHEADEND_COMMIT}.tar.gz" && \
  mkdir -p \
 	/tmp/tvheadend && \
- tar xf \
-	/tmp/tvheadend.tar.gz -C \
-	/tmp/tvheadend/ --strip-components=1 && \
+ git clone https://github.com/tvheadend/tvheadend.git /tmp/tvheadend && \
  cd /tmp/tvheadend && \
+ git checkout ${TVHEADEND_COMMIT} && \
  ./configure \
 	`#Encoding` \
 	--disable-ffmpeg_static \
