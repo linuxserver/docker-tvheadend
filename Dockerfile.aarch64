@@ -31,6 +31,7 @@ RUN \
 	gettext-dev \
 	git \
 	gzip \
+	jq \
 	libgcrypt-dev \
 	libhdhomerun-dev \
 	libressl-dev \
