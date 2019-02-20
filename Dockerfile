@@ -173,6 +173,7 @@ RUN \
 	--disable-libx265_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
+	--enable-nvenc \
 	--enable-pngquant \
 	--infodir=/usr/share/info \
 	--localstatedir=/var \
