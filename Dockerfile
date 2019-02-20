@@ -175,6 +175,7 @@ RUN \
 	--disable-hdhomerun_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
+	--enable-nvenc \
 	--enable-pngquant \
 	--enable-trace \
 	--enable-vaapi \

@@ -242,6 +242,7 @@ Below are the instructions for updating containers:
 
 ## Versions
 
+* **20.02.19:** - Add nvenc support.
 * **17.02.19:** - Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend.
 * **14.02.19:** - Add picons path to config.
 * **15.01.19:** - Add pipeline logic and multi arch.
