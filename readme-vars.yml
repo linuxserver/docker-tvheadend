@@ -125,7 +125,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "20.02.19:", desc: "Add nvenc support." }
+  - { date: "20.02.19:", desc: "Add nvenc support for x86 build." }
   - { date: "17.02.19:", desc: "Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend." }
   - { date: "14.02.19:", desc: "Add picons path to config." }
   - { date: "15.01.19:", desc: "Add pipeline logic and multi arch." }
