@@ -246,6 +246,7 @@ Below are the instructions for updating containers:
 
 ## Versions
 
+* **01.03.19:** - Bump xmltv to 0.6.1.
 * **28.02.19:** - add perl-lwp-useragent-determined.
 * **17.02.19:** - Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend.
 * **14.02.19:** - Add picons path to config.

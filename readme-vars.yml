@@ -125,6 +125,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "01.03.19:", desc: "Bump xmltv to 0.6.1." }
   - { date: "28.02.19:", desc: "add perl-lwp-useragent-determined." }
   - { date: "17.02.19:", desc: "Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend." }
   - { date: "14.02.19:", desc: "Add picons path to config." }
