@@ -187,6 +187,7 @@ perl-http-negotiate perl-http-negotiate-6.01-r1
 perl-libwww perl-libwww-6.34-r0
 perl-lingua-en-numbers-ordinate perl-lingua-en-numbers-ordinate-1.04-r1
 perl-lingua-preferred perl-lingua-preferred-0.2.4-r1
+perl-lwp-useragent-determined perl-lwp-useragent-determined-1.07-r0
 perl-module-build perl-module-build-0.4224-r0
 perl-parse-recdescent perl-parse-recdescent-1.967015-r1
 perl-path-class perl-path-class-0.37-r0
