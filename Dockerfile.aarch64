@@ -3,7 +3,7 @@ FROM lsiobase/alpine.arm64:3.8 as buildstage
 
 # package versions
 ARG ARGTABLE_VER="2.13"
-ARG XMLTV_VER="v0.5.70"
+ARG XMLTV_VER="v0.6.1"
 
 # environment settings
 ARG TZ="Europe/Oslo"
