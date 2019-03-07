@@ -110,7 +110,7 @@ RUN \
 	x265-dev \
 	zlib-dev && \
  apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/testing \
+	--repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
 	gnu-libiconv-dev
 
 RUN \
@@ -315,7 +315,7 @@ RUN \
 	x265 \
 	zlib && \
  apk add --no-cache \
-	--repository http://nl.alpinelinux.org/alpine/edge/testing \
+	--repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
 	gnu-libiconv && \
  echo "**** Add Picons ****" && \
  mkdir -p /picons && \
