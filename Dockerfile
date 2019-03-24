@@ -330,7 +330,6 @@ COPY --from=buildstage /usr/local/share/man/ /usr/local/share/man/
 COPY --from=buildstage /usr/local/share/perl5/ /usr/local/share/perl5/
 COPY root/ /
 
-
 # ports and volumes
 EXPOSE 9981 9982
 VOLUME /config /recordings
