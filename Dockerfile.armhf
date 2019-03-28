@@ -316,7 +316,7 @@ RUN \
  echo "**** Add Picons ****" && \
  mkdir -p /picons && \
  curl -o \
-        /tmp/picons.tar.bz2 -L \
+        /picons.tar.bz2 -L \
         https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2
 
 # copy local files and buildstage artifacts
