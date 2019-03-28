@@ -12,12 +12,17 @@ mkdir -p \
 [[ ! -e /config/config ]] && \
         (cp /defaults/config /config/config)
 
+# extract picons on first run
+[[ -f /picons.tar.bz2 ]] && \
+	tar xf \
+		/picons.tar.bz2 -C \
+		/picons &&
+	rm -f /picons.tar.bz2
 
-
-# function to randomly sample 10 files for their owner and only chown if not abc
+# function to randomly sample 5 files for their owner and only chown if not abc
 chowner () {
 files=(${1}/*)
-for i in {1..10}; do
+for i in {1..5}; do
         user=$(stat -c '%U' $(printf "%s\n" "${files[RANDOM % ${#files[@]}]}"))
         if [ "${user}" != "abc" ]; then
                 chown -R abc:abc ${1}
