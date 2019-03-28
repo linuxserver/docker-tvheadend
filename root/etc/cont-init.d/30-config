@@ -14,7 +14,7 @@ mkdir -p \
 
 
 
-# function to randomly sample 50 files for their owner and only chown if not abc
+# function to randomly sample 10 files for their owner and only chown if not abc
 chowner () {
 files=(${1}/*)
 for i in {1..10}; do
