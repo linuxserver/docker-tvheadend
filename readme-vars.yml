@@ -125,6 +125,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "27.03.19:", desc: "Rebase to Alpine 3.9, fix init logic to only chown once." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "17.02.19:", desc: "Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend." }
   - { date: "14.02.19:", desc: "Add picons path to config." }
