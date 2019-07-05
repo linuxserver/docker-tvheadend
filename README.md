@@ -268,6 +268,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **28.06.19:** - Rebasing to alpine 3.10.
 * **27.03.19:** - Rebase to Alpine 3.9, fix init logic to only chown once.
 * **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
 * **01.03.19:** - Bump xmltv to 0.6.1.
