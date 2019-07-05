@@ -5,7 +5,7 @@ apk-tools-2.10.3-r1
 bash-4.4.19-r1
 bsd-compat-headers-0.7.1-r0
 busybox-1.29.3-r10
-bzip2-1.0.6-r6
+bzip2-1.0.6-r7
 ca-certificates-20190108-r0
 ca-certificates-cacert-20190108-r0
 coreutils-8.30-r0
@@ -26,7 +26,7 @@ libacl-2.2.52-r5
 libass-0.14.0-r0
 libattr-2.4.47-r7
 libbsd-0.8.6-r2
-libbz2-1.0.6-r6
+libbz2-1.0.6-r7
 libc-utils-0.7.1-r0
 libcrypto1.1-1.1.1b-r1
 libcurl-7.64.0-r2
