@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.9 as buildstage
+FROM lsiobase/alpine:3.10 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -220,7 +220,7 @@ RUN \
  make DESTDIR=/tmp/comskip-build install
 
 ############## runtime stage ##############
-FROM lsiobase/alpine:3.9
+FROM lsiobase/alpine:3.10
 
 # set version label
 ARG BUILD_DATE
