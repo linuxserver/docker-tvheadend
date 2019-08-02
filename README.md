@@ -242,6 +242,9 @@ Below are the instructions for updating containers:
   containrrr/watchtower \
   --run-once tvheadend
   ```
+
+**Note:** We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using Docker Compose.
+
 * You can also remove the old dangling images: `docker image prune`
 
 ## Building locally
@@ -265,6 +268,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **02.08.19:** - Attempt to automatically fix permissions on /dev/dri and /dev/dvb.
 * **28.06.19:** - Rebasing to alpine 3.10.
 * **27.03.19:** - Rebase to Alpine 3.9, fix init logic to only chown once.
 * **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
