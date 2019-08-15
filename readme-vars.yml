@@ -60,7 +60,8 @@ optional_block_1_items:
   - |
     #### Host vs. Bridge
 
-    If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because of a limitation in docker and multicast.
+    If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
+    If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stabilty problems. These can be solved by giving tvheadend its own IP using macavlan.
 
 # application setup block
 app_setup_block_enabled: true
