@@ -53,7 +53,7 @@ opt_param_usage_include_ports: false
 opt_param_device_map: true
 opt_param_devices:
   - { device_path: "/dev/dri", device_host_path: "/dev/dri", desc: "Only needed if you want to use your AMD/Intel GPU for hardware accelerated video encoding (vaapi)." }
-  - { device_path: "/dev/dvb", device_host_path: "/dev/drb", desc: "Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out." }
+  - { device_path: "/dev/dvb", device_host_path: "/dev/dvb", desc: "Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out." }
 opt_cap_add_param: false
 optional_block_1: true
 optional_block_1_items:
@@ -126,6 +126,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "18.08.19:", desc: "Add AMD drivers." }
   - { date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "27.03.19:", desc: "Rebase to Alpine 3.9, fix init logic to only chown once." }
