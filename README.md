@@ -72,14 +72,15 @@ docker create \
   -v <path to data>:/config \
   -v <path to recordings>:/recordings \
   --device /dev/dri:/dev/dri `#optional` \
-  --device /dev/drb:/dev/dvb `#optional` \
+  --device /dev/dvb:/dev/dvb `#optional` \
   --restart unless-stopped \
   linuxserver/tvheadend
 ```
 
 #### Host vs. Bridge
 
-If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because of a limitation in docker and multicast.
+If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
+If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stabilty problems. These can be solved by giving tvheadend its own IP using macavlan.
 
 
 ### docker-compose
@@ -106,7 +107,7 @@ services:
       - 9982:9982
     devices:
       - /dev/dri:/dev/dri #optional
-      - /dev/drb:/dev/dvb #optional
+      - /dev/dvb:/dev/dvb #optional
     restart: unless-stopped
 ```
 
@@ -242,6 +243,9 @@ Below are the instructions for updating containers:
   containrrr/watchtower \
   --run-once tvheadend
   ```
+
+**Note:** We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using Docker Compose.
+
 * You can also remove the old dangling images: `docker image prune`
 
 ## Building locally
@@ -265,6 +269,9 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **18.08.19:** - Add AMD drivers.
+* **02.08.19:** - Attempt to automatically fix permissions on /dev/dri and /dev/dvb.
+* **28.06.19:** - Rebasing to alpine 3.10.
 * **27.03.19:** - Rebase to Alpine 3.9, fix init logic to only chown once.
 * **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
 * **01.03.19:** - Bump xmltv to 0.6.1.

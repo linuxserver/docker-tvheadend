@@ -53,14 +53,15 @@ opt_param_usage_include_ports: false
 opt_param_device_map: true
 opt_param_devices:
   - { device_path: "/dev/dri", device_host_path: "/dev/dri", desc: "Only needed if you want to use your AMD/Intel GPU for hardware accelerated video encoding (vaapi)." }
-  - { device_path: "/dev/dvb", device_host_path: "/dev/drb", desc: "Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out." }
+  - { device_path: "/dev/dvb", device_host_path: "/dev/dvb", desc: "Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out." }
 opt_cap_add_param: false
 optional_block_1: true
 optional_block_1_items:
   - |
     #### Host vs. Bridge
 
-    If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because of a limitation in docker and multicast.
+    If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
+    If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stabilty problems. These can be solved by giving tvheadend its own IP using macavlan.
 
 # application setup block
 app_setup_block_enabled: true
@@ -125,6 +126,9 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "18.08.19:", desc: "Add AMD drivers." }
+  - { date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb." }
+  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "27.03.19:", desc: "Rebase to Alpine 3.9, fix init logic to only chown once." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "01.03.19:", desc: "Bump xmltv to 0.6.1." }
