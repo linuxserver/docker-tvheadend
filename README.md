@@ -279,6 +279,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **02.10.19:** - Improve permission fixing on render & dvb devices.
 * **18.08.19:** - Add AMD drivers.
 * **02.08.19:** - Attempt to automatically fix permissions on /dev/dri and /dev/dvb.
 * **28.06.19:** - Rebasing to alpine 3.10.
