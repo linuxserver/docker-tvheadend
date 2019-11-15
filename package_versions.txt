@@ -16,7 +16,7 @@ ffmpeg-4.1.4-r0
 ffmpeg-libs-4.1.4-r0
 fontconfig-2.13.1-r0
 freetype-2.10.0-r0
-fribidi-1.0.5-r1
+fribidi-1.0.5-r2
 gdbm-1.13-r1
 gmp-6.1.2-r1
 gnu-libiconv-1.15-r2
@@ -39,7 +39,7 @@ libgcrypt-1.8.5-r0
 libgpg-error-1.36-r2
 libhdhomerun-libs-20161117-r1
 libidn-1.35-r0
-libjpeg-turbo-2.0.2-r0
+libjpeg-turbo-2.0.3-r0
 libogg-1.3.3-r2
 libpciaccess-0.14-r0
 libpng-1.6.37-r1
