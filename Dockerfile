@@ -4,7 +4,7 @@ FROM lsiobase/alpine:3.10 as buildstage
 # package versions
 ARG ARGTABLE_VER="2.13"
 ARG TVH_VER="release/4.2"
-ARG XMLTV_VER="v0.5.70"
+ARG XMLTV_VER="v0.6.1"
 ARG TVHEADEND_COMMIT
 
 # environment settings
@@ -126,6 +126,8 @@ RUN \
  git clone https://github.com/XMLTV/xmltv.git /tmp/xmltv && \
  cd /tmp/xmltv && \
  git checkout ${XMLTV_VER} && \
+ echo "**** fix test for xmltv alpine 3.11 ****" && \
+ patch -p1 -i /tmp/patches/test_tv_imdb.t.patch && \
  echo "**** Perl 5.26 fixes for XMTLV ****" && \
  sed "s/use POSIX 'tmpnam';//" -i filter/tv_to_latex && \
  sed "s/use POSIX 'tmpnam';//" -i filter/tv_to_text && \
