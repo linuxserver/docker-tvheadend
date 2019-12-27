@@ -1,10 +1,10 @@
-FROM lsiobase/alpine:arm32v7-3.10 as buildstage
+FROM lsiobase/alpine:arm32v7-3.11 as buildstage
 ############## build stage ##############
 
 # package versions
 ARG ARGTABLE_VER="2.13"
 ARG TVH_VER="release/4.2"
-ARG XMLTV_VER="v0.5.70"
+ARG XMLTV_VER="v0.6.1"
 ARG TVHEADEND_COMMIT
 
 # environment settings
@@ -217,7 +217,7 @@ RUN \
  make DESTDIR=/tmp/comskip-build install
 
 ############## runtime stage ##############
-FROM lsiobase/alpine:arm32v7-3.10
+FROM lsiobase/alpine:arm32v7-3.11
 
 # set version label
 ARG BUILD_DATE
