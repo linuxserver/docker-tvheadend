@@ -33,7 +33,6 @@ RUN \
 	gzip \
 	jq \
 	libgcrypt-dev \
-	libhdhomerun-dev \
 	libressl-dev \
 	libtool \
 	libvpx-dev \
@@ -165,7 +164,6 @@ RUN \
 	--disable-bintray_cache \
 	--disable-dbus_1 \
 	--disable-ffmpeg_static \
-	--disable-hdhomerun_static \
 	--disable-libfdkaac_static \
 	--disable-libmfx_static \
 	--disable-libtheora_static \
@@ -174,6 +172,7 @@ RUN \
 	--disable-libx264_static \
 	--disable-libx265_static \
 	--enable-hdhomerun_client \
+	--enable-hdhomerun_static \
 	--enable-libav \
 	--enable-pngquant \
 	--infodir=/usr/share/info \
@@ -239,7 +238,6 @@ RUN \
 	gzip \
 	libcrypto1.1 \
 	libcurl	\
-	libhdhomerun-libs \
 	libressl \
 	libssl1.1 \
 	libvpx \
@@ -328,4 +326,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 9981 9982
-VOLUME /config /recordings
+VOLUME /config
