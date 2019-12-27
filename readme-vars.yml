@@ -125,6 +125,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "27.12.19:", desc: "Rebase to Alpine 3.11. Update XMLTV to 0.6.1" }
   - { date: "02.10.19:", desc: "Improve permissions fixing on render & dvb devices." }
   - { date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
