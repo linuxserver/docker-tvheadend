@@ -126,6 +126,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "27.12.19:", desc: "Update to Alpine 3.11." }
   - { date: "02.10.19:", desc: "Improve permission fixing on render & dvb devices." }
   - { date: "18.08.19:", desc: "Add AMD drivers." }
   - { date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb." }
