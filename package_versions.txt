@@ -6,8 +6,8 @@ bash-5.0.11-r1
 bsd-compat-headers-0.7.2-r0
 busybox-1.31.1-r9
 bzip2-1.0.8-r1
-ca-certificates-20191127-r0
-ca-certificates-cacert-20191127-r0
+ca-certificates-20191127-r1
+ca-certificates-cacert-20191127-r1
 coreutils-8.31-r0
 curl-7.67.0-r0
 elfutils-libelf-0.168-r2
