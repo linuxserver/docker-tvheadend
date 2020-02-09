@@ -306,6 +306,7 @@ RUN \
 	perl-xml-treepp \
 	perl-xml-twig \
 	perl-xml-writer \
+	py3-requests \
 	python \
 	tar \
 	uriparser \
