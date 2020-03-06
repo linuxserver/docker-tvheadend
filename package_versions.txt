@@ -71,8 +71,8 @@ llvm9-libs-9.0.0-r1
 mesa-19.2.7-r0
 mesa-dri-ati-19.2.7-r0
 mesa-glapi-19.2.7-r0
-musl-1.1.24-r0
-musl-utils-1.1.24-r0
+musl-1.1.24-r1
+musl-utils-1.1.24-r1
 ncurses-libs-6.1_p20200118-r2
 ncurses-terminfo-base-6.1_p20200118-r2
 nettle-3.5.1-r0
