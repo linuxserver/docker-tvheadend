@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.11 as buildstage
+FROM lsiobase/alpine:3.12 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -103,7 +103,7 @@ RUN \
 	perl-xml-writer \
 	pkgconf \
 	pngquant \
-	python \
+	python2 \
 	sdl-dev \
 	tar \
 	uriparser-dev \
@@ -221,7 +221,7 @@ RUN \
  make DESTDIR=/tmp/comskip-build install
 
 ############## runtime stage ##############
-FROM lsiobase/alpine:3.11
+FROM lsiobase/alpine:3.12
 
 # set version label
 ARG BUILD_DATE
@@ -312,7 +312,7 @@ RUN \
 	perl-xml-twig \
 	perl-xml-writer \
 	py3-requests \
-	python \
+	python2 \
 	tar \
 	uriparser \
 	wget \

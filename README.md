@@ -304,6 +304,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **02.06.20:** - Update to Alpine 3.12.
 * **27.12.19:** - Add requests and perl-json-xs package.
 * **27.12.19:** - Update to Alpine 3.11.
 * **02.10.19:** - Improve permission fixing on render & dvb devices.
