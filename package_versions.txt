@@ -22,7 +22,7 @@ fts-1.2.7-r1
 gdbm-1.13-r1
 gmp-6.2.0-r0
 gnu-libiconv-1.15-r2
-gnutls-3.6.14-r0
+gnutls-3.6.15-r0
 gzip-1.10-r0
 lame-3.100-r0
 libacl-2.2.53-r0
