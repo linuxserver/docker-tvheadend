@@ -4,8 +4,8 @@
 project_name: docker-tvheadend
 external_type: github_commit
 release_type: stable
-release_tag: latest
-ls_branch: master
+release_tag: j0nny
+ls_branch: j0nny
 repo_vars:
   - EXT_GIT_BRANCH = 'master'
   - EXT_USER = 'tvheadend'
@@ -17,7 +17,7 @@ repo_vars:
   - DOCKERHUB_IMAGE = 'linuxserver/tvheadend'
   - DEV_DOCKERHUB_IMAGE = 'lsiodev/tvheadend'
   - PR_DOCKERHUB_IMAGE = 'lspipepr/tvheadend'
-  - DIST_IMAGE = 'alpine'
+  - DIST_IMAGE = 'ubuntu'
   - MULTIARCH='true'
   - CI='true'
   - CI_WEB='true'

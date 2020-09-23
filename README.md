@@ -32,7 +32,7 @@ Find us at:
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/linuxserver/tvheadend.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge)](https://microbadger.com/images/linuxserver/tvheadend "Get your own version badge on microbadger.com")
 [![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/linuxserver/tvheadend)
 [![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/linuxserver/tvheadend)
-[![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-tvheadend%2Fjob%2Fmaster%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-tvheadend/job/master/)
+[![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-tvheadend%2Fjob%2Fj0nny%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-tvheadend/job/j0nny/)
 [![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Flsio-ci.ams3.digitaloceanspaces.com%2Flinuxserver%2Ftvheadend%2Flatest%2Fci-status.yml)](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/tvheadend/latest/index.html)
 
 [Tvheadend](https://www.tvheadend.org/) works as a proxy server: is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
@@ -304,42 +304,4 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
-* **02.06.20:** - Update to Alpine 3.12.
-* **27.12.19:** - Add requests and perl-json-xs package.
-* **27.12.19:** - Update to Alpine 3.11.
-* **02.10.19:** - Improve permission fixing on render & dvb devices.
-* **18.08.19:** - Add AMD drivers.
-* **02.08.19:** - Attempt to automatically fix permissions on /dev/dri and /dev/dvb.
-* **28.06.19:** - Rebasing to alpine 3.10.
-* **27.03.19:** - Rebase to Alpine 3.9, fix init logic to only chown once.
-* **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
-* **01.03.19:** - Bump xmltv to 0.6.1.
-* **28.02.19:** - add perl-lwp-useragent-determined.
-* **17.02.19:** - Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend.
-* **14.02.19:** - Add picons path to config.
-* **15.01.19:** - Add pipeline logic and multi arch.
-* **12.09.18:** - Rebase to alpine 3.8 and use buildstage type build.
-* **21.04.18:** - Add JSON::XS Perl package for grab_tv_huro.
-* **24.03.18:** - Add dvbcsa package.
-* **04.03.18:** - Use sourceforge master rather than mirror for xmltv.
-* **22.02.18:** - Add lost libva-intel-driver.
-* **21.02.18:** - Fix wrong version of iconv used.
-* **18.02.18:** - Add vaapi support, some cleanup and dropping of deprecated options.
-* **04.01.18:** - Deprecate cpu_core routine lack of scaling.
-* **11.12.17:** - Rebase to alpine 3.7, linting fixes.
-* **02.09.17:** - Add codec dependencies.
-* **13.07.17:** - Increase uniformity across all archs.
-* **08.07.17:** - Update README with full path for comskip.
-* **02.07.17:** - Move to one branch for all 4.2 releases.
-* **27.05.17:** - Rebase to alpine 3.6.
-* **01.05.17:** - Update to tvheadend 4.2.1 stable.
-* **18.04.17:** - Use repo version of gnu-libiconv rather than compiling.
-* **09.04.17:** - Chain cpanm installs in one block and use --installdeps.
-* **09.02.17:** - Perl changes, add picons file to gitignore and update XMLTV to 0.5.69.
-* **07.02.17:** - Add variable to add additional runtime paramters.
-* **05.02.17:** - Update to alpine 3.5 and change dvb-apps to only compile needed libs.
-* **14.11.16:** - Add picons from picons.xyz to /picons folder and add info to README.
-* **22.09.16:** - Fix broken tv_grab_wg, libs for xmltv and update README.
-* **18.09.16:** - Update XMLTV to 0.5.68 and update README.
-* **10.09.16:** - Add layer badges to README.
-* **05.09.16:** - Initial Release.
+* **24.09.20:** - Initial j0nny Release.

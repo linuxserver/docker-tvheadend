@@ -126,42 +126,4 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "02.06.20:", desc: "Update to Alpine 3.12." }
-  - { date: "27.12.19:", desc: "Add requests and perl-json-xs package." }
-  - { date: "27.12.19:", desc: "Update to Alpine 3.11." }
-  - { date: "02.10.19:", desc: "Improve permission fixing on render & dvb devices." }
-  - { date: "18.08.19:", desc: "Add AMD drivers." }
-  - { date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb." }
-  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
-  - { date: "27.03.19:", desc: "Rebase to Alpine 3.9, fix init logic to only chown once." }
-  - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
-  - { date: "01.03.19:", desc: "Bump xmltv to 0.6.1." }
-  - { date: "28.02.19:", desc: "add perl-lwp-useragent-determined." }
-  - { date: "17.02.19:", desc: "Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend." }
-  - { date: "14.02.19:", desc: "Add picons path to config." }
-  - { date: "15.01.19:", desc: "Add pipeline logic and multi arch." }
-  - { date: "12.09.18:", desc: "Rebase to alpine 3.8 and use buildstage type build." }
-  - { date: "21.04.18:", desc: "Add JSON::XS Perl package for grab_tv_huro." }
-  - { date: "24.03.18:", desc: "Add dvbcsa package." }
-  - { date: "04.03.18:", desc: "Use sourceforge master rather than mirror for xmltv." }
-  - { date: "22.02.18:", desc: "Add lost libva-intel-driver." }
-  - { date: "21.02.18:", desc: "Fix wrong version of iconv used." }
-  - { date: "18.02.18:", desc: "Add vaapi support, some cleanup and dropping of deprecated options." }
-  - { date: "04.01.18:", desc: "Deprecate cpu_core routine lack of scaling." }
-  - { date: "11.12.17:", desc: "Rebase to alpine 3.7, linting fixes." }
-  - { date: "02.09.17:", desc: "Add codec dependencies." }
-  - { date: "13.07.17:", desc: "Increase uniformity across all archs." }
-  - { date: "08.07.17:", desc: "Update README with full path for comskip." }
-  - { date: "02.07.17:", desc: "Move to one branch for all 4.2 releases." }
-  - { date: "27.05.17:", desc: "Rebase to alpine 3.6." }
-  - { date: "01.05.17:", desc: "Update to tvheadend 4.2.1 stable." }
-  - { date: "18.04.17:", desc: "Use repo version of gnu-libiconv rather than compiling." }
-  - { date: "09.04.17:", desc: "Chain cpanm installs in one block and use --installdeps." }
-  - { date: "09.02.17:", desc: "Perl changes, add picons file to gitignore and update XMLTV to 0.5.69." }
-  - { date: "07.02.17:", desc: "Add variable to add additional runtime paramters." }
-  - { date: "05.02.17:", desc: "Update to alpine 3.5 and change dvb-apps to only compile needed libs." }
-  - { date: "14.11.16:", desc: "Add picons from picons.xyz to /picons folder and add info to README." }
-  - { date: "22.09.16:", desc: "Fix broken tv_grab_wg, libs for xmltv and update README." }
-  - { date: "18.09.16:", desc: "Update XMLTV to 0.5.68 and update README." }
-  - { date: "10.09.16:", desc: "Add layer badges to README." }
-  - { date: "05.09.16:", desc: "Initial Release." }
+  - { date: "24.09.20:", desc: "Initial j0nny Release." }
