@@ -113,7 +113,7 @@ perl-date-manip-6.81-r0
 perl-datetime-1.52-r0
 perl-datetime-format-strptime-1.77-r0
 perl-datetime-locale-1.25-r0
-perl-datetime-timezone-2.39-r0
+perl-datetime-timezone-2.43-r0
 perl-dbd-sqlite-1.64-r2
 perl-dbi-1.643-r0
 perl-devel-stacktrace-2.04-r1
