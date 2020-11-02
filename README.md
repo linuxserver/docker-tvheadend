@@ -36,7 +36,7 @@ Find us at:
 [![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tvheadend.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=pulls&logo=docker)](https://hub.docker.com/r/linuxserver/tvheadend)
 [![Docker Stars](https://img.shields.io/docker/stars/linuxserver/tvheadend.svg?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=stars&logo=docker)](https://hub.docker.com/r/linuxserver/tvheadend)
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-tvheadend%2Fjob%2Fmaster%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-tvheadend/job/master/)
-[![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Flsio-ci.ams3.digitaloceanspaces.com%2Flinuxserver%2Ftvheadend%2Flatest%2Fci-status.yml)](https://lsio-ci.ams3.digitaloceanspaces.com/linuxserver/tvheadend/latest/index.html)
+[![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.linuxserver.io%2Flinuxserver%2Ftvheadend%2Flatest%2Fci-status.yml)](https://ci-tests.linuxserver.io/linuxserver/tvheadend/latest/index.html)
 
 [Tvheadend](https://www.tvheadend.org/) works as a proxy server: is a TV streaming server and recorder for Linux, FreeBSD and Android supporting DVB-S, DVB-S2, DVB-C, DVB-T, ATSC, ISDB-T, IPTV, SAT>IP and HDHomeRun as input sources.
 Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
@@ -49,7 +49,7 @@ Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV D
 
 Our images support multiple architectures such as `x86-64`, `arm64` and `armhf`. We utilise the docker manifest for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list) and our announcement [here](https://blog.linuxserver.io/2019/02/21/the-lsio-pipeline-project/).
 
-Simply pulling `linuxserver/tvheadend` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+Simply pulling `ghcr.io/linuxserver/tvheadend` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
 
 The architectures supported by this image are:
 
@@ -83,7 +83,7 @@ Compatible with docker-compose v2 schemas.
 version: "2.1"
 services:
   tvheadend:
-    image: linuxserver/tvheadend
+    image: ghcr.io/linuxserver/tvheadend
     container_name: tvheadend
     environment:
       - PUID=1000
@@ -118,7 +118,7 @@ docker run -d \
   --device /dev/dri:/dev/dri `#optional` \
   --device /dev/dvb:/dev/dvb `#optional` \
   --restart unless-stopped \
-  linuxserver/tvheadend
+  ghcr.io/linuxserver/tvheadend
 ```
 
 #### Host vs. Bridge
@@ -250,7 +250,7 @@ We publish various [Docker Mods](https://github.com/linuxserver/docker-mods) to 
 * container version number
   * `docker inspect -f '{{ index .Config.Labels "build_version" }}' tvheadend`
 * image version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/tvheadend`
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' ghcr.io/linuxserver/tvheadend`
 
 ## Updating Info
 
@@ -266,7 +266,7 @@ Below are the instructions for updating containers:
 * You can also remove the old dangling images: `docker image prune`
 
 ### Via Docker Run
-* Update the image: `docker pull linuxserver/tvheadend`
+* Update the image: `docker pull ghcr.io/linuxserver/tvheadend`
 * Stop the running container: `docker stop tvheadend`
 * Delete the container: `docker rm tvheadend`
 * Recreate a new container with the same docker run parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
@@ -296,7 +296,7 @@ cd docker-tvheadend
 docker build \
   --no-cache \
   --pull \
-  -t linuxserver/tvheadend:latest .
+  -t ghcr.io/linuxserver/tvheadend:latest .
 ```
 
 The ARM variants can be built on x86_64 hardware using `multiarch/qemu-user-static`
