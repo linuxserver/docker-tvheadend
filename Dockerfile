@@ -3,7 +3,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.12 as buildstage
 
 # package versions
 ARG ARGTABLE_VER="2.13"
-ARG XMLTV_VER="v0.6.1"
+ARG XMLTV_VER="v0.6.3"
 
 # environment settings
 ARG TZ="Europe/Oslo"
@@ -119,7 +119,7 @@ RUN \
 
 RUN \
  echo "**** install perl modules for xmltv ****" && \
- curl -L https://cpanmin.us | perl - App::cpanminus && \
+ curl -s -L https://cpanmin.us | perl - App::cpanminus && \
  cpanm --installdeps /tmp/patches
 
 RUN \
@@ -127,8 +127,6 @@ RUN \
  git clone https://github.com/XMLTV/xmltv.git /tmp/xmltv && \
  cd /tmp/xmltv && \
  git checkout ${XMLTV_VER} && \
- echo "**** Fix test for xmltv alpine 3.11 ****" && \
- patch -p1 -i /tmp/patches/test_tv_imdb.t.patch && \
  echo "**** Perl 5.26 fixes for XMTLV ****" && \
  sed "s/use POSIX 'tmpnam';//" -i filter/tv_to_latex && \
  sed "s/use POSIX 'tmpnam';//" -i filter/tv_to_text && \
@@ -193,7 +191,7 @@ RUN \
  ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
  mkdir -p \
 	/tmp/argtable && \
- curl -o \
+ curl -s -o \
  /tmp/argtable-src.tar.gz -L \
 	"https://sourceforge.net/projects/argtable/files/argtable/argtable-${ARGTABLE_VER}/argtable${ARGTABLE_VER1}.tar.gz" && \
  tar xf \
@@ -321,7 +319,7 @@ RUN \
 	zlib && \
  echo "**** Add Picons ****" && \
  mkdir -p /picons && \
- curl -o \
+ curl -s -o \
         /picons.tar.bz2 -L \
         https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2
 
