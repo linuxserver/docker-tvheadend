@@ -83,8 +83,8 @@ mesa-dri-gallium-20.0.7-r0
 mesa-glapi-20.0.7-r0
 mesa-va-gallium-20.0.7-r0
 mesa-vdpau-gallium-20.0.7-r0
-musl-1.1.24-r9
-musl-utils-1.1.24-r9
+musl-1.1.24-r10
+musl-utils-1.1.24-r10
 ncurses-libs-6.2_p20200523-r0
 ncurses-terminfo-base-6.2_p20200523-r0
 nettle-3.5.1-r1
@@ -239,7 +239,7 @@ shadow-4.8.1-r0
 sqlite-libs-3.32.1-r0
 ssl_client-1.31.1-r19
 tar-1.32-r1
-tzdata-2020c-r0
+tzdata-2020c-r1
 uriparser-0.9.3-r1
 v4l-utils-libs-1.20.0-r0
 wayland-libs-client-1.18.0-r4
