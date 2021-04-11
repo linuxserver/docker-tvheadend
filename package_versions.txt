@@ -2,11 +2,11 @@ alpine-baselayout-3.2.0-r7
 alpine-keys-2.2-r0
 alsa-lib-1.2.2-r0
 aom-libs-1.0.0-r1
-apk-tools-2.10.5-r1
+apk-tools-2.10.5-r3
 bash-5.0.17-r0
 brotli-libs-1.0.9-r1
 bsd-compat-headers-0.7.2-r3
-busybox-1.31.1-r19
+busybox-1.31.1-r20
 bzip2-1.0.8-r1
 ca-certificates-20191127-r4
 ca-certificates-bundle-20191127-r4
@@ -237,8 +237,8 @@ scanelf-1.2.6-r0
 sdl2-2.0.12-r1
 shadow-4.8.1-r0
 sqlite-libs-3.32.1-r0
-ssl_client-1.31.1-r19
-tar-1.32-r1
+ssl_client-1.31.1-r20
+tar-1.32-r2
 tzdata-2021a-r0
 uriparser-0.9.3-r1
 v4l-utils-libs-1.20.0-r0
