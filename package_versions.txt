@@ -2,7 +2,7 @@ alpine-baselayout-3.2.0-r7
 alpine-keys-2.2-r0
 alsa-lib-1.2.2-r0
 aom-libs-1.0.0-r1
-apk-tools-2.10.5-r3
+apk-tools-2.10.6-r0
 bash-5.0.17-r0
 brotli-libs-1.0.9-r1
 bsd-compat-headers-0.7.2-r3
@@ -11,7 +11,7 @@ bzip2-1.0.8-r1
 ca-certificates-20191127-r4
 ca-certificates-bundle-20191127-r4
 coreutils-8.32-r0
-curl-7.69.1-r3
+curl-7.76.1-r0
 expat-2.2.9-r1
 ffmpeg-4.3.1-r0
 ffmpeg-libs-4.3.1-r0
@@ -32,7 +32,7 @@ libbsd-0.10.0-r0
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcrypto1.1-1.1.1k-r0
-libcurl-7.69.1-r3
+libcurl-7.76.1-r0
 libdav1d-0.7.0-r0
 libdrm-2.4.102-r0
 libdvbcsa-1.1.0-r1
