@@ -247,6 +247,7 @@ RUN \
 	libssl1.1 \
 	libva \
 	libva-intel-driver \
+	intel-media-driver \
 	mesa-dri-ati \
 	libvpx \
 	libxml2 \

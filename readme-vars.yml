@@ -126,6 +126,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "11.05.21:", desc: "Added Intel iHD driver support." }
   - { date: "02.06.20:", desc: "Update to Alpine 3.12." }
   - { date: "27.12.19:", desc: "Add requests and perl-json-xs package." }
   - { date: "27.12.19:", desc: "Update to Alpine 3.11." }
