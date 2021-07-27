@@ -24,6 +24,8 @@ gmp-6.2.0-r0
 gnu-libiconv-1.15-r2
 gnutls-3.6.15-r1
 gzip-1.10-r0
+intel-gmmlib-20.1.1-r0
+intel-media-driver-20.1.1-r0
 lame-3.100-r0
 libacl-2.2.53-r0
 libass-0.14.0-r0
