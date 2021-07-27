@@ -309,6 +309,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **11.05.21:** - Added Intel iHD driver support.
 * **02.06.20:** - Update to Alpine 3.12.
 * **27.12.19:** - Add requests and perl-json-xs package.
 * **27.12.19:** - Update to Alpine 3.11.
