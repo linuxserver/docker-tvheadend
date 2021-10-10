@@ -241,7 +241,7 @@ shadow-4.8.1-r0
 sqlite-libs-3.32.1-r1
 ssl_client-1.31.1-r20
 tar-1.32-r2
-tzdata-2021b-r0
+tzdata-2021c-r0
 uriparser-0.9.3-r1
 v4l-utils-libs-1.20.0-r0
 wayland-libs-client-1.18.0-r4
