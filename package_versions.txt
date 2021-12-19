@@ -87,8 +87,8 @@ mesa-va-gallium-20.0.7-r0
 mesa-vdpau-gallium-20.0.7-r0
 musl-1.1.24-r10
 musl-utils-1.1.24-r10
-ncurses-libs-6.2_p20200523-r0
-ncurses-terminfo-base-6.2_p20200523-r0
+ncurses-libs-6.2_p20200523-r1
+ncurses-terminfo-base-6.2_p20200523-r1
 nettle-3.5.1-r1
 nghttp2-libs-1.41.0-r0
 openssl-1.1.1l-r0
