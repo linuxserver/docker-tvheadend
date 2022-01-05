@@ -172,6 +172,7 @@ RUN \
 	--disable-avahi \
 	--disable-dbus_1 \
 	--disable-bintray_cache \
+	--disable-execinfo \
 	--disable-hdhomerun_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
