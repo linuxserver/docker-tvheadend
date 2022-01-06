@@ -3,7 +3,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.12 as buildstage
 
 # package versions
 ARG ARGTABLE_VER="2.13"
-ARG XMLTV_VER="v0.6.3"
+ARG XMLTV_VER="v1.0.0"
 
 # environment settings
 ARG TZ="Europe/Oslo"
