@@ -124,7 +124,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "05.01.22:", desc: "Disable execinfo to fix builds. Update xmltv." }
+  - { date: "05.01.22:", desc: "Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv." }
   - { date: "11.05.21:", desc: "Added Intel iHD driver support." }
   - { date: "02.06.20:", desc: "Update to Alpine 3.12." }
   - { date: "27.12.19:", desc: "Add requests and perl-json-xs package." }

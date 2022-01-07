@@ -1,6 +1,7 @@
 requires 'perl' => '5.24.0';
 
 # perl packages for tvheadend x86
+requires 'Data::Dump' ;
 requires 'DateTime::Format::ISO8601' ;
 requires 'DateTime::Format::SQLite' ;
 requires 'Encode' ;
