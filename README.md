@@ -68,8 +68,6 @@ This image provides various versions that are available via tags. `latest` tag u
 | :----: | --- |
 | latest | Current latest release. |
 | release-4.2 | Latest release from 4.2 branch. |
-| stable-4.2.1 | Old stable version. Will not be updated anymore! |
-| stable-4.0.9 | Old stable version. Will not be updated anymore! |
 
 ## Application Setup
 
@@ -311,6 +309,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **05.01.22:** - Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv.
 * **11.05.21:** - Added Intel iHD driver support.
 * **02.06.20:** - Update to Alpine 3.12.
 * **27.12.19:** - Add requests and perl-json-xs package.

@@ -1,9 +1,9 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:3.12 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.15 as buildstage
 ############## build stage ##############
 
 # package versions
 ARG ARGTABLE_VER="2.13"
-ARG XMLTV_VER="v0.6.3"
+ARG XMLTV_VER="v1.0.0"
 
 # environment settings
 ARG TZ="Europe/Oslo"
@@ -52,7 +52,6 @@ RUN \
 	perl-capture-tiny \
 	perl-cgi \
 	perl-compress-raw-zlib \
-	perl-data-dumper \
 	perl-date-manip \
 	perl-datetime \
 	perl-datetime-format-strptime \
@@ -70,7 +69,6 @@ RUN \
 	perl-html-tree \
 	perl-http-cookies \
 	perl-io \
-	perl-io-compress \
 	perl-io-html \
 	perl-io-socket-ssl \
 	perl-io-stringy \
@@ -103,7 +101,7 @@ RUN \
 	perl-xml-writer \
 	pkgconf \
 	pngquant \
-	python2 \
+	python3 \
 	sdl-dev \
 	tar \
 	uriparser-dev \
@@ -172,6 +170,7 @@ RUN \
 	--disable-avahi \
 	--disable-dbus_1 \
 	--disable-bintray_cache \
+	--disable-execinfo \
 	--disable-hdhomerun_static \
 	--enable-hdhomerun_client \
 	--enable-libav \
@@ -182,6 +181,7 @@ RUN \
 	--localstatedir=/var \
 	--mandir=/usr/share/man \
 	--prefix=/usr \
+	--python=python3 \
 	--sysconfdir=/config && \
  make -j 2 && \
  make DESTDIR=/tmp/tvheadend-build install
@@ -219,7 +219,7 @@ RUN \
  make DESTDIR=/tmp/comskip-build install
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.12
+FROM ghcr.io/linuxserver/baseimage-alpine:3.15
 
 # set version label
 ARG BUILD_DATE
@@ -262,7 +262,6 @@ RUN \
 	perl-capture-tiny \
 	perl-cgi \
 	perl-compress-raw-zlib \
-	perl-data-dumper \
 	perl-date-manip \
 	perl-datetime \
 	perl-datetime-format-strptime \
@@ -279,7 +278,6 @@ RUN \
 	perl-html-tree \
 	perl-http-cookies \
 	perl-io \
-	perl-io-compress \
 	perl-io-html \
 	perl-io-socket-ssl \
 	perl-io-stringy \
@@ -311,7 +309,7 @@ RUN \
 	perl-xml-twig \
 	perl-xml-writer \
 	py3-requests \
-	python2 \
+	python3 \
 	tar \
 	uriparser \
 	wget \

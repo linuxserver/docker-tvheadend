@@ -23,8 +23,6 @@ development_versions: true
 development_versions_items:
   - { tag: "latest", desc: "Current latest release." }
   - { tag: "release-4.2", desc: "Latest release from 4.2 branch." }
-  - { tag: "stable-4.2.1", desc: "Old stable version. Will not be updated anymore!" }
-  - { tag: "stable-4.0.9", desc: "Old stable version. Will not be updated anymore!" }
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -126,6 +124,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "05.01.22:", desc: "Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv." }
   - { date: "11.05.21:", desc: "Added Intel iHD driver support." }
   - { date: "02.06.20:", desc: "Update to Alpine 3.12." }
   - { date: "27.12.19:", desc: "Add requests and perl-json-xs package." }
