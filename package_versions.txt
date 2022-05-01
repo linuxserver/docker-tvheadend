@@ -11,7 +11,7 @@ bzip2-1.0.8-r1
 ca-certificates-20211220-r0
 ca-certificates-bundle-20211220-r0
 coreutils-9.0-r2
-curl-7.80.0-r0
+curl-7.80.0-r1
 expat-2.4.7-r0
 ffmpeg-4.4.1-r2
 ffmpeg-libs-4.4.1-r2
@@ -39,7 +39,7 @@ libbsd-0.11.3-r1
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcrypto1.1-1.1.1n-r0
-libcurl-7.80.0-r0
+libcurl-7.80.0-r1
 libdav1d-0.9.2-r0
 libdrm-2.4.109-r0
 libdvbcsa-1.1.0-r1
