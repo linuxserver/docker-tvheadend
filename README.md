@@ -186,7 +186,7 @@ If you have other host services which also use multicast such as SSDP/DLNA/Emby 
 #### HDHomeRun
 
 You can either run HDHomeRun as --net=host without any additional configuration or within the docker network by specifying the HDHomeRun IP address in Configuration --> General --> Base (Level: Expert).
-In that case you must also specify the Local IP address where the docker is running, and expose the port(s) for the HDHomeRun tuners. See the tooltip of the configuration for details.
+In that case you must also specify the Local IP address where the docker is running, and expose the (udp) port(s) for the HDHomeRun tuners. See the tooltip of the configuration for details.
 
 ## Parameters
 
