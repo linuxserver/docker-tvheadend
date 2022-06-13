@@ -180,8 +180,13 @@ docker run -d \
 
 #### Host vs. Bridge
 
-If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
+If you use IPTV or SAT>IP, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
 If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stabilty problems. These can be solved by giving tvheadend its own IP using macvlan.
+
+#### HDHomeRun
+
+You can either run HDHomeRun as --net=host without any additional configuration or within the docker network by specifying the HDHomeRun IP address in Configuration --> General --> Base (Level: Expert).
+In that case you must also specify the Local IP address where the docker is running, and expose the port(s) for the HDHomeRun tuners. See the tooltip of the configuration for details.
 
 ## Parameters
 
