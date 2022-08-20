@@ -124,6 +124,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "19.08.22:", desc: "Switch to new picons builder." }
   - { date: "16.04.22:", desc: "Added URL XMLTV grabber." }
   - { date: "05.01.22:", desc: "Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv." }
   - { date: "11.05.21:", desc: "Added Intel iHD driver support." }

@@ -218,6 +218,11 @@ RUN \
  make -j 2 && \
  make DESTDIR=/tmp/comskip-build install
 
+############## picons stage ##############
+# built by https://github.com/linuxserver/picons-builder
+FROM ghcr.io/linuxserver/picons-builder as piconsstage
+
+
 ############## runtime stage ##############
 FROM ghcr.io/linuxserver/baseimage-alpine:3.15
 
@@ -315,12 +320,7 @@ RUN \
 	wget \
 	x264 \
 	x265 \
-	zlib && \
- echo "**** Add Picons ****" && \
- mkdir -p /picons && \
- curl -s -o \
-        /picons.tar.bz2 -L \
-        https://lsio-ci.ams3.digitaloceanspaces.com/picons/picons.tar.bz2
+	zlib
 
 # copy local files and buildstage artifacts
 COPY --from=buildstage /tmp/argtable-build/usr/ /usr/
@@ -329,6 +329,7 @@ COPY --from=buildstage /tmp/tvheadend-build/usr/ /usr/
 COPY --from=buildstage /tmp/xmltv-build/usr/ /usr/
 COPY --from=buildstage /usr/local/share/man/ /usr/local/share/man/
 COPY --from=buildstage /usr/local/share/perl5/ /usr/local/share/perl5/
+COPY --from=piconsstage /picons.tar.bz2 /picons.tar.bz2
 COPY root/ /
 
 # ports and volumes

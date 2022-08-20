@@ -14,6 +14,7 @@ mkdir -p \
 
 # extract picons on first run
 [[ -f /picons.tar.bz2 ]] && \
+        mkdir -p /picons
 	tar xf \
 		/picons.tar.bz2 -C \
 		/picons &&
