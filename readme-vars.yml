@@ -19,7 +19,7 @@ available_architectures:
 
 # development version
 # development version
-development_versions: true
+development_versions: false
 development_versions_items:
   - { tag: "latest", desc: "Current latest release." }
   - { tag: "release-4.2", desc: "Latest release from 4.2 branch." }
@@ -33,8 +33,8 @@ param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where TVHeadend show store it's config files." }
-  - { vol_path: "/recordings", vol_host_path: "<path to recordings>", desc: "Where you want the PVR to store recordings." }
+  - { vol_path: "/config", vol_host_path: "/path/to/data", desc: "Where TVHeadend show store it's config files." }
+  - { vol_path: "/recordings", vol_host_path: "/path/to/recordings", desc: "Where you want the PVR to store recordings." }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "9981", internal_port: "9981", port_desc: "WebUI" }
@@ -45,7 +45,7 @@ cap_add_param: false
 # optional container parameters
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "RUN_OPTS", env_value: "<run options here>", desc: "Optionally specify additional arguments to be passed. See Additional runtime parameters." }
+  - { env_var: "RUN_OPTS", env_value: "", desc: "Optionally specify additional arguments to be passed. See Additional runtime parameters." }
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: true
@@ -124,6 +124,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "31.08.22:", desc: "Update sample env vars and how RUN_OPTS are handled." }
   - { date: "19.08.22:", desc: "Switch to new picons builder." }
   - { date: "16.04.22:", desc: "Added URL XMLTV grabber." }
   - { date: "05.01.22:", desc: "Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv." }
