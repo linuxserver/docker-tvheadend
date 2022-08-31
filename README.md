@@ -60,15 +60,6 @@ The architectures supported by this image are:
 | arm64 | ✅ | arm64v8-\<version tag\> |
 | armhf| ✅ | arm32v7-\<version tag\> |
 
-## Version Tags
-
-This image provides various versions that are available via tags. Please read the descriptions carefully and exercise caution when using unstable or development tags.
-
-| Tag | Available | Description |
-| :----: | :----: |--- |
-| latest | ✅ | Current latest release. |
-| release-4.2 | ✅ | Latest release from 4.2 branch. |
-
 ## Application Setup
 
 The setup depends if you run the one of the stable tags or use latest. Running latest is the easiest as it has a setup wizard.
@@ -146,10 +137,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - RUN_OPTS=<run options here> #optional
+      - RUN_OPTS= #optional
     volumes:
-      - <path to data>:/config
-      - <path to recordings>:/recordings
+      - /path/to/data:/config
+      - /path/to/recordings:/recordings
     ports:
       - 9981:9981
       - 9982:9982
@@ -167,11 +158,11 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -e RUN_OPTS=<run options here> `#optional` \
+  -e RUN_OPTS= `#optional` \
   -p 9981:9981 \
   -p 9982:9982 \
-  -v <path to data>:/config \
-  -v <path to recordings>:/recordings \
+  -v /path/to/data:/config \
+  -v /path/to/recordings:/recordings \
   --device /dev/dri:/dev/dri `#optional` \
   --device /dev/dvb:/dev/dvb `#optional` \
   --restart unless-stopped \
@@ -194,7 +185,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
-| `-e RUN_OPTS=<run options here>` | Optionally specify additional arguments to be passed. See Additional runtime parameters. |
+| `-e RUN_OPTS=` | Optionally specify additional arguments to be passed. See Additional runtime parameters. |
 | `-v /config` | Where TVHeadend show store it's config files. |
 | `-v /recordings` | Where you want the PVR to store recordings. |
 | `--device /dev/dri` | Only needed if you want to use your AMD/Intel GPU for hardware accelerated video encoding (vaapi). |
@@ -309,6 +300,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **31.08.22:** - Update sample env vars and how RUN_OPTS are handled.
 * **19.08.22:** - Switch to new picons builder.
 * **16.04.22:** - Added URL XMLTV grabber.
 * **05.01.22:** - Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv.
