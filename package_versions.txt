@@ -11,7 +11,7 @@ bzip2-1.0.8-r1
 ca-certificates-20220614-r0
 ca-certificates-bundle-20220614-r0
 coreutils-9.0-r2
-curl-7.80.0-r3
+curl-7.80.0-r4
 expat-2.5.0-r0
 ffmpeg-4.4.1-r2
 ffmpeg-libs-4.4.1-r2
@@ -39,7 +39,7 @@ libbsd-0.11.3-r1
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcrypto1.1-1.1.1q-r0
-libcurl-7.80.0-r3
+libcurl-7.80.0-r4
 libdav1d-0.9.2-r0
 libdrm-2.4.109-r0
 libdvbcsa-1.1.0-r1
@@ -101,7 +101,7 @@ ncurses-libs-6.3_p20211120-r1
 ncurses-terminfo-base-6.3_p20211120-r1
 nettle-3.7.3-r0
 nghttp2-libs-1.46.0-r0
-openssl-1.1.1q-r0
+openssl-1.1.1s-r1
 opus-1.3.1-r1
 p11-kit-0.24.0-r1
 pcre-8.45-r1
@@ -123,7 +123,7 @@ perl-date-manip-6.86-r0
 perl-datetime-1.54-r1
 perl-datetime-format-strptime-1.79-r0
 perl-datetime-locale-1.33-r0
-perl-datetime-timezone-2.51-r0
+perl-datetime-timezone-2.56-r0
 perl-dbd-sqlite-1.70-r1
 perl-dbi-1.643-r3
 perl-devel-stacktrace-2.04-r3
