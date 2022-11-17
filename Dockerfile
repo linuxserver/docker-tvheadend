@@ -138,6 +138,16 @@ RUN \
  make test && \
  make DESTDIR=/tmp/xmltv-build install
 
+ RUN \
+ echo "***** compile libdvbcsa sse2 ****" && \
+ git clone https://github.com/glenvt18/libdvbcsa /tmp/libdvbcsa && \
+ cd /tmp/libdvbcsa && \
+ autoreconf -i && \
+ ./configure \
+	--enable-sse2 && \
+ make -j 2 && \
+ make  install
+
 RUN \
  echo "**** compile tvheadend ****" && \
  if [ -z ${TVHEADEND_COMMIT+x} ]; then \
