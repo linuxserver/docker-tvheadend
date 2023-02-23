@@ -238,8 +238,6 @@ RUN \
     libdvbcsa \
     libhdhomerun-libs \
     libva \
-    libva-intel-driver \
-    intel-media-driver \
     mesa \
     libvpx \
     libxml2 \
