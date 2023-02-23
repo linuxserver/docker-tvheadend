@@ -124,6 +124,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "23.02.23:", desc: "Rebase to Alpine 3.17, migrate to s6v3." }
   - { date: "31.08.22:", desc: "Update sample env vars and how RUN_OPTS are handled." }
   - { date: "19.08.22:", desc: "Switch to new picons builder." }
   - { date: "16.04.22:", desc: "Added URL XMLTV grabber." }
