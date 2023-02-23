@@ -33,6 +33,7 @@ RUN \
     libgcrypt-dev \
     libhdhomerun-dev \
     libtool \
+    libva-dev \
     libvpx-dev \
     libxml2-dev \
     libxslt-dev \
@@ -168,6 +169,7 @@ RUN \
     --enable-libav \
     --enable-pngquant \
     --enable-trace \
+    --enable-vaapi \
     --infodir=/usr/share/info \
     --localstatedir=/var \
     --mandir=/usr/share/man \
@@ -235,6 +237,8 @@ RUN \
     gnu-libiconv \
     libdvbcsa \
     libhdhomerun-libs \
+    libva \
+    mesa \
     libvpx \
     libxml2 \
     libxslt \
