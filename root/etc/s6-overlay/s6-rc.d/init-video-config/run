@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 FILES=$(find /dev/dri /dev/dvb -type c -print 2>/dev/null)
 
