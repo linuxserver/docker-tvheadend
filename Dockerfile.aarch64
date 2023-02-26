@@ -233,7 +233,7 @@ RUN \
   apk add --no-cache \
     bsd-compat-headers \
     ffmpeg \
-    ffpmeg4-libs \
+    ffmpeg4-libs \
     gnu-libiconv \
     libdvbcsa \
     libhdhomerun-libs \
