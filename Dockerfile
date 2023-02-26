@@ -232,7 +232,7 @@ RUN \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
     bsd-compat-headers \
-    ffmpeg4 \
+    ffmpeg \
     ffmpeg4-libs \
     gnu-libiconv \
     libdvbcsa \
