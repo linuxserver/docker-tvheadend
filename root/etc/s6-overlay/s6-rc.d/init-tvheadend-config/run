@@ -3,37 +3,28 @@
 
 # make folders
 mkdir -p \
-	/config/comskip
+    /config/comskip
 
 # copy config
 if [[ ! -e /config/dvr/config ]]; then
-	(mkdir -p /config/dvr/config && cp /defaults/7a5edfbe189851e5b1d1df19c93962f0 /config/dvr/config/7a5edfbe189851e5b1d1df19c93962f0)
+    (mkdir -p /config/dvr/config && cp /defaults/7a5edfbe189851e5b1d1df19c93962f0 /config/dvr/config/7a5edfbe189851e5b1d1df19c93962f0)
 fi
 if [[ ! -e /config/comskip/comskip.ini ]]; then
-	cp /defaults/comskip.ini.org /config/comskip/comskip.ini
+    cp /defaults/comskip.ini.org /config/comskip/comskip.ini
 fi
 if [[ ! -e /config/config ]]; then
     (cp /defaults/config /config/config)
-fi
-
-# extract picons on first run
-if [[ -f /picons.tar.bz2 ]]; then
-        mkdir -p /picons
-	tar xf \
-		/picons.tar.bz2 -C \
-		/picons &&
-	rm -f /picons.tar.bz2
 fi
 
 # function to randomly sample 5 files for their owner and only chown if not abc
 chowner () {
 files=(${1}/*)
 for i in {1..5}; do
-        user=$(stat -c '%U' $(printf "%s\n" "${files[RANDOM % ${#files[@]}]}"))
-        if [ "${user}" != "abc" ]; then
-                chown -R abc:abc ${1}
-                break
-        fi
+    user=$(stat -c '%U' $(printf "%s\n" "${files[RANDOM % ${#files[@]}]}"))
+    if [ "${user}" != "abc" ]; then
+        chown -R abc:abc ${1}
+        break
+    fi
 done
 }
 
@@ -44,9 +35,9 @@ abc_dirs=( \
 /picons \
 )
 for i in "${abc_dirs[@]}"; do
-        if [ "$(ls -A ${i})" ]; then
-                chowner ${i}
-        else
-                chown -R abc:abc ${i}
-        fi
+    if [ "$(ls -A ${i})" ]; then
+        chowner ${i}
+    else
+        chown -R abc:abc ${i}
+    fi
 done
