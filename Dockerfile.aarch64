@@ -63,11 +63,6 @@ RUN \
   cp /usr/include/gnu-libiconv/iconv.h /usr/include/iconv.h
 
 RUN \
-  echo "**** install perl modules for xmltv ****" && \
-  curl -s -L https://cpanmin.us | perl - App::cpanminus && \
-  cpanm --no-interactive --installdeps /tmp/patches
-
-RUN \
   echo "**** compile tvheadend ****" && \
   if [ -z ${TVHEADEND_COMMIT+x} ]; then \
     TVHEADEND_COMMIT=$(curl -sX GET https://api.github.com/repos/tvheadend/tvheadend/commits/master \
