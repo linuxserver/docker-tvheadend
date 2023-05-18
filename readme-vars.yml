@@ -123,6 +123,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "18.05.23:", desc: "Rebase to Alpine 3.18." }
   - { date: "17.03.23:", desc: "Extract picons during build instead of init." }
   - { date: "23.02.23:", desc: "Rebase to Alpine 3.17, migrate to s6v3, drop armhf support." }
   - { date: "31.08.22:", desc: "Update sample env vars and how RUN_OPTS are handled." }
