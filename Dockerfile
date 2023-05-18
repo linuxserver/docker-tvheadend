@@ -10,7 +10,6 @@ FROM ghcr.io/linuxserver/baseimage-alpine:3.18 as buildstage
 
 # package versions
 ARG ARGTABLE_VER="2.13"
-ARG XMLTV_VER="v1.0.0"
 
 # environment settings
 ARG TZ="Etc/UTC"
