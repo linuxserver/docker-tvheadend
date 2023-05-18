@@ -5,7 +5,7 @@
 FROM ghcr.io/linuxserver/picons-builder as piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.17 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.18 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -117,7 +117,7 @@ RUN \
 RUN \
   echo "**** install perl modules for xmltv ****" && \
   curl -s -L https://cpanmin.us | perl - App::cpanminus && \
-  cpanm --installdeps /tmp/patches
+  cpanm --no-interactive --installdeps /tmp/patches
 
 RUN \
   echo "**** compile XMLTV ****" && \
@@ -225,7 +225,7 @@ RUN \
     /picons
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.17
+FROM ghcr.io/linuxserver/baseimage-alpine:3.18
 
 # set version label
 ARG BUILD_DATE
@@ -241,7 +241,14 @@ RUN \
   apk add --no-cache \
     bsd-compat-headers \
     ffmpeg \
-    ffmpeg4-libs \
+    ffmpeg4-libavcodec \
+    ffmpeg4-libavdevice \
+    ffmpeg4-libavfilter \
+    ffmpeg4-libavformat \
+    ffmpeg4-libavutil \
+    ffmpeg4-libpostproc \
+    ffmpeg4-libswresample \
+    ffmpeg4-libswscale \
     gnu-libiconv \
     libdvbcsa \
     libhdhomerun-libs \
