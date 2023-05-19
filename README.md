@@ -301,6 +301,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **18.05.23:** - Install XMLTV from Alpine repos.
 * **18.05.23:** - Rebase to Alpine 3.18.
 * **17.03.23:** - Extract picons during build instead of init.
 * **23.02.23:** - Rebase to Alpine 3.17, migrate to s6v3, drop armhf support.
