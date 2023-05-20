@@ -187,6 +187,7 @@ RUN \
     opus \
     pcre2 \
     perl \
+    perl-datetime-format-strptime \
     py3-requests \
     python3 \
     uriparser \
