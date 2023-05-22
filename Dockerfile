@@ -188,6 +188,7 @@ RUN \
     pcre2 \
     perl \
     perl-datetime-format-strptime \
+    perl-json \
     py3-requests \
     python3 \
     uriparser \
