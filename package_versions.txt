@@ -9,16 +9,16 @@ apk-tools                        2.14.0-r2               apk
 bash                             5.2.15-r5               apk     
 brotli-libs                      1.0.9-r14               apk     
 bsd-compat-headers               0.7.2-r5                apk     
-busybox                          1.36.0                  binary  
-busybox                          1.36.0-r9               apk     
-busybox-binsh                    1.36.0-r9               apk     
+busybox                          1.36.1                  binary  
+busybox                          1.36.1-r0               apk     
+busybox-binsh                    1.36.1-r0               apk     
 ca-certificates                  20230506-r0             apk     
 ca-certificates-bundle           20230506-r0             apk     
 certifi                          2023.5.7                python  
 charset-normalizer               3.1.0                   python  
 cjson                            1.7.15-r4               apk     
 coreutils                        9.3-r1                  apk     
-curl                             8.1.1-r1                apk     
+curl                             8.1.2-r0                apk     
 dbus-libs                        1.14.6-r3               apk     
 ffmpeg                           6.0-r14                 apk     
 ffmpeg-libavcodec                6.0-r14                 apk     
@@ -54,7 +54,7 @@ harfbuzz                         7.3.0-r0                apk
 hwdata-pci                       0.370-r0                apk     
 idna                             3.4                     python  
 intel-gmmlib                     22.3.5-r0               apk     
-intel-media-driver               23.2.2-r0               apk     
+intel-media-driver               23.2.3-r0               apk     
 jq                               1.6-r3                  apk     
 lame-libs                        3.100-r5                apk     
 lcms2                            2.15-r2                 apk     
@@ -67,9 +67,9 @@ libbluray                        1.3.4-r0                apk
 libbsd                           0.11.7-r1               apk     
 libbz2                           1.0.8-r5                apk     
 libc-utils                       0.7.2-r5                apk     
-libcrypto3                       3.1.0-r4                apk     
-libcurl                          8.1.1-r1                apk     
-libdav1d                         1.2.0-r0                apk     
+libcrypto3                       3.1.1-r1                apk     
+libcurl                          8.1.2-r0                apk     
+libdav1d                         1.2.1-r0                apk     
 libdrm                           2.4.115-r4              apk     
 libdvbcsa                        1.1.0-r1                apk     
 libexpat                         2.5.0-r1                apk     
@@ -101,7 +101,7 @@ libsndfile                       1.2.0-r2                apk
 libsodium                        1.0.18-r3               apk     
 libsrt                           1.5.1-r0                apk     
 libssh                           0.10.5-r0               apk     
-libssl3                          3.1.0-r4                apk     
+libssl3                          3.1.1-r1                apk     
 libstdc++                        12.2.1_git20220924-r10  apk     
 libtasn1                         4.19.0-r1               apk     
 libtheora                        1.1.1-r17               apk     
@@ -126,7 +126,7 @@ libzmq                           4.3.4-r4                apk
 linux-headers                    6.3-r0                  apk     
 linux-pam                        1.5.2-r10               apk     
 mbedtls                          2.28.3-r1               apk     
-mesa                             23.0.3-r3               apk     
+mesa                             23.0.4-r0               apk     
 mpdecimal                        2.5.1-r2                apk     
 mpg123-libs                      1.31.3-r1               apk     
 musl                             1.2.4-r0                apk     
@@ -139,7 +139,7 @@ numactl                          2.0.16-r4               apk
 onevpl-libs                      2023.2.1-r0             apk     
 oniguruma                        6.9.8-r1                apk     
 opus                             1.4-r0                  apk     
-orc                              0.4.33-r1               apk     
+orc                              0.4.34-r0               apk     
 p11-kit                          0.24.1-r2               apk     
 pcre2                            10.42-r1                apk     
 perl                             5.36.1-r2               apk     
@@ -157,7 +157,7 @@ perl-datetime-format-builder     0.83-r1                 apk
 perl-datetime-format-iso8601     0.16-r0                 apk     
 perl-datetime-format-sqlite      0.11-r4                 apk     
 perl-datetime-format-strptime    1.79-r0                 apk     
-perl-datetime-locale             1.38-r1                 apk     
+perl-datetime-locale             1.39-r0                 apk     
 perl-datetime-timezone           2.60-r0                 apk     
 perl-dbd-sqlite                  1.72-r1                 apk     
 perl-dbi                         1.643-r5                apk     
@@ -265,7 +265,7 @@ soxr                             0.1.3-r5                apk
 speexdsp                         1.2.1-r1                apk     
 spirv-tools                      1.3.243.0-r1            apk     
 sqlite-libs                      3.41.2-r2               apk     
-ssl_client                       1.36.0-r9               apk     
+ssl_client                       1.36.1-r0               apk     
 svt-av1-libs                     1.5.0-r0                apk     
 tdb-libs                         1.4.8-r1                apk     
 tzdata                           2023c-r1                apk     
