@@ -1,12 +1,16 @@
 #!/bin/bash
+
 dflag=
 vflag=
 cflag=
+
 if (( $# < 1 ))
 then
-  cat /config/data/*.xml
   exit 0
 fi
+
+OPTARG=""
+SOURCE=$1
 
 for arg
 do
@@ -17,15 +21,19 @@ do
        --version) args="${args}-v ";;
        --capabilities) args="${args}-c ";;
        #pass through anything else
-       *) [[ "${arg:0:1}" == "-" ]] || delim="\""
-           args="${args}${delim}${arg}${delim} ";;
+       *) if [ "${arg:0:1}" == "-" ] || delim="\""
+          then
+           args="${args}${delim}${arg}${delim} "
+          else
+           OPTARG=${arg}
+          fi
     esac
 done
 
 #Reset the positional parameters to the short options
 eval set -- $args
 
-while getopts "dvc" option 
+while getopts "dvc" option
 do
     case $option in
         d)  dflag=1;;
@@ -40,16 +48,32 @@ done
 
 if [ "$dflag" ]
 then
-   printf "XML file grabber\n"
+   printf "Simple file grabber\n"
+   exit 0
 fi
 if [ "$vflag" ]
 then
-   printf "0.1\n"
+   printf "0.2\n"
+   exit 0
 fi
 if [ "$cflag" ]
 then
    printf "baseline\n"
+   exit 0
+fi
+if [ -z "${SOURCE}" ]
+then
+  echo "bla"
+  exit 0
+else
+  if [[ $SOURCE == *http* ]]; then ##Case URL
+    curl -s $SOURCE
+  elif [ -f "$SOURCE" ]; then  ##Case local File
+    cat $SOURCE
+  else
+    printf "File not found: %s\n" $SOURCE
+    exit 1
+  fi
 fi
 
 exit 0
-
