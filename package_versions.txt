@@ -93,7 +93,7 @@ libpanelw                        6.4_p20230506-r0        apk
 libpciaccess                     0.17-r2                 apk     
 libplacebo                       5.264.1-r1              apk     
 libpng                           1.6.39-r3               apk     
-libproc2                         4.0.3-r1                apk     
+libproc2                         4.0.4-r0                apk     
 libpulse                         16.1-r10                apk     
 librist                          0.2.7-r0                apk     
 libsndfile                       1.2.0-r2                apk     
@@ -237,7 +237,7 @@ perl-xml-sax-base                1.09-r3                 apk
 perl-xml-treepp                  0.43-r3                 apk     
 perl-xml-twig                    3.52-r4                 apk     
 perl-xml-writer                  0.900-r1                apk     
-procps-ng                        4.0.3-r1                apk     
+procps-ng                        4.0.4-r0                apk     
 py3-certifi                      2023.5.7-r0             apk     
 py3-certifi-pyc                  2023.5.7-r0             apk     
 py3-charset-normalizer           3.1.0-r1                apk     
