@@ -149,6 +149,7 @@ perl-class-inspector             1.36-r2                 apk
 perl-class-methodmaker           2.24-r9                 apk     
 perl-class-singleton             1.6-r0                  apk     
 perl-clone                       0.46-r1                 apk     
+perl-common-sense                3.75-r3                 apk     
 perl-compress-raw-zlib           2.204-r1                apk     
 perl-date-manip                  6.91-r0                 apk     
 perl-datetime                    1.59-r1                 apk     
@@ -184,6 +185,7 @@ perl-io-html                     1.004-r0                apk
 perl-io-socket-ssl               2.081-r0                apk     
 perl-ipc-run3                    0.048-r3                apk     
 perl-json                        4.10-r0                 apk     
+perl-json-xs                     4.03-r2                 apk     
 perl-libwww                      6.68-r1                 apk     
 perl-lingua-en-numbers-ordinate  1.05-r0                 apk     
 perl-lingua-preferred            0.2.4-r4                apk     
@@ -226,6 +228,7 @@ perl-test2-plugin-nowarnings     0.09-r1                 apk
 perl-test2-suite                 0.000155-r0             apk     
 perl-timedate                    2.33-r2                 apk     
 perl-try-tiny                    0.31-r1                 apk     
+perl-types-serialiser            1.01-r0                 apk     
 perl-unicode-string              2.10-r4                 apk     
 perl-uri                         5.19-r0                 apk     
 perl-www-robotrules              6.02-r3                 apk     
