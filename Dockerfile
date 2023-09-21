@@ -189,6 +189,7 @@ RUN \
     perl \
     perl-datetime-format-strptime \
     perl-json \
+    perl-json-xs \
     py3-requests \
     python3 \
     uriparser \

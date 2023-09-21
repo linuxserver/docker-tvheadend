@@ -123,6 +123,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "20.09.23:", desc: "Add perl-json-xs package." }
   - { date: "18.05.23:", desc: "Install XMLTV from Alpine repos." }
   - { date: "18.05.23:", desc: "Rebase to Alpine 3.18." }
   - { date: "17.03.23:", desc: "Extract picons during build instead of init." }
