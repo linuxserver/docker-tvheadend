@@ -367,6 +367,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **16.10.23:** - Add mesa-va-gallium package for AMD transcoding.
 * **20.09.23:** - Add perl-json-xs package.
 * **18.05.23:** - Install XMLTV from Alpine repos.
 * **18.05.23:** - Rebase to Alpine 3.18.
