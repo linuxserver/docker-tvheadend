@@ -178,11 +178,11 @@ RUN \
     libdvbcsa \
     libhdhomerun-libs \
     libva \
-    mesa \
     libvpx \
     libxml2 \
     libxslt \
     linux-headers \
+    mesa-va-gallium \
     opus \
     pcre2 \
     perl \
