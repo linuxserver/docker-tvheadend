@@ -2,7 +2,7 @@ NAME                             VERSION                 TYPE
 alpine-baselayout                3.4.3-r1                apk     
 alpine-baselayout-data           3.4.3-r1                apk     
 alpine-keys                      2.4-r1                  apk     
-alpine-release                   3.18.4-r0               apk     
+alpine-release                   3.18.5-r0               apk     
 alsa-lib                         1.2.9-r1                apk     
 aom-libs                         3.6.1-r0                apk     
 apk-tools                        2.14.0-r2               apk     
@@ -146,7 +146,7 @@ opus                             1.4-r0                  apk
 orc                              0.4.34-r0               apk     
 p11-kit                          0.24.1-r2               apk     
 pcre2                            10.42-r1                apk     
-perl                             5.36.1-r2               apk     
+perl                             5.36.2-r0               apk     
 perl-b-hooks-endofscope          0.26-r1                 apk     
 perl-capture-tiny                0.48-r3                 apk     
 perl-class-data-inheritable      0.09-r0                 apk     
