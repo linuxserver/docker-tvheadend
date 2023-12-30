@@ -274,7 +274,7 @@ sqlite-libs                      3.41.2-r2               apk
 ssl_client                       1.36.1-r5               apk     
 svt-av1-libs                     1.6.0-r0                apk     
 tdb-libs                         1.4.8-r1                apk     
-tzdata                           2023c-r1                apk     
+tzdata                           2023d-r0                apk     
 uriparser                        0.9.7-r0                apk     
 urllib3                          1.26.18                 python  
 utmps-libs                       0.1.2.1-r1              apk     
