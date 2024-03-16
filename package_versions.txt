@@ -72,7 +72,7 @@ libdav1d                         1.2.1-r0                apk
 libdrm                           2.4.115-r4              apk       
 libdvbcsa                        1.1.0-r1                apk       
 libelf                           0.189-r2                apk       
-libexpat                         2.6.0-r0                apk       
+libexpat                         2.6.2-r0                apk       
 libffi                           3.4.4-r2                apk       
 libgcc                           12.2.1_git20220924-r10  apk       
 libgcrypt                        1.10.2-r1               apk       
@@ -202,7 +202,7 @@ perl-lwp-useragent-determined    1.07-r3                 apk
 perl-module-implementation       0.09-r4                 apk       
 perl-module-pluggable            5.2-r3                  apk       
 perl-module-runtime              0.016-r5                apk       
-perl-mozilla-ca                  20221114-r1             apk       
+perl-mozilla-ca                  20240313-r0             apk       
 perl-mro-compat                  0.15-r1                 apk       
 perl-namespace-autoclean         0.29-r2                 apk       
 perl-namespace-clean             0.27-r3                 apk       
