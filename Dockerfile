@@ -5,7 +5,7 @@
 FROM ghcr.io/linuxserver/picons-builder as piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.18 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.19 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -149,7 +149,7 @@ RUN \
     /picons
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.18
+FROM ghcr.io/linuxserver/baseimage-alpine:3.19
 
 # set version label
 ARG BUILD_DATE
