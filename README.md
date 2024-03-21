@@ -83,9 +83,9 @@ Find the path in the path field of your grabber. We will use the last part. It s
 docker exec -it -u abc tvheadend /usr/bin/for_you_to_fill_out --configure
 ```
 
-Now follow the onscreen progress. If you get asked about cache, just accept the default. After you have configured your grabber, you can go back and enable your grabber.
+Now follow the on-screen progress. If you get asked about cache, just accept the default. After you have configured your grabber, you can go back and enable your grabber.
 
-If you allready have a configuration file, you can add it in the .xmltv folder where you mapped the /config volume. If it's not created, create it.
+If you already have a configuration file, you can add it in the .xmltv folder where you mapped the /config volume. If it's not created, create it.
 
 **Comskip**
 This container comes with Comskip for commercial flagging of recordings. This you have to add in the recording config of tvheadend.
@@ -137,7 +137,7 @@ services:
       - TZ=Etc/UTC
       - RUN_OPTS= #optional
     volumes:
-      - /path/to/data:/config
+      - /path/to/tvheadend/data:/config
       - /path/to/recordings:/recordings
     ports:
       - 9981:9981
@@ -159,7 +159,7 @@ docker run -d \
   -e RUN_OPTS= `#optional` \
   -p 9981:9981 \
   -p 9982:9982 \
-  -v /path/to/data:/config \
+  -v /path/to/tvheadend/data:/config \
   -v /path/to/recordings:/recordings \
   --device /dev/dri:/dev/dri `#optional` \
   --device /dev/dvb:/dev/dvb `#optional` \
@@ -170,7 +170,7 @@ docker run -d \
 #### Host vs. Bridge
 
 If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
-If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stabilty problems. These can be solved by giving tvheadend its own IP using macvlan.
+If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stability problems.
 
 
 ## Parameters
@@ -351,6 +351,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **20.03.24:** - Rebase to Alpine 3.19.
 * **16.10.23:** - Add mesa-va-gallium package for AMD transcoding.
 * **20.09.23:** - Add perl-json-xs package.
 * **18.05.23:** - Install XMLTV from Alpine repos.
