@@ -127,9 +127,7 @@ RUN \
     --localstatedir=/var && \
   make -j 2 && \
   make check && \
-  make DESTDIR=/tmp/libdvbcsa-build install && \
-  echo "**** copy to /usr for tvheadend dependency ****" && \
-  cp -pr /tmp/libdvbcsa-build/usr/* /usr/
+  make DESTDIR=/tmp/libdvbcsa-build install
 
 RUN \
   echo "**** compile argtable2 ****" && \
@@ -220,6 +218,7 @@ RUN \
     zlib
 
 # copy local files and buildstage artifacts
+COPY --from=buildstage /tmp/libdvbcsa-build/usr/ /usr/
 COPY --from=buildstage /tmp/argtable-build/usr/ /usr/
 COPY --from=buildstage /tmp/comskip-build/usr/ /usr/
 COPY --from=buildstage /tmp/tvheadend-build/usr/ /usr/
