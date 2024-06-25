@@ -9,19 +9,11 @@ project_blurb: |
   Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
   Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-project_blurb_optional_extras_enabled: false
 
 # supported architectures
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
   - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-
-# development version
-# development version
-development_versions: false
-development_versions_items:
-  - { tag: "latest", desc: "Current latest release." }
-  - { tag: "release-4.2", desc: "Latest release from 4.2 branch." }
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -114,6 +106,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "25.06.24:", desc: "Rebase to Alpine 3.20." }
   - { date: "20.03.24:", desc: "Rebase to Alpine 3.19." }
   - { date: "16.10.23:", desc: "Add mesa-va-gallium package for AMD transcoding." }
   - { date: "20.09.23:", desc: "Add perl-json-xs package." }
