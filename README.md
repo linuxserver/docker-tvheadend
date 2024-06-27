@@ -351,6 +351,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **25.06.24:** - Rebase to Alpine 3.20.
 * **20.03.24:** - Rebase to Alpine 3.19.
 * **16.10.23:** - Add mesa-va-gallium package for AMD transcoding.
 * **20.09.23:** - Add perl-json-xs package.

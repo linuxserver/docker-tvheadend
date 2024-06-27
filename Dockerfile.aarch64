@@ -195,7 +195,8 @@ RUN \
     x264 \
     x265 \
     xmltv \
-    zlib
+    zlib && \
+  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version
 
 # copy local files and buildstage artifacts
 COPY --from=buildstage /tmp/argtable-build/usr/ /usr/
