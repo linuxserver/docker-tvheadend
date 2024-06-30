@@ -110,6 +110,26 @@ RUN \
   make DESTDIR=/tmp/tvheadend-build install
 
 RUN \
+  echo "**** compile libdvbcsa ****" && \
+  git clone https://github.com/glenvt18/libdvbcsa.git /tmp/libdvbcsa && \
+  cd /tmp/libdvbcsa && \
+  git checkout 2a1e61e569a621c55c2426f235f42c2398b7f18f && \
+  echo "**** patch libdvbcsa with icam support****" && \
+  git config apply.whitespace nowarn && git apply /tmp/patches/libdvbcsa.patch && sed 's# == 4)# > 0)#' -i src/dvbcsa_pv.h && \
+  ./bootstrap && \
+  ./configure \
+    --enable-ssse3 \
+    --with-pic \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --localstatedir=/var && \
+  make -j 2 && \
+  make check && \
+  make DESTDIR=/tmp/libdvbcsa-build install
+
+RUN \
   echo "**** compile argtable2 ****" && \
   ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
   mkdir -p \
@@ -174,7 +194,6 @@ RUN \
     ffmpeg4-libswresample \
     ffmpeg4-libswscale \
     gnu-libiconv \
-    libdvbcsa \
     libhdhomerun-libs \
     libva \
     libva-intel-driver \
@@ -200,6 +219,7 @@ RUN \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version
 
 # copy local files and buildstage artifacts
+COPY --from=buildstage /tmp/libdvbcsa-build/usr/ /usr/
 COPY --from=buildstage /tmp/argtable-build/usr/ /usr/
 COPY --from=buildstage /tmp/comskip-build/usr/ /usr/
 COPY --from=buildstage /tmp/tvheadend-build/usr/ /usr/
