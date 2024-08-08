@@ -62,6 +62,6 @@ then
    exit 0
 fi
 
-curl -s "$URL"
+curl -sL "$URL"
 
 exit 0
