@@ -275,10 +275,10 @@ py3-requests                     2.32.3-r0              apk
 py3-requests-pyc                 2.32.3-r0              apk       
 py3-urllib3                      1.26.18-r1             apk       
 py3-urllib3-pyc                  1.26.18-r1             apk       
-pyc                              3.12.6-r0              apk       
-python3                          3.12.6-r0              apk       
-python3-pyc                      3.12.6-r0              apk       
-python3-pycache-pyc0             3.12.6-r0              apk       
+pyc                              3.12.7-r0              apk       
+python3                          3.12.7-r0              apk       
+python3-pyc                      3.12.7-r0              apk       
+python3-pycache-pyc0             3.12.7-r0              apk       
 rav1e-libs                       0.7.1-r0               apk       
 readline                         8.2.10-r0              apk       
 requests                         2.32.3                 python    
