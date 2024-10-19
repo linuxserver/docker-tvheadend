@@ -141,7 +141,7 @@ lilv-libs                        0.24.24-r1             apk
 linux-headers                    6.6-r0                 apk       
 linux-pam                        1.6.0-r0               apk       
 llvm17-libs                      17.0.6-r1              apk       
-mbedtls                          3.6.1-r0               apk       
+mbedtls                          3.6.2-r0               apk       
 mesa                             24.0.9-r1              apk       
 mesa-va-gallium                  24.0.9-r1              apk       
 mpdecimal                        4.0.0-r0               apk       
