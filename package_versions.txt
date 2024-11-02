@@ -145,7 +145,7 @@ mbedtls                          3.6.2-r0               apk
 mesa                             24.0.9-r1              apk       
 mesa-va-gallium                  24.0.9-r1              apk       
 mpdecimal                        4.0.0-r0               apk       
-mpg123-libs                      1.32.6-r0              apk       
+mpg123-libs                      1.32.8-r0              apk       
 musl                             1.2.5-r0               apk       
 musl-utils                       1.2.5-r0               apk       
 ncurses-terminfo-base            6.4_p20240420-r1       apk       
