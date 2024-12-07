@@ -9,32 +9,29 @@ project_blurb: |
   Tvheadend offers the HTTP (VLC, MPlayer), HTSP (Kodi, Movian) and SAT>IP streaming.
   Multiple EPG sources are supported (over-the-air DVB and ATSC including OpenTV DVB extensions, XMLTV, PyXML).
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-
 # supported architectures
 available_architectures:
-  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
-  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-
+  - {arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - {arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/data", desc: "Where TVHeadend show store it's config files." }
-  - { vol_path: "/recordings", vol_host_path: "/path/to/recordings", desc: "Where you want the PVR to store recordings." }
+  - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/data", desc: "Where TVHeadend show store it's config files."}
+  - {vol_path: "/recordings", vol_host_path: "/path/to/recordings", desc: "Where you want the PVR to store recordings."}
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "9981", internal_port: "9981", port_desc: "WebUI" }
-  - { external_port: "9982", internal_port: "9982", port_desc: "HTSP server port." }
-
+  - {external_port: "9981", internal_port: "9981", port_desc: "WebUI"}
+  - {external_port: "9982", internal_port: "9982", port_desc: "HTSP server port."}
 # optional container parameters
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "RUN_OPTS", env_value: "", desc: "Optionally specify additional arguments to be passed. See Additional runtime parameters." }
+  - {env_var: "RUN_OPTS", env_value: "", desc: "Optionally specify additional arguments to be passed. See Additional runtime parameters."}
 opt_param_device_map: true
 opt_param_devices:
-  - { device_path: "/dev/dri", device_host_path: "/dev/dri", desc: "Only needed if you want to use your AMD/Intel GPU for hardware accelerated video encoding (vaapi)." }
-  - { device_path: "/dev/dvb", device_host_path: "/dev/dvb", desc: "Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out." }
+  - {device_path: "/dev/dri", device_host_path: "/dev/dri", desc: "Only needed if you want to use your AMD/Intel GPU for hardware accelerated video encoding (vaapi)."}
+  - {device_path: "/dev/dvb", device_host_path: "/dev/dvb", desc: "Only needed if you want to pass through a DVB card to the container. If you use IPTV or HDHomeRun you can leave it out."}
 optional_block_1: true
 optional_block_1_items:
   - |
@@ -42,7 +39,6 @@ optional_block_1_items:
 
     If you use IPTV, SAT>IP or HDHomeRun, you need to create the container with --net=host and remove the -p flags. This is because to work with these services Tvheadend requires a multicast address of `239.255.255.250` and a UDP port of `1900` which at this time is not possible with docker bridge mode.
     If you have other host services which also use multicast such as SSDP/DLNA/Emby you may experience stability problems.
-
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
@@ -103,58 +99,101 @@ app_setup_block: |
   ## Additional runtime parameters
 
   In some cases it might be necessary to start tvheadend with additional parameters, for example to enable debugging or specify webroot for reverse proxy. Be sure to have the right parameters set, as adding the wrong once might lead to the container not starting correctly.
-
+# init diagram
+init_diagram: |
+  "tvheadend:latest": {
+    docker-mods
+    base {
+      fix-attr +\nlegacy cont-init
+    }
+    docker-mods -> base
+    legacy-services
+    custom services
+    init-services -> legacy-services
+    init-services -> custom services
+    custom services -> legacy-services
+    legacy-services -> ci-service-check
+    init-migrations -> init-adduser
+    init-os-end -> init-config
+    init-config -> init-config-end
+    init-video-config -> init-config-end
+    init-os-end -> init-crontab-config
+    init-mods-end -> init-custom-files
+    base -> init-envfile
+    base -> init-migrations
+    base -> init-mods
+    init-config-end -> init-mods
+    init-mods -> init-mods-end
+    init-mods-package-install -> init-mods-end
+    init-mods -> init-mods-package-install
+    base -> init-os-end
+    init-adduser -> init-os-end
+    init-envfile -> init-os-end
+    init-migrations -> init-os-end
+    init-custom-files -> init-services
+    init-mods-end -> init-services
+    init-config -> init-tvheadend-config
+    init-tvheadend-config -> init-video-config
+    init-services -> svc-cron
+    svc-cron -> legacy-services
+    init-services -> svc-tvheadend
+    svc-tvheadend -> legacy-services
+  }
+  Base Images: {
+    "baseimage-alpine:3.20"
+  }
+  "tvheadend:latest" <- Base Images
 # changelog
 changelogs:
-  - { date: "25.06.24:", desc: "Rebase to Alpine 3.20." }
-  - { date: "20.03.24:", desc: "Rebase to Alpine 3.19." }
-  - { date: "16.10.23:", desc: "Add mesa-va-gallium package for AMD transcoding." }
-  - { date: "20.09.23:", desc: "Add perl-json-xs package." }
-  - { date: "18.05.23:", desc: "Install XMLTV from Alpine repos." }
-  - { date: "18.05.23:", desc: "Rebase to Alpine 3.18." }
-  - { date: "17.03.23:", desc: "Extract picons during build instead of init." }
-  - { date: "23.02.23:", desc: "Rebase to Alpine 3.17, migrate to s6v3, drop armhf support." }
-  - { date: "31.08.22:", desc: "Update sample env vars and how RUN_OPTS are handled." }
-  - { date: "19.08.22:", desc: "Switch to new picons builder." }
-  - { date: "16.04.22:", desc: "Added URL XMLTV grabber." }
-  - { date: "05.01.22:", desc: "Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv." }
-  - { date: "11.05.21:", desc: "Added Intel iHD driver support." }
-  - { date: "02.06.20:", desc: "Update to Alpine 3.12." }
-  - { date: "27.12.19:", desc: "Add requests and perl-json-xs package." }
-  - { date: "27.12.19:", desc: "Update to Alpine 3.11." }
-  - { date: "02.10.19:", desc: "Improve permission fixing on render & dvb devices." }
-  - { date: "18.08.19:", desc: "Add AMD drivers." }
-  - { date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb." }
-  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
-  - { date: "27.03.19:", desc: "Rebase to Alpine 3.9, fix init logic to only chown once." }
-  - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
-  - { date: "01.03.19:", desc: "Bump xmltv to 0.6.1." }
-  - { date: "28.02.19:", desc: "add perl-lwp-useragent-determined." }
-  - { date: "17.02.19:", desc: "Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend." }
-  - { date: "14.02.19:", desc: "Add picons path to config." }
-  - { date: "15.01.19:", desc: "Add pipeline logic and multi arch." }
-  - { date: "12.09.18:", desc: "Rebase to alpine 3.8 and use buildstage type build." }
-  - { date: "21.04.18:", desc: "Add JSON::XS Perl package for grab_tv_huro." }
-  - { date: "24.03.18:", desc: "Add dvbcsa package." }
-  - { date: "04.03.18:", desc: "Use sourceforge master rather than mirror for xmltv." }
-  - { date: "22.02.18:", desc: "Add lost libva-intel-driver." }
-  - { date: "21.02.18:", desc: "Fix wrong version of iconv used." }
-  - { date: "18.02.18:", desc: "Add vaapi support, some cleanup and dropping of deprecated options." }
-  - { date: "04.01.18:", desc: "Deprecate cpu_core routine lack of scaling." }
-  - { date: "11.12.17:", desc: "Rebase to alpine 3.7, linting fixes." }
-  - { date: "02.09.17:", desc: "Add codec dependencies." }
-  - { date: "13.07.17:", desc: "Increase uniformity across all archs." }
-  - { date: "08.07.17:", desc: "Update README with full path for comskip." }
-  - { date: "02.07.17:", desc: "Move to one branch for all 4.2 releases." }
-  - { date: "27.05.17:", desc: "Rebase to alpine 3.6." }
-  - { date: "01.05.17:", desc: "Update to tvheadend 4.2.1 stable." }
-  - { date: "18.04.17:", desc: "Use repo version of gnu-libiconv rather than compiling." }
-  - { date: "09.04.17:", desc: "Chain cpanm installs in one block and use --installdeps." }
-  - { date: "09.02.17:", desc: "Perl changes, add picons file to gitignore and update XMLTV to 0.5.69." }
-  - { date: "07.02.17:", desc: "Add variable to add additional runtime paramters." }
-  - { date: "05.02.17:", desc: "Update to alpine 3.5 and change dvb-apps to only compile needed libs." }
-  - { date: "14.11.16:", desc: "Add picons from picons.xyz to /picons folder and add info to README." }
-  - { date: "22.09.16:", desc: "Fix broken tv_grab_wg, libs for xmltv and update README." }
-  - { date: "18.09.16:", desc: "Update XMLTV to 0.5.68 and update README." }
-  - { date: "10.09.16:", desc: "Add layer badges to README." }
-  - { date: "05.09.16:", desc: "Initial Release." }
+  - {date: "25.06.24:", desc: "Rebase to Alpine 3.20."}
+  - {date: "20.03.24:", desc: "Rebase to Alpine 3.19."}
+  - {date: "16.10.23:", desc: "Add mesa-va-gallium package for AMD transcoding."}
+  - {date: "20.09.23:", desc: "Add perl-json-xs package."}
+  - {date: "18.05.23:", desc: "Install XMLTV from Alpine repos."}
+  - {date: "18.05.23:", desc: "Rebase to Alpine 3.18."}
+  - {date: "17.03.23:", desc: "Extract picons during build instead of init."}
+  - {date: "23.02.23:", desc: "Rebase to Alpine 3.17, migrate to s6v3, drop armhf support."}
+  - {date: "31.08.22:", desc: "Update sample env vars and how RUN_OPTS are handled."}
+  - {date: "19.08.22:", desc: "Switch to new picons builder."}
+  - {date: "16.04.22:", desc: "Added URL XMLTV grabber."}
+  - {date: "05.01.22:", desc: "Rebase to Alpine 3.15. Disable execinfo to fix builds. Update xmltv."}
+  - {date: "11.05.21:", desc: "Added Intel iHD driver support."}
+  - {date: "02.06.20:", desc: "Update to Alpine 3.12."}
+  - {date: "27.12.19:", desc: "Add requests and perl-json-xs package."}
+  - {date: "27.12.19:", desc: "Update to Alpine 3.11."}
+  - {date: "02.10.19:", desc: "Improve permission fixing on render & dvb devices."}
+  - {date: "18.08.19:", desc: "Add AMD drivers."}
+  - {date: "02.08.19:", desc: "Attempt to automatically fix permissions on /dev/dri and /dev/dvb."}
+  - {date: "28.06.19:", desc: "Rebasing to alpine 3.10."}
+  - {date: "27.03.19:", desc: "Rebase to Alpine 3.9, fix init logic to only chown once."}
+  - {date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag."}
+  - {date: "01.03.19:", desc: "Bump xmltv to 0.6.1."}
+  - {date: "28.02.19:", desc: "add perl-lwp-useragent-determined."}
+  - {date: "17.02.19:", desc: "Bump xmltv to 5.70, ensure version tagging works by cloning tvheadend."}
+  - {date: "14.02.19:", desc: "Add picons path to config."}
+  - {date: "15.01.19:", desc: "Add pipeline logic and multi arch."}
+  - {date: "12.09.18:", desc: "Rebase to alpine 3.8 and use buildstage type build."}
+  - {date: "21.04.18:", desc: "Add JSON::XS Perl package for grab_tv_huro."}
+  - {date: "24.03.18:", desc: "Add dvbcsa package."}
+  - {date: "04.03.18:", desc: "Use sourceforge master rather than mirror for xmltv."}
+  - {date: "22.02.18:", desc: "Add lost libva-intel-driver."}
+  - {date: "21.02.18:", desc: "Fix wrong version of iconv used."}
+  - {date: "18.02.18:", desc: "Add vaapi support, some cleanup and dropping of deprecated options."}
+  - {date: "04.01.18:", desc: "Deprecate cpu_core routine lack of scaling."}
+  - {date: "11.12.17:", desc: "Rebase to alpine 3.7, linting fixes."}
+  - {date: "02.09.17:", desc: "Add codec dependencies."}
+  - {date: "13.07.17:", desc: "Increase uniformity across all archs."}
+  - {date: "08.07.17:", desc: "Update README with full path for comskip."}
+  - {date: "02.07.17:", desc: "Move to one branch for all 4.2 releases."}
+  - {date: "27.05.17:", desc: "Rebase to alpine 3.6."}
+  - {date: "01.05.17:", desc: "Update to tvheadend 4.2.1 stable."}
+  - {date: "18.04.17:", desc: "Use repo version of gnu-libiconv rather than compiling."}
+  - {date: "09.04.17:", desc: "Chain cpanm installs in one block and use --installdeps."}
+  - {date: "09.02.17:", desc: "Perl changes, add picons file to gitignore and update XMLTV to 0.5.69."}
+  - {date: "07.02.17:", desc: "Add variable to add additional runtime paramters."}
+  - {date: "05.02.17:", desc: "Update to alpine 3.5 and change dvb-apps to only compile needed libs."}
+  - {date: "14.11.16:", desc: "Add picons from picons.xyz to /picons folder and add info to README."}
+  - {date: "22.09.16:", desc: "Fix broken tv_grab_wg, libs for xmltv and update README."}
+  - {date: "18.09.16:", desc: "Update XMLTV to 0.5.68 and update README."}
+  - {date: "10.09.16:", desc: "Add layer badges to README."}
+  - {date: "05.09.16:", desc: "Initial Release."}
