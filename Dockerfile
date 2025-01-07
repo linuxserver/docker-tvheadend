@@ -120,7 +120,7 @@ RUN \
   tar xf \
   /tmp/argtable-src.tar.gz -C \
     /tmp/argtable --strip-components=1 && \
-  cp /tmp/patches/argtable/config.* /tmp/argtable && \
+  cp /tmp/patches/config.* /tmp/argtable && \
   cd /tmp/argtable && \
   CFLAGS="-include ctype.h -include string.h" ./configure \
     --prefix=/usr && \
