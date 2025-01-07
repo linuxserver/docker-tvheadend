@@ -109,21 +109,21 @@ RUN \
   make -j 2 && \
   make DESTDIR=/tmp/tvheadend-build install
 
-RUN \
+  RUN \
   echo "**** compile argtable2 ****" && \
   ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
   mkdir -p \
-    /tmp/argtable && \
+     /tmp/argtable && \
   curl -s -o \
   /tmp/argtable-src.tar.gz -L \
-    "https://sourceforge.net/projects/argtable/files/argtable/argtable-${ARGTABLE_VER}/argtable${ARGTABLE_VER1}.tar.gz" && \
+     "https://sourceforge.net/projects/argtable/files/argtable/argtable-${ARGTABLE_VER}/argtable${ARGTABLE_VER1}.tar.gz" && \
   tar xf \
   /tmp/argtable-src.tar.gz -C \
-    /tmp/argtable --strip-components=1 && \
-  cp /tmp/patches/config.* /tmp/argtable && \
+     /tmp/argtable --strip-components=1 && \
+  cp /tmp/patches/argtable/config.* /tmp/argtable && \
   cd /tmp/argtable && \
-  ./configure \
-    --prefix=/usr && \
+  CFLAGS="-include ctype.h -include string.h" ./configure \
+     --prefix=/usr && \
   make -j 2 && \
   make check && \
   make DESTDIR=/tmp/argtable-build install && \

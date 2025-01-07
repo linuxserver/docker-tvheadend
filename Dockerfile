@@ -5,7 +5,7 @@
 FROM ghcr.io/linuxserver/picons-builder as piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -109,21 +109,21 @@ RUN \
   make -j 2 && \
   make DESTDIR=/tmp/tvheadend-build install
 
-RUN \
+  RUN \
   echo "**** compile argtable2 ****" && \
   ARGTABLE_VER1="${ARGTABLE_VER//./-}" && \
   mkdir -p \
-    /tmp/argtable && \
+     /tmp/argtable && \
   curl -s -o \
   /tmp/argtable-src.tar.gz -L \
-    "https://sourceforge.net/projects/argtable/files/argtable/argtable-${ARGTABLE_VER}/argtable${ARGTABLE_VER1}.tar.gz" && \
+     "https://sourceforge.net/projects/argtable/files/argtable/argtable-${ARGTABLE_VER}/argtable${ARGTABLE_VER1}.tar.gz" && \
   tar xf \
   /tmp/argtable-src.tar.gz -C \
-    /tmp/argtable --strip-components=1 && \
-  cp /tmp/patches/config.* /tmp/argtable && \
+     /tmp/argtable --strip-components=1 && \
+  cp /tmp/patches/argtable/config.* /tmp/argtable && \
   cd /tmp/argtable && \
-  ./configure \
-    --prefix=/usr && \
+  CFLAGS="-include ctype.h -include string.h" ./configure \
+     --prefix=/usr && \
   make -j 2 && \
   make check && \
   make DESTDIR=/tmp/argtable-build install && \
@@ -149,7 +149,7 @@ RUN \
     /picons
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21
 
 # set version label
 ARG BUILD_DATE
