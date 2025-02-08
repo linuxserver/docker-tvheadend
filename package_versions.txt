@@ -22,7 +22,7 @@ coreutils                        9.5-r2                 apk
 coreutils-env                    9.5-r2                 apk       
 coreutils-fmt                    9.5-r2                 apk       
 coreutils-sha512sum              9.5-r2                 apk       
-curl                             8.11.1-r0              apk       
+curl                             8.12.0-r0              apk       
 dbus-libs                        1.14.10-r1             apk       
 ffmpeg                           6.1.1-r8               apk       
 ffmpeg-libavcodec                6.1.1-r8               apk       
@@ -73,8 +73,8 @@ libblkid                         2.40.1-r1              apk
 libbluray                        1.3.4-r1               apk       
 libbsd                           0.12.2-r0              apk       
 libbz2                           1.0.8-r6               apk       
-libcrypto3                       3.3.2-r1               apk       
-libcurl                          8.11.1-r0              apk       
+libcrypto3                       3.3.2-r2               apk       
+libcurl                          8.12.0-r0              apk       
 libdav1d                         1.4.2-r0               apk       
 libdovi                          3.3.0-r0               apk       
 libdrm                           2.4.120-r0             apk       
@@ -113,9 +113,9 @@ libsndfile                       1.2.2-r1               apk
 libsodium                        1.0.19-r0              apk       
 libsrt                           1.5.3-r0               apk       
 libssh                           0.10.6-r0              apk       
-libssl3                          3.3.2-r1               apk       
+libssl3                          3.3.2-r2               apk       
 libstdc++                        13.2.1_git20240309-r0  apk       
-libtasn1                         4.19.0-r2              apk       
+libtasn1                         4.20.0-r0              apk       
 libtheora                        1.1.1-r18              apk       
 libunibreak                      6.1-r0                 apk       
 libunistring                     1.2-r0                 apk       
@@ -275,10 +275,10 @@ py3-requests                     2.32.3-r0              apk
 py3-requests-pyc                 2.32.3-r0              apk       
 py3-urllib3                      1.26.18-r1             apk       
 py3-urllib3-pyc                  1.26.18-r1             apk       
-pyc                              3.12.8-r1              apk       
-python3                          3.12.8-r1              apk       
-python3-pyc                      3.12.8-r1              apk       
-python3-pycache-pyc0             3.12.8-r1              apk       
+pyc                              3.12.9-r0              apk       
+python3                          3.12.9-r0              apk       
+python3-pyc                      3.12.9-r0              apk       
+python3-pycache-pyc0             3.12.9-r0              apk       
 rav1e-libs                       0.7.1-r0               apk       
 readline                         8.2.10-r0              apk       
 requests                         2.32.3                 python    
