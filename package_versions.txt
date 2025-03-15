@@ -133,9 +133,9 @@ libxcb                           1.16.1-r0              apk
 libxdmcp                         1.1.5-r1               apk       
 libxext                          1.3.6-r2               apk       
 libxfixes                        6.0.1-r4               apk       
-libxml2                          2.12.7-r1              apk       
+libxml2                          2.12.7-r2              apk       
 libxshmfence                     1.3.2-r6               apk       
-libxslt                          1.1.39-r1              apk       
+libxslt                          1.1.39-r2              apk       
 libzmq                           4.3.5-r2               apk       
 lilv-libs                        0.24.24-r1             apk       
 linux-headers                    6.6-r0                 apk       
