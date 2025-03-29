@@ -296,7 +296,7 @@ sqlite-libs                      3.45.3-r1              apk
 sratom                           0.6.16-r0              apk       
 ssl_client                       1.36.1-r29             apk       
 tdb-libs                         1.4.9-r1               apk       
-tzdata                           2025a-r0               apk       
+tzdata                           2025b-r0               apk       
 uriparser                        0.9.8-r0               apk       
 urllib3                          1.26.18                python    
 utmps-libs                       0.1.2.2-r1             apk       
