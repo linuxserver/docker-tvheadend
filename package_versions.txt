@@ -141,7 +141,7 @@ lilv-libs                        0.24.24-r1             apk
 linux-headers                    6.6-r0                 apk       
 linux-pam                        1.6.0-r0               apk       
 llvm17-libs                      17.0.6-r2              apk       
-mbedtls                          3.6.2-r0               apk       
+mbedtls                          3.6.3-r0               apk       
 mesa                             24.0.9-r1              apk       
 mesa-va-gallium                  24.0.9-r1              apk       
 mpdecimal                        4.0.0-r0               apk       
@@ -275,10 +275,10 @@ py3-requests                     2.32.3-r0              apk
 py3-requests-pyc                 2.32.3-r0              apk       
 py3-urllib3                      1.26.18-r1             apk       
 py3-urllib3-pyc                  1.26.18-r1             apk       
-pyc                              3.12.9-r0              apk       
-python3                          3.12.9-r0              apk       
-python3-pyc                      3.12.9-r0              apk       
-python3-pycache-pyc0             3.12.9-r0              apk       
+pyc                              3.12.10-r0             apk       
+python3                          3.12.10-r0             apk       
+python3-pyc                      3.12.10-r0             apk       
+python3-pycache-pyc0             3.12.10-r0             apk       
 rav1e-libs                       0.7.1-r0               apk       
 readline                         8.2.10-r0              apk       
 requests                         2.32.3                 python    
