@@ -28,7 +28,7 @@ RUN \
     bsd-compat-headers \
     build-base \
     cmake \
-    ffmpeg4-dev \
+    ffmpeg-dev \
     file \
     findutils \
     gettext-dev \
@@ -166,14 +166,14 @@ RUN \
   apk add --no-cache \
     bsd-compat-headers \
     ffmpeg \
-    ffmpeg4-libavcodec \
-    ffmpeg4-libavdevice \
-    ffmpeg4-libavfilter \
-    ffmpeg4-libavformat \
-    ffmpeg4-libavutil \
-    ffmpeg4-libpostproc \
-    ffmpeg4-libswresample \
-    ffmpeg4-libswscale \
+    ffmpeg-libavcodec \
+    ffmpeg-libavdevice \
+    ffmpeg-libavfilter \
+    ffmpeg-libavformat \
+    ffmpeg-libavutil \
+    ffmpeg-libpostproc \
+    ffmpeg-libswresample \
+    ffmpeg-libswscale \
     gnu-libiconv \
     libdvbcsa \
     libhdhomerun-libs \
