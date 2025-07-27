@@ -38,7 +38,6 @@ RUN \
     libdvbcsa1 \
     libhdhomerun5 \
     libva2 \
-    intel-media-va-driver \
     libvpx9 \
     libxml2 \
     libxslt1.1 \
