@@ -29,7 +29,7 @@ pipeline {
     DOCKERHUB_IMAGE = 'linuxserver/tvheadend'
     DEV_DOCKERHUB_IMAGE = 'lsiodev/tvheadend'
     PR_DOCKERHUB_IMAGE = 'lspipepr/tvheadend'
-    DIST_IMAGE = 'alpine'
+    DIST_IMAGE = 'ubuntu'
     MULTIARCH='true'
     CI='true'
     CI_WEB='true'
