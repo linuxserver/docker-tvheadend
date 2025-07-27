@@ -1,10 +1,8 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/picons-builder as picons
-
 FROM ghcr.io/linuxserver/baseimage-alpine:edge AS extractstage
 
-COPY --from=picons /picons.tar.bz2 /picons.tar.bz2
+COPY --from=ghcr.io/linuxserver/picons-builder /picons.tar.bz2 /picons.tar.bz2
 
 RUN \
   echo "***** extract picons ****" && \
