@@ -17,5 +17,5 @@ if [[ ! -e /config/config ]]; then
 fi
 
 # permissions
-echo "Setting permissions"
-lsiown -R abc:abc /config
+lsiown -R abc:abc \
+    /config

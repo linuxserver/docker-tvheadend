@@ -5,7 +5,7 @@
 FROM ghcr.io/linuxserver/picons-builder as piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.22 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -149,7 +149,7 @@ RUN \
     /picons
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20
+FROM ghcr.io/linuxserver/baseimage-alpine:3.22
 
 # set version label
 ARG BUILD_DATE
@@ -158,7 +158,8 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="saarg"
 
 # environment settings
-ENV HOME="/config"
+ENV HOME="/config" \
+  ATTACHED_DEVICES_PERMS="/dev/dvb /dev/dri -type c"
 
 RUN \
   echo "**** install runtime packages ****" && \
