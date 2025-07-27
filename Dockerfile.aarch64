@@ -122,6 +122,10 @@ RUN \
     /tmp/argtable --strip-components=1 && \
   cp /tmp/patches/config.* /tmp/argtable && \
   cd /tmp/argtable && \
+  # Fix -Wimplicit-function-declaration compile errors
+  sed -i '/#include <limits.h>/a #include <ctype.h>' src/arg_int.c && \
+  sed -i '/#include <assert.h>/a #include <string.h>' tests/fntests.c && \
+  sed -i '/#include <stdlib.h>/a #include <string.h>' tests/test_file.c && \
   ./configure \
     --prefix=/usr && \
   make -j 2 && \
