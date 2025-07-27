@@ -1,8 +1,10 @@
 # syntax=docker/dockerfile:1
 
+FROM ghcr.io/linuxserver/picons-builder as picons
+
 FROM ghcr.io/linuxserver/baseimage-alpine:edge AS extractstage
 
-COPY --from=ghcr.io/linuxserver/picons-builder /picons.tar.bz2 /picons.tar.bz2
+COPY --from=picons /picons.tar.bz2 /picons.tar.bz2
 
 RUN \
   echo "***** extract picons ****" && \
@@ -51,7 +53,9 @@ RUN \
     libx264-164 \
     libx265-199 \
     xmltv && \
-  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version
+  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
+  rm -rf \
+    /var/lib/apt/lists
 
 # copy local files and buildstage artifacts
 COPY --from=extractstage /picons /picons
