@@ -5,7 +5,7 @@
 FROM ghcr.io/linuxserver/picons-builder as piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -122,7 +122,7 @@ RUN \
     /tmp/argtable --strip-components=1 && \
   cp /tmp/patches/config.* /tmp/argtable && \
   cd /tmp/argtable && \
-  ./configure \
+  CFLAGS="-include ctype.h -include string.h" ./configure \
     --prefix=/usr && \
   make -j 2 && \
   make check && \
@@ -149,7 +149,7 @@ RUN \
     /picons
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21
 
 # set version label
 ARG BUILD_DATE
