@@ -5,7 +5,7 @@
 FROM ghcr.io/linuxserver/picons-builder as piconsstage
 
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20 as buildstage
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21 as buildstage
 ############## build stage ##############
 
 # package versions
@@ -28,7 +28,7 @@ RUN \
     bsd-compat-headers \
     build-base \
     cmake \
-    ffmpeg4-dev \
+    ffmpeg-dev \
     file \
     findutils \
     gettext-dev \
@@ -122,7 +122,7 @@ RUN \
     /tmp/argtable --strip-components=1 && \
   cp /tmp/patches/config.* /tmp/argtable && \
   cd /tmp/argtable && \
-  ./configure \
+  CFLAGS="-include ctype.h -include string.h" ./configure \
     --prefix=/usr && \
   make -j 2 && \
   make check && \
@@ -149,7 +149,7 @@ RUN \
     /picons
 
 ############## runtime stage ##############
-FROM ghcr.io/linuxserver/baseimage-alpine:3.20
+FROM ghcr.io/linuxserver/baseimage-alpine:3.21
 
 # set version label
 ARG BUILD_DATE
@@ -165,14 +165,14 @@ RUN \
   apk add --no-cache \
     bsd-compat-headers \
     ffmpeg \
-    ffmpeg4-libavcodec \
-    ffmpeg4-libavdevice \
-    ffmpeg4-libavfilter \
-    ffmpeg4-libavformat \
-    ffmpeg4-libavutil \
-    ffmpeg4-libpostproc \
-    ffmpeg4-libswresample \
-    ffmpeg4-libswscale \
+    ffmpeg-libavcodec \
+    ffmpeg-libavdevice \
+    ffmpeg-libavfilter \
+    ffmpeg-libavformat \
+    ffmpeg-libavutil \
+    ffmpeg-libpostproc \
+    ffmpeg-libswresample \
+    ffmpeg-libswscale \
     gnu-libiconv \
     libdvbcsa \
     libhdhomerun-libs \
