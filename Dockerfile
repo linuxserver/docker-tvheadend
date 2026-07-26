@@ -54,7 +54,8 @@ RUN \
     uriparser-dev \
     x264-dev \
     x265-dev \
-    zlib-dev
+    zlib-dev \
+    npm
 
 RUN \
   echo "**** remove musl iconv.h and replace with gnu-iconv.h ****" && \
@@ -90,6 +91,7 @@ RUN \
     --enable-libx265 \
     \
     `#Options` \
+    --enable-vue_build \
     --disable-avahi \
     --disable-dbus_1 \
     --disable-bintray_cache \
