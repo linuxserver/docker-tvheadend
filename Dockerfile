@@ -43,6 +43,7 @@ RUN \
     libxml2-dev \
     libxslt-dev \
     linux-headers \
+    npm \
     openssl-dev \
     opus-dev \
     patch \
@@ -54,8 +55,7 @@ RUN \
     uriparser-dev \
     x264-dev \
     x265-dev \
-    zlib-dev \
-    npm
+    zlib-dev
 
 RUN \
   echo "**** remove musl iconv.h and replace with gnu-iconv.h ****" && \
