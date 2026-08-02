@@ -91,7 +91,6 @@ RUN \
     --enable-libx265 \
     \
     `#Options` \
-    --enable-vue_build \
     --disable-avahi \
     --disable-dbus_1 \
     --disable-bintray_cache \
@@ -102,6 +101,7 @@ RUN \
     --enable-pngquant \
     --enable-trace \
     --enable-vaapi \
+    --enable-vue_build \
     --infodir=/usr/share/info \
     --localstatedir=/var \
     --mandir=/usr/share/man \
