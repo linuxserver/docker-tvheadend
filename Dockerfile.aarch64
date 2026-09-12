@@ -43,6 +43,7 @@ RUN \
     libxml2-dev \
     libxslt-dev \
     linux-headers \
+    npm \
     openssl-dev \
     opus-dev \
     patch \
@@ -100,6 +101,7 @@ RUN \
     --enable-pngquant \
     --enable-trace \
     --enable-vaapi \
+    --enable-vue_build \
     --infodir=/usr/share/info \
     --localstatedir=/var \
     --mandir=/usr/share/man \
