@@ -43,6 +43,8 @@ RUN \
     libxml2-dev \
     libxslt-dev \
     linux-headers \
+    nodejs \
+    npm \
     openssl-dev \
     opus-dev \
     patch \
@@ -95,11 +97,13 @@ RUN \
     --disable-bintray_cache \
     --disable-execinfo \
     --disable-hdhomerun_static \
+    --disable-vue_cache \
     --enable-hdhomerun_client \
     --enable-libav \
     --enable-pngquant \
     --enable-trace \
     --enable-vaapi \
+    --enable-vue_build \
     --infodir=/usr/share/info \
     --localstatedir=/var \
     --mandir=/usr/share/man \
